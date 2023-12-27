@@ -1,0 +1,135 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:np="https://np.com/visuals"
+        xmlns:local="clr-namespace:NP.ComplexViewModelSaveRestoreSample"
+        Width="700"
+        Height="800"
+        np:DockAttachedProperties.DockChildWindowOwner="{Binding RelativeSource={RelativeSource Mode=Self}}"
+        np:DockAttachedProperties.TheDockManager="{DynamicResource TheDockManager}"
+        x:Class="NP.ComplexViewModelSaveRestoreSample.MainWindow"
+        Title="NP.ComplexViewModelSaveRestoreSample"
+        BorderBrush="Gray">
+  <Window.Resources>
+    <ResourceDictionary>
+		<np:DockManager x:Key="TheDockManager"/>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://NP.Avalonia.Visuals/Themes/Geometries.axaml"/>
+      </ResourceDictionary.MergedDictionaries>
+		<DataTemplate x:Key="TestUserControlHeaderDataTemplate">
+			<TextBlock Text="StartingUC"/>
+		</DataTemplate>
+		<DataTemplate x:Key="TestUserControlDataTemplate">
+			<local:TestUserControl/>
+		</DataTemplate>
+      <DataTemplate x:Key="StockHeaderDataTemplate">
+        <TextBlock Text="{Binding Path=Symbol}"/>
+      </DataTemplate>
+      
+      <DataTemplate x:Key="StockDataTemplate">
+        <Grid Margin="5" 
+              RowDefinitions="Auto, Auto, Auto, Auto">
+          <StackPanel Orientation="Horizontal"
+                      HorizontalAlignment="Left">
+            <TextBlock Text="Symbol: "/>
+            <TextBlock Text="{Binding Symbol}"
+                       FontWeight="Bold"/>
+          </StackPanel>
+
+          <TextBlock Text="{Binding Description}"
+                     Grid.Row="1"
+                     Margin="0,10,0,5"
+                     HorizontalAlignment="Left"/>
+
+          <StackPanel Orientation="Horizontal"
+                      HorizontalAlignment="Left"
+                      Grid.Row="2"
+                      Margin="0,5">
+            <TextBlock Text="Ask: "/>
+            <TextBlock Text="{Binding Path=Ask, StringFormat='\{0:0.00\}'}"
+                       Foreground="Green"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal"
+                      HorizontalAlignment="Left"
+                      Grid.Row="3"
+                      Margin="0,5">
+            <TextBlock Text="Bid: "/>
+            <TextBlock Text="{Binding Path=Bid, StringFormat='\{0:0.00\}'}"
+                       Foreground="Red"/>
+          </StackPanel>
+        </Grid>
+      </DataTemplate>
+
+      <DataTemplate x:Key="OrderHeaderDataTemplate">
+        <TextBlock Text="{Binding Path=Symbol, StringFormat='\{0\} Order'}"/>
+      </DataTemplate>
+
+      <DataTemplate x:Key="OrderDataTemplate">
+        <Grid Margin="5"
+              RowDefinitions="Auto, Auto, Auto, *">
+          <StackPanel Orientation="Horizontal"
+                      HorizontalAlignment="Left">
+            <TextBlock Text="Symbol: "/>
+            <TextBlock Text="{Binding Symbol}"
+                       FontWeight="Bold"/>
+          </StackPanel>
+
+
+          <StackPanel Orientation="Horizontal"
+                      HorizontalAlignment="Left"
+                      Grid.Row="1"
+                      Margin="0,5">
+            <TextBlock Text="Number of Shares: "/>
+            <TextBlock Text="{Binding Path=NumberShares}"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal"
+                      HorizontalAlignment="Left"
+                      Grid.Row="2"
+                      Margin="0,5">
+            <TextBlock Text="Market Price: "/>
+            <TextBlock Text="{Binding Path=MarketPrice, StringFormat='\{0:0.00\}'}"/>
+          </StackPanel>
+        </Grid>
+      </DataTemplate>
+    </ResourceDictionary>
+  </Window.Resources>
+  <Window.Styles>
+    <StyleInclude Source="avares://NP.Avalonia.UniDock/Themes/DockStyles.axaml"/>
+  </Window.Styles>
+  <Grid DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+        RowDefinitions="Auto, *, Auto">
+    <np:RootDockGroup np:DockAttachedProperties.TheDockManager="{StaticResource TheDockManager}"
+                        Grid.Row="1">
+      <np:StackDockGroup x:Name="TheStackGroup"
+                         TheOrientation="Vertical"
+                         IsStableGroup="True">
+        <np:TabbedDockGroup IsStableGroup="True"
+                            DefaultDockOrderInGroup="0"
+                            DockId="TestUserControlsGroup"
+                            x:Name="TestGroup"
+                            AutoDestroy="False">
+        </np:TabbedDockGroup>
+      </np:StackDockGroup>
+    </np:RootDockGroup>
+
+    <StackPanel Margin="10,5"
+                Grid.Row="2"
+                Orientation="Horizontal"
+                HorizontalAlignment="Right">
+
+      <Button x:Name="AddUserControlTabButton"
+              Content="Add UserControl"
+              Padding="10,5"
+              Margin="0,0,10,0"/>
+
+      <Button x:Name="SaveButton"
+              Content="Save"
+              Padding="10,5"
+              Margin="0,0,10,0" />
+
+      <Button x:Name="RestoreButton"
+              Content="Restore"
+              Padding="10,5" />
+    </StackPanel>
+  </Grid>
+</Window>

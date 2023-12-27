@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <AvaloniaXaml Remove="Themes\**" />
+    <Compile Remove="Themes\**" />
+    <EmbeddedResource Remove="Themes\**" />
+    <None Remove="Themes\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NP.Avalonia.UniDock.csproj" />
+    <ProjectReference Include="..\..\SubModules\NP.IoCy\src\NP.IoCy.csproj" />
+  </ItemGroup>
+</Project>

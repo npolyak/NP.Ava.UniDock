@@ -1,0 +1,53 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:np="https://np.com/visuals"
+        xmlns:local="clr-namespace:NP.ReloadingProblemSample"
+        Width="700"
+        Height="700"
+        np:DockAttachedProperties.DockChildWindowOwner="{Binding RelativeSource={RelativeSource Self}}"
+        np:DockAttachedProperties.TheDockManager="{DynamicResource TheDockManager}"
+        x:Class="NP.ReloadingProblemSample.MainWindow"
+        Title="NP.ReloadingProblemSample"
+        BorderBrush="Gray">
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceInclude Source="avares://NP.Avalonia.Visuals/Themes/Geometries.axaml"/>
+			</ResourceDictionary.MergedDictionaries>
+			<np:DockManager x:Key="TheDockManager"/>
+
+			<DataTemplate x:Key="ReloadingDataTemplate">
+				<local:ReloadingUserControl/>
+			</DataTemplate>
+		</ResourceDictionary>
+	</Window.Resources>
+	<Window.Styles>
+		<StyleInclude Source="avares://NP.Avalonia.UniDock/Themes/DockStyles.axaml"/>
+	</Window.Styles>
+	<Grid DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+		  RowDefinitions="*, Auto">
+		<np:RootDockGroup np:DockAttachedProperties.TheDockManager="{StaticResource TheDockManager}">
+			<np:StackDockGroup
+							   DockId="DocumentGroup"
+							   IsStableGroup="True"
+							   AutoInvisible="False">
+				<!--<np:DockItem Header="Tab 1">
+					<local:ReloadingUserControl/>
+				</np:DockItem>
+				<np:DockItem Header="Tab 2">
+					<local:ReloadingUserControl/>
+				</np:DockItem>-->
+			</np:StackDockGroup>
+		</np:RootDockGroup>
+		<StackPanel Grid.Row="1"
+					HorizontalAlignment="Right"
+					Margin="10">
+			<Button x:Name="SaveButton"
+					Content="Save"
+					Margin="10,0"/>
+			<Button x:Name="RestoreButton"
+					Content="Restore"/>
+		</StackPanel>
+	</Grid>
+</Window>

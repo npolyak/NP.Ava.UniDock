@@ -1,0 +1,58 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:np="https://np.com/visuals"
+        xmlns:local="clr-namespace:NP.GroupCompassSample"
+        Width="700"
+        Height="700"
+        np:DockAttachedProperties.DockChildWindowOwner="{Binding RelativeSource={RelativeSource Mode=Self}}"
+        np:DockAttachedProperties.TheDockManager="{DynamicResource TheDockManager}"
+        x:Class="NP.GroupCompassSample.MainWindow"
+        Title="NP.GroupCompassSample"
+        BorderBrush="Gray">
+  <Window.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://NP.Avalonia.Visuals/Themes/Geometries.axaml"/>
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Window.Resources>
+  <Window.Styles>
+    <StyleInclude Source="avares://NP.Avalonia.UniDock/Themes/DockStyles.axaml"/>
+  </Window.Styles>
+  <Grid DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+        RowDefinitions="*, Auto">
+    <np:RootDockGroup np:DockAttachedProperties.TheDockManager="{x:Static local:MyContainer.TheDockManager}">
+      <np:DockItem Header="Tab2"
+                   DefaultDockGroupId="Group1"
+                   DefaultDockOrderInGroup="2">
+        <TextBlock Text="Hi World!"/>
+      </np:DockItem>
+    </np:RootDockGroup>
+
+	  <!--
+    <np:DropPanelWithCompass ShowHull="False"
+                             AllowCenterDocking="False"
+                             DockSide="Bottom"/>
+	  
+	  -->
+
+    <!--<np:DockCompass HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    ShowHull="False"
+                    AllowCenterDocking="False"/>-->
+    <StackPanel Margin="10,5"
+                Grid.Row="1"
+                Orientation="Horizontal"
+                HorizontalAlignment="Right">
+      <Button x:Name="SaveButton"
+              Content="Save"
+              Padding="10,5"
+              Margin="0,0,10,0" />
+
+      <Button x:Name="RestoreButton"
+              Content="Restore"
+              Padding="10,5" />
+    </StackPanel>
+  </Grid>
+</Window>

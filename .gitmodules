@@ -1,0 +1,27 @@
+[submodule "SubModules/NP.Avalonia.UniDockService"]
+	path = SubModules/NP.Avalonia.UniDockService
+	url = https://github.com/npolyak/NP.Avalonia.UniDockService.git
+[submodule "SubModules/NP.Ava.Visuals"]
+	path = SubModules/NP.Ava.Visuals
+	url = https://github.com/npolyak/NP.Ava.Visuals.git
+[submodule "SubModules/NP.Concepts.Behaviors"]
+	path = SubModules/NP.Concepts.Behaviors
+	url = https://github.com/npolyak/NP.Concepts.Behaviors.git
+[submodule "SubModules/NP.DependencyInjection"]
+	path = SubModules/NP.DependencyInjection
+	url = https://github.com/npolyak/NP.DependencyInjection.git
+[submodule "SubModules/NP.IoC.CommonImplementations"]
+	path = SubModules/NP.IoC.CommonImplementations
+	url = https://github.com/npolyak/NP.IoC.CommonImplementations.git
+[submodule "SubModules/NP.IoCy"]
+	path = SubModules/NP.IoCy
+	url = https://github.com/npolyak/NP.IoCy.git
+[submodule "SubModules/NP.NLogAdapter"]
+	path = SubModules/NP.NLogAdapter
+	url = https://github.com/npolyak/NP.NLogAdapter.git
+[submodule "SubModules/NP.Utilities"]
+	path = SubModules/NP.Utilities
+	url = https://github.com/npolyak/NP.Utilities.git
+[submodule "SubModules/NP.ViewModelInterfaces"]
+	path = SubModules/NP.ViewModelInterfaces
+	url = https://github.com/npolyak/NP.ViewModelInterfaces.git

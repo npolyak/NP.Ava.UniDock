@@ -1,0 +1,54 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:np="https://np.com/visuals"
+        xmlns:local="clr-namespace:NP.StackGroupVirtualResize"
+        Width="700"
+        Height="700"
+        np:DockAttachedProperties.DockChildWindowOwner="{Binding RelativeSource={RelativeSource Self}}"
+        np:DockAttachedProperties.TheDockManager="{DynamicResource TheDockManager}"
+        x:Class="NP.StackGroupVirtualResize.MainWindow"
+        Title="NP.StackGroupVirtualResize">
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceInclude Source="avares://NP.Avalonia.Visuals/Themes/Geometries.axaml"/>
+			</ResourceDictionary.MergedDictionaries>
+			<np:DockManager x:Key="TheDockManager"
+							ResizePreview="True"/>
+		</ResourceDictionary>
+	</Window.Resources>
+	<Window.Styles>
+		<StyleInclude Source="avares://NP.Avalonia.UniDock/Themes/DockStyles.axaml"/>
+	</Window.Styles>
+	<Grid Margin="10"
+		  DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+		  Background="Gray">
+		<np:RootDockGroup np:DockAttachedProperties.TheDockManager="{StaticResource TheDockManager}">
+			<np:StackDockGroup TheOrientation="Vertical"
+							   DockId="TopGroup">
+				<np:StackDockGroup TheOrientation="Horizontal"
+								   IsStableGroup="True"
+								   DockId="Group1">
+					<np:DockItem Header="Tab1"
+								 DefaultDockGroupId="Group1"
+								 DefaultDockOrderInGroup="1">
+						<StackPanel>
+							<TextBlock Text="Hello World!"/>
+						</StackPanel>
+					</np:DockItem>
+					<np:DockItem Header="Tab2"
+								 DefaultDockGroupId="Group1"
+								 DefaultDockOrderInGroup="2">
+						<TextBlock Text="Hi World!"/>
+					</np:DockItem>
+				</np:StackDockGroup>
+				<np:DockItem Header="Tab3"
+							 DefaultDockGroupId="Group3"
+							 DefaultDockOrderInGroup="1">
+					<TextBlock Text="Hello"/>
+				</np:DockItem>
+			</np:StackDockGroup>
+		</np:RootDockGroup>
+	</Grid>
+</Window>

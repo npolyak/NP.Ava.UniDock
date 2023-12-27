@@ -1,0 +1,135 @@
+<!-- (c) Nick Polyak 2021 - http://awebpros.com/
+      License: MIT License (https://opensource.org/licenses/MIT)
+ 
+      short overview of copyright rules:
+      1. you can use this framework in any commercial or non-commercial
+         product as long as you retain this copyright message
+      2. Do not blame the author of this software if something goes wrong.
+ 
+      Also, please, mention this software in any documentation for the
+      products that use it.
+-->
+
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:np="https://np.com/visuals"
+        xmlns:local="clr-namespace:NP.Demos.DockWindowsSample"
+        mc:Ignorable="d"
+        d:DesignWidth="800"
+        d:DesignHeight="550"
+        Width="700"
+        Height="700"
+        np:DockAttachedProperties.TheDockManager="{DynamicResource TheDockManager}"
+        np:DockAttachedProperties.DockChildWindowOwner="{Binding RelativeSource={RelativeSource Mode=Self}}"
+        np:DockAttachedProperties.WindowId="TheMainWindow"
+        x:Class="NP.Demos.DockWindowsSample.MainWindow"
+        Title="NP.Demos.DockWindowsSample">
+  <Window.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://NP.Avalonia.Visuals/Themes/Geometries.axaml"/>
+      </ResourceDictionary.MergedDictionaries>
+      <np:DockManager x:Key="TheDockManager"/>
+    </ResourceDictionary>
+  </Window.Resources>
+  <Grid RowDefinitions="*, Auto">
+    <Grid ColumnDefinitions="*, *">
+		<np:RootDockGroup  np:DockAttachedProperties.TheDockManager="{StaticResource TheDockManager}"
+							 DockId="Group1">
+			<np:TabbedDockGroup AutoDestroy="False">
+				<np:DockItem Header="Tab1"
+							 DockId="DockItem1">
+					<TextBlock Text="Hello World!"/>
+				</np:DockItem>
+				<np:DockItem Header="Tab2"
+							 DockId="DockItem2">
+					<TextBlock Text="Hi World!"/>
+				</np:DockItem>
+				<np:DockItem Header="Tab3"
+							 DockId="DockItem3">
+					<TextBlock Text="Hi World 1234!"/>
+				</np:DockItem>
+			</np:TabbedDockGroup>
+		</np:RootDockGroup>
+      <np:RootDockGroup np:DockAttachedProperties.TheDockManager="{StaticResource TheDockManager}"
+                          DockId="Group2"
+                          Grid.Column="1">
+		  <np:TabbedDockGroup AutoDestroy="False">
+			  <np:DockItem Header="Tab4"
+						   Content="Hello World!"
+						   DockId="DockItem4">
+				  <np:DockItem.ContentTemplate>
+					  <DataTemplate>
+						  <Grid RowDefinitions="Auto, *">
+							  <TextBlock Foreground="Red"
+										 FontSize="20"
+										 Text="{Binding}"/>
+						  </Grid>
+					  </DataTemplate>
+				  </np:DockItem.ContentTemplate>
+			  </np:DockItem>
+			  <np:DockItem Header="Tab5"
+						   DockId="DockItem5"
+						   Content="Hi World!"/>
+		  </np:TabbedDockGroup>
+      </np:RootDockGroup>
+    </Grid>
+    <StackPanel Grid.Row="1" Orientation="Horizontal"
+                HorizontalAlignment="Right">
+      <Button Width="100"
+              Height="50"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center"
+              Content="Serialize"
+              np:CallAction.TheEvent="{x:Static Button.ClickEvent}"
+              np:CallAction.TargetObject="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+              np:CallAction.MethodName="Serialize"
+              Margin="10,20"/>
+      <!--<Button Width="200"
+              Height="50"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center"
+              Content="Clear Groups"
+              np:CallAction.TheEvent="{x:Static Button.ClickEvent}"
+              np:CallAction.TargetObject="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+              np:CallAction.MethodName="ClearGroups"
+              Margin="10,20"/>-->
+      <Button Width="100"
+              Height="50"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center"
+              Content="Restore"
+              np:CallAction.TheEvent="{x:Static Button.ClickEvent}"
+              np:CallAction.TargetObject="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+              np:CallAction.MethodName="Restore"
+              Margin="10,20"/>
+      <!--<Grid Width="100"
+            Height="50">
+        <Button x:Name="TheButton"
+                Content="Set Button Bounds"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="Green"
+                np:CallAction.TheEvent="{x:Static Button.ClickEvent}"
+                np:CallAction.TargetObject="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                np:CallAction.MethodName="SetButtonBounds">
+          <Button.RenderTransform>
+            <ScaleTransform  ScaleX="0.5"
+                             ScaleY="0.5"/>
+          </Button.RenderTransform>
+        </Button>
+      </Grid>
+      <StackPanel Orientation="Horizontal"
+                  HorizontalAlignment="Center"
+                  Margin="20" >
+        <TextBlock Margin="0,10"
+                   Text="{Binding Path=ButtonBounds, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                   
+        <TextBlock Margin="0,10"
+                   Text="{Binding Path=(np:AttachedProperties.CurrentScreenPoint), RelativeSource={RelativeSource AncestorType=Window}}"/>
+      </StackPanel>-->
+    </StackPanel>
+  </Grid>
+</Window>

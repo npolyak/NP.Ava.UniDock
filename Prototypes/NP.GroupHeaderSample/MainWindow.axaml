@@ -1,0 +1,124 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:np="https://np.com/visuals"
+        xmlns:local="clr-namespace:NP.GroupHeaderSample"
+        Width="700"
+        Height="700"
+        np:DockAttachedProperties.DockChildWindowOwner="{Binding RelativeSource={RelativeSource Self}}"
+        np:DockAttachedProperties.TheDockManager="{x:Static local:MyContainer.TheDockManager}"
+        x:Class="NP.GroupHeaderSample.MainWindow"
+        Title="NP.GroupHeaderSample"
+        BorderBrush="Gray">
+  <Window.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://NP.Avalonia.Visuals/Themes/Geometries.axaml"/>
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Window.Resources>
+  <Window.Styles>
+    <StyleInclude Source="avares://NP.Avalonia.UniDock/Themes/DockStyles.axaml"/>
+  </Window.Styles>
+  <Grid DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+        RowDefinitions="*, Auto">
+    <np:RootDockGroup np:DockAttachedProperties.TheDockManager="{x:Static local:MyContainer.TheDockManager}"
+					  >
+      <np:RootDockGroup.FloatingWindows>
+        <np:FloatingWindowContainer WindowId="AddedWindow1"
+                                    WindowRelativePosition="1000, 100"
+                                    WindowSize ="800, 400">
+          <np:StackDockGroup TheOrientation="Horizontal"
+                             DockId="FloatingGroup1"
+                             IsStableGroup="True">
+            <np:DockItem Header="FloatingWindowPanel1"
+                         DockId="FloatingDockItem1"
+                         DefaultDockGroupId="FloatingGroup1"
+                         DefaultDockOrderInGroup="1">
+              <TextBlock Text="Floating Panel"/>
+            </np:DockItem>
+            <np:TabbedDockGroup x:Name="FloatingGroup2"
+                                DockId="FloatingGroup2"
+                                DefaultDockOrderInGroup="2"
+                                IsStableGroup="True">
+              <np:DockItem Header="Floating Tab 1"
+                           DockId="FloatingDockItem0"
+                           DefaultDockGroupId="FloatingGroup2"
+                           DefaultDockOrderInGroup="1">
+                <TextBlock Text="Floating Tab 1"
+                         Foreground="{DynamicResource MyForeground}"/>
+              </np:DockItem>
+              <np:DockItem Header="Floating Tab 2"
+                           DockId="FloatingDockItem2"
+                           DefaultDockGroupId="FloatingGroup2"
+                           DefaultDockOrderInGroup="2">
+                <TextBlock Text="Floating Tab 2"/>
+              </np:DockItem>
+            </np:TabbedDockGroup>
+          </np:StackDockGroup>
+        </np:FloatingWindowContainer>
+      </np:RootDockGroup.FloatingWindows>
+      <np:StackDockGroup x:Name="TheStackGroup"
+                         DockId="TopLevelGroup"
+                         IsStableGroup="True"
+                         TheOrientation="Vertical">
+        <np:StackDockGroup TheOrientation="Horizontal"
+                           DockId="DocumentGroup"
+                           IsStableGroup="True"
+                           AutoInvisible="False"
+                           GroupOnlyById="Documents">
+          <np:DockItem Header="Tab1"
+                       DockId="Tab1"
+                       DefaultDockGroupId="Group1"
+                       DefaultDockOrderInGroup="1"
+                       GroupOnlyById="Documents">
+            <TextBlock Text="Hello World!"
+                         Foreground="{DynamicResource MyForeground}"/>
+          </np:DockItem>
+          <np:DockItem Header="Tab2"
+                       DefaultDockGroupId="Group1"
+                       DefaultDockOrderInGroup="2"
+                       GroupOnlyById="Documents">
+            <TextBlock Text="Hi World!"/>
+          </np:DockItem>
+        </np:StackDockGroup>
+        <np:TabbedDockGroup IsStableGroup="True"
+                            DefaultDockGroupId="TopLevelGroup"
+                            DockId="Group2"
+                            CanFloat="False">
+          <np:DockItem Header="Tab3">
+            <TextBlock Text="Hi World 3333!"/>
+          </np:DockItem>
+          <np:DockItem Header="Tab4"
+                       DefaultDockGroupId="Group2"
+                       DefaultDockOrderInGroup="2">
+            <TextBlock Text="Hi World 4444!"/>
+          </np:DockItem>
+          <np:DockItem Header="Tab5"
+                       DefaultDockGroupId="Group2"
+                       DefaultDockOrderInGroup="3">
+            <TextBlock Text="Hi World 5555!"/>
+          </np:DockItem>
+        </np:TabbedDockGroup>
+      </np:StackDockGroup>
+    </np:RootDockGroup>
+
+    <StackPanel Margin="10,5"
+                Grid.Row="1"
+                Orientation="Horizontal"
+                HorizontalAlignment="Right">
+      
+      <TemplatedControl Template="{StaticResource DockEditToggleButtonTemplate}"
+                        Margin="0,0,10,0" />
+      
+      <Button x:Name="SaveButton"
+              Content="Save"
+              Padding="10,5"
+              Margin="0,0,10,0" />
+
+      <Button x:Name="RestoreButton"
+              Content="Restore"
+              Padding="10,5" />
+    </StackPanel>
+  </Grid>
+</Window>

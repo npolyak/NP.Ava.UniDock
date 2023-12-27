@@ -1,0 +1,23 @@
+<!-- (c) Nick Polyak 2021 - http://awebpros.com/
+      License: MIT License (https://opensource.org/licenses/MIT)
+ 
+      short overview of copyright rules:
+      1. you can use this framework in any commercial or non-commercial
+         product as long as you retain this copyright message
+      2. Do not blame the author of this software if something goes wrong.
+ 
+      Also, please, mention this software in any documentation for the
+      products that use it.
+-->
+
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="NP.Demos.UniDockWindowsSample.App">
+    <Application.Styles>
+      <StyleInclude Source="avares://Avalonia.Themes.Default/Accents/BaseLight.xaml"/>
+      <StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml"/>
+      <StyleInclude Source="avares://NP.Avalonia.Visuals/Themes/TextStyles.axaml"/>
+      <StyleInclude Source="avares://NP.Avalonia.Visuals/Themes/CustomWindowStyles.axaml"/>
+      <StyleInclude Source="avares://NP.Avalonia.UniDock/Themes/DockStyles.axaml"/>
+    </Application.Styles>
+</Application>

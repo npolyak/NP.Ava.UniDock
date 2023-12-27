@@ -1,0 +1,185 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:np="https://np.com/visuals"
+        xmlns:local="clr-namespace:NP.DockItemsInMenus"
+        Width="700"
+        Height="700"
+        np:DockAttachedProperties.DockChildWindowOwner="{Binding RelativeSource={RelativeSource Mode=Self}}"
+        np:DockAttachedProperties.TheDockManager="{DynamicResource TheDockManager}"
+        x:Class="NP.DockItemsInMenus.MainWindow"
+        Title="NP.DockItemsInMenus"
+        BorderBrush="Gray">
+  <Window.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://NP.Avalonia.Visuals/Themes/Geometries.axaml"/>
+      </ResourceDictionary.MergedDictionaries>
+      <np:DockManager x:Key="TheDockManager" />
+    </ResourceDictionary>
+  </Window.Resources>
+  <Window.Styles>
+    <StyleInclude Source="avares://NP.Avalonia.UniDock/Themes/DockStyles.axaml"/>
+  </Window.Styles>
+  <Grid DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+        RowDefinitions="Auto, *, Auto">
+    <Menu DataContext="{DynamicResource $parent[Window]}"
+          Height="30">
+      <MenuItem Header="Item1">
+        <MenuItem Header="Tab1"
+                  DataContext="{Binding Path=DockIdKeysGroups.Result[Tab1]}">
+          <MenuItem.Icon>
+            <CheckBox IsChecked="{Binding Path=Parent.DataContext.(np:DockAttachedProperties.IsDockVisible), 
+                                          Mode=TwoWay,
+                                          RelativeSource={RelativeSource Self}}"/>
+          </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem Header="Tab2"
+          DataContext="{Binding Path=DockIdKeysGroups.Result[Tab2]}">
+          <MenuItem.Icon>
+            <CheckBox IsChecked="{Binding Path=Parent.DataContext.(np:DockAttachedProperties.IsDockVisible), 
+                                          Mode=TwoWay,
+                                          RelativeSource={RelativeSource Self}}"/>
+          </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem Header="Tab3"
+          DataContext="{Binding Path=DockIdKeysGroups.Result[Tab3]}">
+          <MenuItem.Icon>
+            <CheckBox IsChecked="{Binding Path=Parent.DataContext.(np:DockAttachedProperties.IsDockVisible), 
+                                          Mode=TwoWay,
+                                          RelativeSource={RelativeSource Self}}"/>
+          </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem Header="Tab4"
+          DataContext="{Binding Path=DockIdKeysGroups.Result[Tab4]}">
+          <MenuItem.Icon>
+            <CheckBox IsChecked="{Binding Path=Parent.DataContext.(np:DockAttachedProperties.IsDockVisible), 
+                                          Mode=TwoWay,
+                                          RelativeSource={RelativeSource Self}}"/>
+          </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem Header="Tab5"
+                DataContext="{Binding Path=DockIdKeysGroups.Result[Tab5]}">
+          <MenuItem.Icon>
+            <CheckBox IsChecked="{Binding Path=Parent.DataContext.(np:DockAttachedProperties.IsDockVisible), 
+                                          Mode=TwoWay,
+                                          RelativeSource={RelativeSource Self}}"/>
+          </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem Header="FloatingDockItem1"
+          DataContext="{Binding Path=DockIdKeysGroups.Result[FloatingDockItem1]}">
+          <MenuItem.Icon>
+            <CheckBox IsChecked="{Binding Path=Parent.DataContext.(np:DockAttachedProperties.IsDockVisible), 
+                                          Mode=TwoWay,
+                                          RelativeSource={RelativeSource Self}}"/>
+          </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem Header="FloatingDockItem3"
+          DataContext="{Binding Path=DockIdKeysGroups.Result[FloatingDockItem3]}">
+          <MenuItem.Icon>
+            <CheckBox IsChecked="{Binding Path=Parent.DataContext.(np:DockAttachedProperties.IsDockVisible), 
+                                          Mode=TwoWay,
+                                          RelativeSource={RelativeSource Self}}"/>
+          </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem Header="FloatingDockItem2"
+          DataContext="{Binding Path=DockIdKeysGroups.Result[FloatingDockItem2]}">
+          <MenuItem.Icon>
+            <CheckBox IsChecked="{Binding Path=Parent.DataContext.(np:DockAttachedProperties.IsDockVisible), 
+                                          Mode=TwoWay,
+                                          RelativeSource={RelativeSource Self}}"/>
+          </MenuItem.Icon>
+        </MenuItem>
+      </MenuItem>
+    </Menu>
+    <np:RootDockGroup np:DockAttachedProperties.TheDockManager="{StaticResource TheDockManager}"
+                        Grid.Row="1">
+      <np:RootDockGroup.FloatingWindows>
+        <np:FloatingWindowContainer WindowId="AddedWindow1"
+                                    WindowRelativePosition="1000, 100"
+                                    WindowSize ="300, 300">
+          <np:StackDockGroup TheOrientation="Horizontal"
+                             DockId="FloatingGroup1"
+                             IsStableGroup="True">
+            <np:DockItem Header="FloatingWindowPanel1"
+                         DockId="FloatingDockItem1"
+                         DefaultDockGroupId="FloatingGroup1"
+                         DefaultDockOrderInGroup="1">
+              <TextBlock Text="Floating Panel"/>
+            </np:DockItem>
+            <np:TabbedDockGroup x:Name="FloatingGroup2"
+                                DockId="FloatingGroup2"
+                                DefaultDockOrderInGroup="2"
+                                IsStableGroup="True">
+              <np:DockItem Header="Floating Tab 1"
+                           DockId="FloatingDockItem3"
+                           DefaultDockGroupId="FloatingGroup2"
+                           DefaultDockOrderInGroup="1">
+                <TextBlock Text="Floating Tab 1"/>
+              </np:DockItem>
+              <np:DockItem Header="Floating Tab 2"
+                           DockId="FloatingDockItem2"
+                           DefaultDockGroupId="FloatingGroup2"
+                           DefaultDockOrderInGroup="2">
+                <TextBlock Text="Floating Tab 2"/>
+              </np:DockItem>
+            </np:TabbedDockGroup>
+          </np:StackDockGroup>
+        </np:FloatingWindowContainer>
+      </np:RootDockGroup.FloatingWindows>
+      <np:StackDockGroup x:Name="TheStackGroup"
+                         TheOrientation="Vertical"
+                         IsStableGroup="True">
+        <np:StackDockGroup TheOrientation="Horizontal"
+                           IsStableGroup="True"
+                           DockId="Group1">
+          <np:DockItem Header="Tab1"
+                       DockId="Tab1"
+                       DefaultDockGroupId="Group1"
+                       DefaultDockOrderInGroup="1">
+            <TextBlock Text="Hello World!"/>
+          </np:DockItem>
+          <np:DockItem Header="Tab2"
+                       DockId="Tab2"
+                       DefaultDockGroupId="Group1"
+                       DefaultDockOrderInGroup="2">
+            <TextBlock Text="Hi World!"/>
+          </np:DockItem>
+        </np:StackDockGroup>
+        <np:TabbedDockGroup IsStableGroup="True"
+                            DockId="Group2">
+          <np:DockItem Header="Tab3"
+                       DockId="Tab3">
+            <TextBlock Text="Hi World 3333!"/>
+          </np:DockItem>
+          <np:DockItem Header="Tab4"
+                       DockId="Tab4"
+                       DefaultDockGroupId="Group2"
+                       DefaultDockOrderInGroup="2">
+            <TextBlock Text="Hi World 4444!"/>
+          </np:DockItem>
+          <np:DockItem Header="Tab5"
+                       DockId="Tab5"
+                       DefaultDockGroupId="Group2"
+                       DefaultDockOrderInGroup="3">
+            <TextBlock Text="Hi World 5555!"/>
+          </np:DockItem>
+        </np:TabbedDockGroup>
+      </np:StackDockGroup>
+    </np:RootDockGroup>
+
+    <StackPanel Margin="10,5"
+                Grid.Row="2"
+                Orientation="Horizontal"
+                HorizontalAlignment="Right">
+      <Button x:Name="SaveButton"
+              Content="Save"
+              Padding="10,5"
+              Margin="0,0,10,0" />
+
+      <Button x:Name="RestoreButton"
+              Content="Restore"
+              Padding="10,5" />
+    </StackPanel>
+  </Grid>
+</Window>

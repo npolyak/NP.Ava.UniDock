@@ -1,0 +1,56 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:np="https://np.com/visuals"
+        xmlns:local="clr-namespace:NP.GroupPanelSample"
+        mc:Ignorable="d"
+        d:DesignWidth="800"
+        d:DesignHeight="550"
+        Width="700"
+        Height="700"
+        x:Class="NP.GroupPanelSample.MainWindow"
+        Title="NP.GroupPanelSample">
+  <Window.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://NP.Avalonia.Visuals/Themes/Geometries.axaml"/>
+      </ResourceDictionary.MergedDictionaries>
+      <np:DockManager x:Key="TheDockManager"/>
+    </ResourceDictionary>
+  </Window.Resources>
+  <Window.Styles>
+    <StyleInclude Source="avares://NP.Avalonia.UniDock/Themes/DockStyles.axaml"/>
+
+  </Window.Styles>
+  <Grid Margin="10"
+        DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+        Background="Gray">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <np:StackControlsGroup x:Name="TheStackGroup"
+                      TheOrientation="Horizontal"
+                      Margin="20">
+      <Grid Background="Yellow"/>
+      <Grid Background="Red"/>
+      <Grid Background="Green"/>
+      <Grid Background="Blue"/>
+      <Grid Background="Purple"/>
+    </np:StackControlsGroup>
+
+    <StackPanel Orientation="Horizontal"
+                Grid.Row="1">
+      <Button Content="RemoveFirst"
+              np:CallAction.TheEvent="{x:Static Button.ClickEvent}"
+              np:CallAction.MethodName="RemoveFirst"/>
+      <Button Content="RemoveSecond"
+        np:CallAction.TheEvent="{x:Static Button.ClickEvent}"
+        np:CallAction.MethodName="RemoveSecond"/>
+      <Button Content="RemoveLast"
+              np:CallAction.TheEvent="{x:Static Button.ClickEvent}"
+              np:CallAction.MethodName="RemoveLast"/>
+    </StackPanel>
+  </Grid>
+</Window>

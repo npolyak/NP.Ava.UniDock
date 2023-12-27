@@ -1,0 +1,74 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:np="https://np.com/visuals"
+        xmlns:local="clr-namespace:NP.ViewModelSaveRestoreSample"
+        Width="700"
+        Height="800"
+        np:DockAttachedProperties.TheDockManager="{DynamicResource TheDockManager}"
+        x:Class="NP.ViewModelSaveRestoreSample.MainWindow"
+        Title="NP.ViewModelSaveRestoreSample"
+        BorderBrush="Gray">
+  <Window.Resources>
+    <!-- Define the dock manager-->
+    <np:DockManager x:Key="TheDockManager"/>
+  </Window.Resources>
+  <Window.Styles>
+    <StyleInclude Source="avares://NP.Avalonia.UniDock/Themes/DockStyles.axaml"/>
+  </Window.Styles>
+
+  <Grid RowDefinitions="Auto, *, Auto"
+        Margin="5">
+    <ListBox Items="{Binding Path=DockItemsViewModels, Source={StaticResource TheDockManager}}"
+             Height="70">
+      <ListBox.ItemTemplate>
+        <DataTemplate>
+          <CheckBox IsChecked="{Binding Path=IsDockVisible, Mode=TwoWay}"
+                    Content="{Binding DockId}"/>
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+    </ListBox>
+    <!-- top level group should reference the dock manager-->
+    <np:RootDockGroup TheDockManager="{StaticResource TheDockManager}"
+                      Grid.Row="1">
+      <!-- Second Level group arranges the top and the bottom parts 
+           vertically-->
+      <np:StackDockGroup TheOrientation="Vertical"
+                         DockId="RootGroup">
+        <!-- top group arranges two top Dock Panes horizontally-->
+        <np:StackDockGroup TheOrientation="Horizontal"
+                           IsStableGroup="True"
+                           DockId="TopStackGroup">
+          <np:DockItem Header="Hi">
+            <TextBlock Text="Hi World!"/>
+          </np:DockItem>
+          <np:DockItem Header="Hello">
+            <TextBlock Text="Hello World!"/>
+          </np:DockItem>
+        </np:StackDockGroup>
+
+        <!-- Tabbed group at the bottom -->
+        <np:TabbedDockGroup IsStableGroup="True"
+                            DockId="Tabs"/>
+      </np:StackDockGroup>
+    </np:RootDockGroup>
+    <StackPanel Orientation="Horizontal"
+                Grid.Row="2"
+                HorizontalAlignment="Right">
+      <Button x:Name="AddTabButton"
+              Content="AddTab"
+              Padding="10,5"
+              Margin="5"/>
+
+      <Button x:Name="SaveButton"
+              Content="Save"
+              Padding="10,5"
+              Margin="5"/>
+
+      <Button x:Name="RestoreButton"
+              Content="Restore"
+              Padding="10,5"
+              Margin="5"/>
+    </StackPanel>
+  </Grid>
+</Window>

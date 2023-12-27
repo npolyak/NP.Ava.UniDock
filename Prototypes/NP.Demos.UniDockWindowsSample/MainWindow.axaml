@@ -1,0 +1,139 @@
+<!-- (c) Nick Polyak 2021 - http://awebpros.com/
+      License: MIT License (https://opensource.org/licenses/MIT)
+ 
+      short overview of copyright rules:
+      1. you can use this framework in any commercial or non-commercial
+         product as long as you retain this copyright message
+      2. Do not blame the author of this software if something goes wrong.
+ 
+      Also, please, mention this software in any documentation for the
+      products that use it.
+-->
+
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:np="https://np.com/visuals"
+        Width="700"
+        Height="700"
+        np:DockAttachedProperties.TheDockManager="{DynamicResource TheDockManager}"
+        np:DockAttachedProperties.DockChildWindowOwner="{Binding RelativeSource={RelativeSource Mode=Self}}"
+        np:DockAttachedProperties.WindowId="TheMainWindow"
+        x:Class="NP.Demos.UniDockWindowsSample.MainWindow"
+        Title="NP.Demos.UniDockWindowsSample">
+  <Window.Resources>
+    <ResourceDictionary>
+      <np:DockManager x:Key="TheDockManager"/>
+    </ResourceDictionary>
+  </Window.Resources>
+  <Grid RowDefinitions="*, Auto, Auto">
+    <np:RootDockGroup DockId="RootGroup"
+                        np:DockAttachedProperties.TheDockManager="{StaticResource TheDockManager}">
+      <np:StackDockGroup TheOrientation="Horizontal">
+        <np:StackDockGroup TheOrientation="Vertical">
+          <np:TabbedDockGroup TabStripPlacement="Bottom">
+            <np:DockItem Header="LeftTop 1"
+                         DockId="LeftTop1"
+                         FloatingSize="500, 500">
+              <TextBlock Text="Left Top 1"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"/>
+            </np:DockItem>
+            <np:DockItem Header="LeftTop 2"
+                         DockId="LeftTop2">
+              <TextBlock Text="Left Top 2"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"/>
+            </np:DockItem>
+          </np:TabbedDockGroup>
+          <np:TabbedDockGroup TabStripPlacement="Left">
+            <np:DockItem Header="LeftBottom 1"
+                         DockId="LeftBottom1">
+              <TextBlock Text="Left Bottom 1"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"/>
+            </np:DockItem>
+            <np:DockItem Header="LeftBottom 2"
+                         DockId="LeftBottom2">
+              <TextBlock Text="Left Bottom 2"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"/>
+            </np:DockItem>
+          </np:TabbedDockGroup>
+        </np:StackDockGroup>
+        <np:TabbedDockGroup>
+          <np:DockItem Header="Document 1"
+                       DockId="Document1">
+            <Grid Background="Gray">
+              <TextBlock Text="Document 1"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"/>
+            </Grid>
+          </np:DockItem>
+          <np:DockItem Header="Document 2"
+                       DockId="Document2">
+            <Grid Background="Gray">
+              <TextBlock Text="Document 2"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"/>
+            </Grid>
+          </np:DockItem>
+        </np:TabbedDockGroup>
+        <np:StackDockGroup TheOrientation="Vertical">
+          <np:StackDockGroup TheOrientation="Horizontal">
+            <np:DockItem Header="RightTop 1"
+                         DockId="RightTop1">
+              <TextBlock Text="Right Top 1"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"/>
+            </np:DockItem>
+            <np:DockItem Header="RightTop 2"
+                         DockId="RightTop2">
+              <TextBlock Text="Right Top 2"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"/>
+            </np:DockItem>
+          </np:StackDockGroup>
+          <np:StackDockGroup TheOrientation="Horizontal">
+            <np:DockItem Header="RightBottom 1"
+                         DockId="RightBottom1">
+              <TextBlock Text="Right Bottom 1"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"/>
+            </np:DockItem>
+            <np:DockItem Header="RightBottom 2"
+                         DockId="RightBottom2">
+              <TextBlock Text="Right Bottom 2"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"/>
+            </np:DockItem>
+          </np:StackDockGroup>
+        </np:StackDockGroup>
+      </np:StackDockGroup>
+    </np:RootDockGroup>
+    <Grid x:Name="Separator" 
+          Grid.Row="1"
+          Height="3"
+          Background="LightGray"/>
+    <StackPanel Grid.Row="2" Orientation="Horizontal"
+                HorizontalAlignment="Right">
+      <Button Width="100"
+              Height="50"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center"
+              Content="Serialize"
+              np:CallAction.TheEvent="{x:Static Button.ClickEvent}"
+              np:CallAction.TargetObject="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+              np:CallAction.MethodName="Save"
+              Margin="10,20"/>
+      <Button Width="100"
+              Height="50"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center"
+              Content="Restore"
+              np:CallAction.TheEvent="{x:Static Button.ClickEvent}"
+              np:CallAction.TargetObject="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+              np:CallAction.MethodName="Restore"
+              Margin="10,20"/>
+    </StackPanel>
+  </Grid>
+</Window>

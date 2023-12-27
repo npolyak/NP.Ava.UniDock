@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove=".gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NP.Avalonia.UniDock.csproj" />
+    <ProjectReference Include="..\..\SubModules\NP.Avalonia.UniDockService\src\NP.Avalonia.UniDockService.csproj" />
+    <ProjectReference Include="..\..\SubModules\NP.Avalonia.Visuals\src\NP.Avalonia.Visuals.csproj" />
+    <ProjectReference Include="..\..\SubModules\NP.Concepts.Behaviors\src\NP.Concepts.Behaviors.csproj" />
+    <ProjectReference Include="..\..\SubModules\NP.Utilities\src\NP.Utilities.csproj" />
+  </ItemGroup>
+</Project>

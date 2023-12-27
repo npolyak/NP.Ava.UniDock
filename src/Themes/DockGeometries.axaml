@@ -1,0 +1,18 @@
+<!-- (c) Nick Polyak 2021 - http://awebpros.com/
+      License: MIT License (https://opensource.org/licenses/MIT)
+ 
+      short overview of copyright rules:
+      1. you can use this framework in any commercial or non-commercial
+         product as long as you retain this copyright message
+      2. Do not blame the author of this software if something goes wrong.
+ 
+      Also, please, mention this software in any documentation for the
+      products that use it.
+-->
+
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <PathGeometry x:Key="DockPaneLargeEmpty" Figures="M 192,19.4161L 192,12.5843L 202.892,12.5843L 204.584,10.8924L 204.584,0.000223796L 211.416,0.000223796L 211.416,10.8924L 213.108,12.5843L 224,12.5843L 224,19.4161L 213.108,19.4161L 211.416,21.108L 211.416,32.0002L 204.584,32.0002L 204.584,21.108L 202.892,19.4161L 192,19.4161 Z " />
+  <PathGeometry x:Key="DockPaneEmpty" Figures="M 266.388,0.000223796L 277.612,0.000223796L 277.612,7.60856L 280.392,10.3883L 288,10.3883L 288,21.6122L 280.392,21.6122L 277.612,24.3919L 277.612,32.0002L 266.388,32.0002L 266.388,24.3919L 263.608,21.6122L 256,21.6122L 256,10.3883L 263.608,10.3883L 266.388,7.60856L 266.388,0.000223796 Z " />
+
+</ResourceDictionary>
