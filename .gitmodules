@@ -22,3 +22,6 @@
 [submodule "SubModules/NP.ViewModelInterfaces"]
 	path = SubModules/NP.ViewModelInterfaces
 	url = https://github.com/npolyak/NP.ViewModelInterfaces.git
+[submodule "SubModules/NP.IoC.CommonImplementations"]
+	path = SubModules/NP.IoC.CommonImplementations
+	url = https://github.com/npolyak/NP.IoC.CommonImplementations.git

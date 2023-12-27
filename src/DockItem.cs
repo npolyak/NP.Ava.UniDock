@@ -18,7 +18,7 @@ using Avalonia.Markup.Xaml.Templates;
 using Avalonia.Metadata;
 using Avalonia.VisualTree;
 using NP.Avalonia.UniDockService;
-using NP.Avalonia.Visuals.Behaviors;
+using NP.Ava.Visuals.Behaviors;
 using NP.Concepts.Behaviors;
 using System;
 using System.Collections.Generic;
@@ -65,8 +65,8 @@ namespace NP.Avalonia.UniDock
         public IRecyclingDataTemplate? RecyclingDataTemplate { get; set; }
 
 
-        IControl? _oldChild = null;
-        public IControl? OldChild 
+        Control? _oldChild = null;
+        public Control? OldChild 
         { 
             get => _oldChild; 
             set
@@ -254,7 +254,7 @@ namespace NP.Avalonia.UniDock
 
         public DockItemPresenter? TheVisual { get; internal set; }
 
-        public IControl GetVisual() => (TheVisual as IControl) ?? this;
+        public Control GetVisual() => (TheVisual as Control) ?? this;
 
         public IDockGroup? GetContainingGroup() => DockParent;
 
@@ -495,12 +495,12 @@ namespace NP.Avalonia.UniDock
                 this.DropPanel.CanStartPointerDetection = false;
             }
 
-            if (Header is IControl headerControl)
+            if (Header is Control headerControl)
             {
                 headerControl.DisconnectVisualParentContentPresenter();
             }
 
-            if (Content is IControl contentControl)
+            if (Content is Control contentControl)
             {
                 contentControl.DisconnectVisualParentContentPresenter();
             }

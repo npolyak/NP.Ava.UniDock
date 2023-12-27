@@ -13,7 +13,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.VisualTree;
 using NP.Avalonia.UniDockService;
-using NP.Avalonia.Visuals.Behaviors;
+using NP.Ava.Visuals.Behaviors;
 using NP.Concepts.Behaviors;
 using NP.Utilities;
 using System;
@@ -24,7 +24,7 @@ using System.Reactive.Subjects;
 
 namespace NP.Avalonia.UniDock
 {
-    public interface IDockGroup : IDockManagerContainer, IControl, IRemovable, IDockDataContextContainer
+    public interface IDockGroup : IDockManagerContainer, Control, IRemovable, IDockDataContextContainer
     {
         public string DockId { get; set; }
 
@@ -134,7 +134,7 @@ namespace NP.Avalonia.UniDock
 
         IDockGroup? GetContainingGroup() => this;
 
-        IControl GetVisual() => this;
+        Control GetVisual() => this;
 
         DockKind? CurrentGroupDock { get; }
 
@@ -496,7 +496,7 @@ namespace NP.Avalonia.UniDock
 
         }
 
-        internal static DropPanelWithCompass? GetDropPanel(this IControl? control)
+        internal static DropPanelWithCompass? GetDropPanel(this Control? control)
         {
             Panel? overlayWindowHolderPanel =
                 control.GetVisualDescendants().OfType<Panel>().FirstOrDefault(p => p.Name == "PART_OverlayWindowHolder");
@@ -510,7 +510,7 @@ namespace NP.Avalonia.UniDock
             return dropPanel;
         }
 
-        public static DockKind? GetCurrentGroupDock(this IControl control)
+        public static DockKind? GetCurrentGroupDock(this Control control)
         {
             return control.GetDropPanel()?.DockSide;
         }

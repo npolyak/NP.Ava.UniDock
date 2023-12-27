@@ -10,11 +10,11 @@
 // products that use it.
 
 using Avalonia.Controls;
-using NP.Avalonia.Visuals.Behaviors;
+using NP.Ava.Visuals.Behaviors;
 using System.Collections.Generic;
 using System.Linq;
 using System;
-using NP.Avalonia.Visuals;
+using NP.Ava.Visuals;
 using NP.Utilities;
 using Avalonia.VisualTree;
 using Avalonia.Layout;

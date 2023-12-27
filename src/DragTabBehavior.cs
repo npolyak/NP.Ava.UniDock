@@ -13,7 +13,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.VisualTree;
-using NP.Avalonia.Visuals;
+using NP.Ava.Visuals;
 using System;
 using System.Collections.Generic;
 using System.Linq;

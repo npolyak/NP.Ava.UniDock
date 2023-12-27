@@ -12,8 +12,8 @@
 using Avalonia;
 using Avalonia.Controls.Primitives;
 using Avalonia.VisualTree;
-using NP.Avalonia.Visuals;
-using NP.Avalonia.Visuals.Behaviors;
+using NP.Ava.Visuals;
+using NP.Ava.Visuals.Behaviors;
 using NP.Utilities;
 using System;
 using System.Collections.Generic;

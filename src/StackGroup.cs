@@ -22,12 +22,12 @@ using System.Collections;
 using System.Collections.ObjectModel;
 using NP.Avalonia.UniDock.Factories;
 using Avalonia.VisualTree;
-using NP.Avalonia.Visuals.Behaviors;
+using NP.Ava.Visuals.Behaviors;
 
 namespace NP.Avalonia.UniDock
 {
     public class StackGroup<T> : Control
-        where T : IControl
+        where T : Control
     {
         internal IDockSeparatorFactory? TheDockSeparatorFactory { get; set; }
 
@@ -236,7 +236,7 @@ namespace NP.Avalonia.UniDock
             return gridSplitter;
         }
 
-        private void ClearItem(IControl item)
+        private void ClearItem(Control item)
         {
             AvaloniaProperty propToClear =
                 TheOrientation == Orientation.Horizontal ? Grid.ColumnProperty : Grid.RowProperty;
@@ -279,7 +279,7 @@ namespace NP.Avalonia.UniDock
 
         private void RemoveChildAt(int idx)
         {
-            IControl item = GridChildren.ElementAt(idx);
+            Control item = GridChildren.ElementAt(idx);
 
             GridChildren.RemoveAt(idx);
 
@@ -393,7 +393,7 @@ namespace NP.Avalonia.UniDock
         }
     }
 
-    public class StackGroup : StackGroup<IControl>
+    public class StackGroup : StackGroup<Control>
     {
 
     }

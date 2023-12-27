@@ -45,7 +45,7 @@ namespace NP.Avalonia.UniDock
             }
         }
 
-        public IControl? OldChild
+        public Control? OldChild
         {
             get => OwningDockItem?.OldChild;
             set
@@ -80,7 +80,7 @@ namespace NP.Avalonia.UniDock
         /// Creates the child control.
         /// </summary>
         /// <returns>The child control or null.</returns>
-        protected override IControl? CreateChild()
+        protected override Control? CreateChild()
         {
             if (OwningDockItem == null && !IsHeader)
                 return null;
@@ -96,9 +96,9 @@ namespace NP.Avalonia.UniDock
             return CreateChild(content, contentTemplate);
         }
 
-        private IControl? CreateChild(object? content, IDataTemplate? template)
+        private Control? CreateChild(object? content, IDataTemplate? template)
         {
-            var newChild = content as IControl;
+            var newChild = content as Control;
 
             // We want to allow creating Child from the Template, if Content is null.
             // But it's important to not use DataTemplates, otherwise we will break content presenters in many places,

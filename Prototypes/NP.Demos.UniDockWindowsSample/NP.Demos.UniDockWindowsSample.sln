@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{D257FF52-0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Utilities", "..\..\SubModules\NP.Utilities\src\NP.Utilities.csproj", "{16B0029E-C242-49F9-87B7-F0F92B7A32D4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Avalonia.Visuals", "..\..\SubModules\NP.Avalonia.Visuals\src\NP.Avalonia.Visuals.csproj", "{06657FCB-BA0E-4332-AAA4-870A87268DCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Ava.Visuals", "..\..\SubModules\NP.Ava.Visuals\src\NP.Ava.Visuals.csproj", "{06657FCB-BA0E-4332-AAA4-870A87268DCC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Concepts.Behaviors", "..\..\SubModules\NP.Concepts.Behaviors\src\NP.Concepts.Behaviors.csproj", "{647C0207-928E-46F0-B65F-3637E076889B}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.DependencyInjection", "..\..\SubModules\NP.DependencyInjection\src\NP.DependencyInjection.csproj", "{7E747185-E227-464A-9875-DBA3524168DB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Avalonia.UniDockService", "..\..\SubModules\NP.Avalonia.UniDockService\src\NP.Avalonia.UniDockService.csproj", "{E41AE434-B0B4-4C40-A39B-7CD9CF7C1CB9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.ViewModelInterfaces", "..\..\SubModules\NP.ViewModelInterfaces\src\NP.ViewModelInterfaces.csproj", "{F017678E-3A54-4B7F-9178-87A553FD2027}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{E41AE434-B0B4-4C40-A39B-7CD9CF7C1CB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E41AE434-B0B4-4C40-A39B-7CD9CF7C1CB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E41AE434-B0B4-4C40-A39B-7CD9CF7C1CB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F017678E-3A54-4B7F-9178-87A553FD2027}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F017678E-3A54-4B7F-9178-87A553FD2027}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F017678E-3A54-4B7F-9178-87A553FD2027}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F017678E-3A54-4B7F-9178-87A553FD2027}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +90,7 @@ Global
 		{DED80950-AA98-454F-A03B-677205F4A755} = {D257FF52-0480-411B-8C43-90C47F876115}
 		{7E747185-E227-464A-9875-DBA3524168DB} = {D257FF52-0480-411B-8C43-90C47F876115}
 		{E41AE434-B0B4-4C40-A39B-7CD9CF7C1CB9} = {D257FF52-0480-411B-8C43-90C47F876115}
+		{F017678E-3A54-4B7F-9178-87A553FD2027} = {D257FF52-0480-411B-8C43-90C47F876115}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {98780B67-9675-4029-9930-B8EAB892EA72}

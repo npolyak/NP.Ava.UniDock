@@ -10,7 +10,7 @@
 // products that use it.
 
 using Avalonia.Controls;
-using NP.Avalonia.Visuals;
+using NP.Ava.Visuals;
 using NP.Utilities;
 using System;
 using System.Xml.Serialization;

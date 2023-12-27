@@ -21,9 +21,9 @@ namespace NP.Avalonia.UniDock
         {
         }
 
-        protected override IControl CreateContainer(object item)
+        protected override Control CreateContainer(object item)
         {
-            IControl control = base.CreateContainer(item);
+            Control control = base.CreateContainer(item);
 
             control.Classes = new Classes("Dock");
 

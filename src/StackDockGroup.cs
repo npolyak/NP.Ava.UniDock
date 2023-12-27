@@ -25,7 +25,7 @@ using NP.Avalonia.UniDockService;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml.Templates;
 using Avalonia.Controls.Primitives;
-using NP.Avalonia.Visuals.Behaviors;
+using NP.Ava.Visuals.Behaviors;
 using Avalonia.VisualTree;
 
 namespace NP.Avalonia.UniDock
@@ -408,7 +408,7 @@ namespace NP.Avalonia.UniDock
             return GetInternalIdx(DockChildren[idx]);
         }
 
-        private int GetExternalIdx(IControl control)
+        private int GetExternalIdx(Control control)
         {
             IDockGroup? originalGroup = DockAttachedProperties.GetOriginalDockGroup(control);
 
@@ -421,7 +421,7 @@ namespace NP.Avalonia.UniDock
 
         private int GetExternalIdx(int idx)
         {
-            IControl c = _stackGroup.Items[idx];
+            Control c = _stackGroup.Items[idx];
 
             return GetExternalIdx(c);
         }
@@ -438,12 +438,12 @@ namespace NP.Avalonia.UniDock
                 return;
             }
 
-            IControl newVisualChildToInsert =
+            Control newVisualChildToInsert =
                TheDockManager!.TheDockVisualItemGenerator!.Generate(dockChild);
 
             DockAttachedProperties.SetOriginalDockGroup(newVisualChildToInsert, dockChild);
 
-            int CompareGroups(IControl control1, IControl control2)
+            int CompareGroups(Control control1, Control control2)
             {
                 int idx1 = GetExternalIdx(control1);
                 int idx2 = GetExternalIdx(control2);

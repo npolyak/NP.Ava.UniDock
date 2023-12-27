@@ -7,6 +7,6 @@ namespace NP.Avalonia.UniDock
     {
         IRecyclingDataTemplate? RecyclingDataTemplate { get; set; }
 
-        IControl? OldChild { get; set; }
+        Control? OldChild { get; set; }
     }
 }

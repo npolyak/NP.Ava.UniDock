@@ -17,7 +17,7 @@
   <Styles.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
-        <ResourceInclude Source="avares://NP.Avalonia.Visuals/Themes/Geometries.axaml"/>
+        <ResourceInclude Source="avares://NP.Ava.Visuals/Themes/Geometries.axaml"/>
         <ResourceInclude Source="avares://NP.Avalonia.UniDock/Themes/DockGeometries.axaml"/>
       </ResourceDictionary.MergedDictionaries>
 
@@ -69,8 +69,8 @@
       </ControlTemplate>
     </ResourceDictionary>
   </Styles.Resources>
-  <StyleInclude Source="avares://NP.Avalonia.Visuals/Themes/TextStyles.axaml"/>
-  <StyleInclude Source="avares://NP.Avalonia.Visuals/Themes/ButtonStyles.axaml"/>
+  <StyleInclude Source="avares://NP.Ava.Visuals/Themes/TextStyles.axaml"/>
+  <StyleInclude Source="avares://NP.Ava.Visuals/Themes/ButtonStyles.axaml"/>
 
   <Style Selector="Button.CloseButton">
     <Setter Property="np:ClassesBehavior.InsertClasses"
@@ -867,7 +867,7 @@
     <!--<Setter Property="ResizeMargin"
             Value="10"/>-->
     <Setter Property="CustomHeaderIcon"
-            Value="avares://NP.Avalonia.Visuals/Assets/avalonia-32.png"/>
+            Value="avares://NP.Ava.Visuals/Assets/avalonia-32.png"/>
     <Setter Property="HeaderSeparatorBrush"
             Value="{StaticResource DockSeparatorBrush}"/>
     <Setter Property="CustomHeaderIconMargin"

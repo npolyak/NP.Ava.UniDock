@@ -12,7 +12,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
-using NP.Avalonia.Visuals.Behaviors;
+using NP.Ava.Visuals.Behaviors;
 using NP.Utilities.BasicInterfaces;
 using System;
 
@@ -184,18 +184,18 @@ namespace NP.Avalonia.UniDock
 
 
         #region IsDockVisible Attached Avalonia Property
-        public static bool GetIsDockVisible(this IAvaloniaObject obj)
+        public static bool GetIsDockVisible(this AvaloniaObject obj)
         {
             return obj.GetValue(IsDockVisibleProperty);
         }
 
-        public static void SetIsDockVisible(IAvaloniaObject obj, bool value)
+        public static void SetIsDockVisible(AvaloniaObject obj, bool value)
         {
             obj.SetValue(IsDockVisibleProperty, value);
         }
 
         public static readonly AttachedProperty<bool> IsDockVisibleProperty =
-            AvaloniaProperty.RegisterAttached<object, IControl, bool>
+            AvaloniaProperty.RegisterAttached<object, Control, bool>
             (
                 "IsDockVisible",
                 true
@@ -204,18 +204,18 @@ namespace NP.Avalonia.UniDock
 
 
         #region OriginalDockGroup Attached Avalonia Property
-        public static IDockGroup? GetOriginalDockGroup(IControl obj)
+        public static IDockGroup? GetOriginalDockGroup(Control obj)
         {
             return obj.GetValue(OriginalDockGroupProperty);
         }
 
-        public static void SetOriginalDockGroup(IControl obj, IDockGroup? value)
+        public static void SetOriginalDockGroup(Control obj, IDockGroup? value)
         {
             obj.SetValue(OriginalDockGroupProperty, value);
         }
 
         public static readonly AttachedProperty<IDockGroup?> OriginalDockGroupProperty =
-            AvaloniaProperty.RegisterAttached<object, IControl, IDockGroup?>
+            AvaloniaProperty.RegisterAttached<object, Control, IDockGroup?>
             (
                 "OriginalDockGroup"
             );

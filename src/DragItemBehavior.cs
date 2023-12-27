@@ -14,8 +14,8 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.VisualTree;
-using NP.Avalonia.Visuals;
-using NP.Avalonia.Visuals.Behaviors;
+using NP.Ava.Visuals;
+using NP.Ava.Visuals.Behaviors;
 using NP.Utilities;
 using System;
 using System.Linq;
@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 namespace NP.Avalonia.UniDock
 {
     public abstract class DragItemBehavior<TItem>
-        where TItem : Control, IControl
+        where TItem : Control, Control
     {
         protected static DragItemBehavior<TItem>? Instance { get; set; }
 

@@ -15,9 +15,9 @@ namespace NP.Avalonia.UniDock.Factories
 {
     public class DockVisualItemGenerator : IDockVisualItemGenerator
     {
-        public IControl Generate(IDockGroup dockObj)
+        public Control Generate(IDockGroup dockObj)
         {
-            IControl result;
+            Control result;
 
             if (dockObj is DockItem dockItem)
             {

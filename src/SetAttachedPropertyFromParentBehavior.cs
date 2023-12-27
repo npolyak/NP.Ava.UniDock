@@ -20,8 +20,8 @@ using Avalonia.Controls;
 namespace NP.Avalonia.UniDock
 {
     public class SetAttachedPropertyFromParentBehavior<TParent, T, TProp> : ForEachItemOverrideBehavior<T>
-        where TParent : IDockManagerContainer, IControl
-        where T : IControl
+        where TParent : IDockManagerContainer, Control
+        where T : Control
     {
         protected TParent Parent { get; }
         private AvaloniaProperty<TProp> _attachedProp;

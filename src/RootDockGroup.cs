@@ -16,7 +16,7 @@ using Avalonia.Metadata;
 using Avalonia.Styling;
 using Avalonia.VisualTree;
 using NP.Avalonia.UniDockService;
-using NP.Avalonia.Visuals.Behaviors;
+using NP.Ava.Visuals.Behaviors;
 using NP.Concepts.Behaviors;
 using NP.Utilities;
 using System;
@@ -311,7 +311,7 @@ namespace NP.Avalonia.UniDock
 
         private Control FindVisualChild(IDockGroup dockChild)
         {
-            IControl control = dockChild;
+            Control control = dockChild;
             if (dockChild is ILeafDockObj leafDockChild)
             {
                 control = leafDockChild.GetVisual();
@@ -329,7 +329,7 @@ namespace NP.Avalonia.UniDock
 
             childrenToRemove.DoForEach(child => DockChildren.Remove(child));
 
-            IControl newVisualChildToInsert =
+            Control newVisualChildToInsert =
                 TheDockManager!.TheDockVisualItemGenerator!.Generate(newChildToInsert)!;
 
             newVisualChildToInsert.RemoveFromParentPanel();
