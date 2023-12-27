@@ -10,9 +10,6 @@
 [submodule "SubModules/NP.DependencyInjection"]
 	path = SubModules/NP.DependencyInjection
 	url = https://github.com/npolyak/NP.DependencyInjection.git
-[submodule "SubModules/NP.IoC.CommonImplementations"]
-	path = SubModules/NP.IoC.CommonImplementations
-	url = https://github.com/npolyak/NP.IoC.CommonImplementations.git
 [submodule "SubModules/NP.IoCy"]
 	path = SubModules/NP.IoCy
 	url = https://github.com/npolyak/NP.IoCy.git
