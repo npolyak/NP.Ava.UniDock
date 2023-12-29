@@ -172,7 +172,7 @@ namespace NP.Avalonia.UniDock
         {
             if (DockParent != null)
             {
-                if (DockParent?.IsAttachedToLogicalTree == true)
+                if ((DockParent as ILogical)?.IsAttachedToLogicalTree == true)
                 {
                     TrySetHeaderContentTemplate();
                 }
@@ -183,7 +183,7 @@ namespace NP.Avalonia.UniDock
         {
             if (DockParent != null)
             {
-                if (DockParent?.IsAttachedToLogicalTree == true)
+                if ((DockParent as ILogical)?.IsAttachedToLogicalTree == true)
                 {
                     TrySetContentTemplate();
                 }
@@ -312,7 +312,7 @@ namespace NP.Avalonia.UniDock
             }
             else if (DockParent != null)
             {
-                DockParent!.AttachedToLogicalTree += _dockParent_AttachedToLogicalTree;
+                (DockParent as ILogical)!.AttachedToLogicalTree += _dockParent_AttachedToLogicalTree;
             }
         }
 
@@ -355,8 +355,8 @@ namespace NP.Avalonia.UniDock
 
             if (DockParent != null)
             {
-                DockParent.AttachedToLogicalTree -= _dockParent_AttachedToLogicalTree;
-                DockParent.AttachedToLogicalTree -= _dockParent_AttachedToLogicalTree;
+                (DockParent as ILogical).AttachedToLogicalTree -= _dockParent_AttachedToLogicalTree;
+                (DockParent as ILogical).AttachedToLogicalTree -= _dockParent_AttachedToLogicalTree;
             }
         }
 

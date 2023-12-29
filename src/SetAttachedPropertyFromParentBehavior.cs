@@ -20,8 +20,8 @@ using Avalonia.Controls;
 namespace NP.Avalonia.UniDock
 {
     public class SetAttachedPropertyFromParentBehavior<TParent, T, TProp> : ForEachItemOverrideBehavior<T>
-        where TParent : IDockManagerContainer, Control
-        where T : Control
+        where TParent : IDockManagerContainer
+        where T : IDockGroup
     {
         protected TParent Parent { get; }
         private AvaloniaProperty<TProp> _attachedProp;
@@ -54,7 +54,8 @@ namespace NP.Avalonia.UniDock
 
         private void SetItemValue(T item)
         {
-            item.SetValue(_attachedProp, Parent.GetValue(_attachedProp));
+            (item as Control)
+                .SetValue(_attachedProp, (Parent as Control).GetValue(_attachedProp));
         }
 
         protected override void OnItemAdded(T item)

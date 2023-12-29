@@ -187,7 +187,7 @@ namespace NP.Avalonia.UniDock
 
         private void OnPointerMoved(Point2D pointerScreenLocation)
         {
-            if (!(this as IVisual).IsAttachedToVisualTree)
+            if (!(this as Visual).IsAttachedToVisualTree)
             {
                 return;
             }

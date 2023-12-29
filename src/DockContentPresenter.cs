@@ -11,7 +11,7 @@ namespace NP.Avalonia.UniDock
     /// Very awkward fromt the development point of view, but we are doing it for the same of not refreshing every time
     /// a pane is pulled out of a tab or dock pane or added to a tab or dock pane. 
     /// </summary>
-    public class DockContentPresenter : ContentPresenter, IDockDataContextContainer, IRecyclingTemplateContainer
+    public partial class DockContentPresenter : ContentPresenter, IDockDataContextContainer, IRecyclingTemplateContainer
     {
         #region OwningDockItem Styled Avalonia Property
         public DockItem OwningDockItem
@@ -80,7 +80,7 @@ namespace NP.Avalonia.UniDock
         /// Creates the child control.
         /// </summary>
         /// <returns>The child control or null.</returns>
-        protected override Control? CreateChild()
+        protected Control? CreateChild()
         {
             if (OwningDockItem == null && !IsHeader)
                 return null;

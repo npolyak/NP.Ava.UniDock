@@ -311,7 +311,7 @@ namespace NP.Avalonia.UniDock
 
         private Control FindVisualChild(IDockGroup dockChild)
         {
-            Control control = dockChild;
+            Control control = (Control) dockChild;
             if (dockChild is ILeafDockObj leafDockChild)
             {
                 control = leafDockChild.GetVisual();

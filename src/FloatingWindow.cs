@@ -216,7 +216,7 @@ namespace NP.Avalonia.UniDock
         public void DoInvalidateStyles()
         {
             this.InvalidateArrange();
-            this.InvalidateStyles();
+            this.InvalidateStyles(false);
         }
 
         protected virtual void BeforeClosing(CancelEventArgs e)

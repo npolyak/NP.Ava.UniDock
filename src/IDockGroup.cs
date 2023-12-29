@@ -24,7 +24,7 @@ using System.Reactive.Subjects;
 
 namespace NP.Avalonia.UniDock
 {
-    public interface IDockGroup : IDockManagerContainer, Control, IRemovable, IDockDataContextContainer
+    public interface IDockGroup : IDockManagerContainer, IRemovable, IDockDataContextContainer
     {
         public string DockId { get; set; }
 
@@ -42,8 +42,8 @@ namespace NP.Avalonia.UniDock
 
         bool IsDockVisible
         {
-            get => DockAttachedProperties.GetIsDockVisible(this);
-            set => DockAttachedProperties.SetIsDockVisible(this, value);
+            get => DockAttachedProperties.GetIsDockVisible((AvaloniaObject)this);
+            set => DockAttachedProperties.SetIsDockVisible((AvaloniaObject)this, value);
         }
 
         Point FloatingSize { get; set; }
@@ -134,7 +134,7 @@ namespace NP.Avalonia.UniDock
 
         IDockGroup? GetContainingGroup() => this;
 
-        Control GetVisual() => this;
+        Control GetVisual() => (Control) this;
 
         DockKind? CurrentGroupDock { get; }
 
@@ -351,7 +351,7 @@ namespace NP.Avalonia.UniDock
 
         public static FloatingWindow? GetGroupWindow(this IDockGroup group)
         {
-            return group.GetDockGroupRoot()?.GetControlsWindow<FloatingWindow>();
+            return (group.GetDockGroupRoot() as Visual)?.GetControlsWindow<FloatingWindow>();
         }
 
         public static DockObjectInfo ToDockObjectInfo(this IDockGroup group)
@@ -365,7 +365,7 @@ namespace NP.Avalonia.UniDock
             if (dockGroup == null)
                 return null;
 
-            T? result = dockGroup.FindResource(resourceKey) as T;
+            T? result = ((Control)dockGroup).FindResource(resourceKey) as T;
 
             if (result != null)
             {

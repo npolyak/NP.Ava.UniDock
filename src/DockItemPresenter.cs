@@ -62,7 +62,7 @@ namespace NP.Avalonia.UniDock
         {
             this.AddHandler(PointerPressedEvent, OnPointerPressedFired, RoutingStrategies.Bubble, true);
 
-            (this as IVisual).DetachedFromVisualTree += DockItemPresenter_DetachedFromVisualTree;
+            (this as Visual).DetachedFromVisualTree += DockItemPresenter_DetachedFromVisualTree;
         }
 
         private void DockItemPresenter_DetachedFromVisualTree(object? sender, VisualTreeAttachmentEventArgs e)

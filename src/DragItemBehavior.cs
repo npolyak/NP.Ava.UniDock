@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 namespace NP.Avalonia.UniDock
 {
     public abstract class DragItemBehavior<TItem>
-        where TItem : Control, Control
+        where TItem : Control
     {
         protected static DragItemBehavior<TItem>? Instance { get; set; }
 
@@ -159,7 +159,7 @@ namespace NP.Avalonia.UniDock
             IDockGroup? parentItem = _draggedDockGroup.DockParent;
             IDockGroup topDockGroup = _draggedDockGroup.GetDockGroupRoot();
 
-            Window parentWindow = parentItem.GetVisualAncestors().OfType<Window>().First();
+            Window parentWindow = (parentItem as Control).GetVisualAncestors().OfType<Window>().First();
 
             FloatingWindow? floatingWindow = parentWindow as FloatingWindow;
 

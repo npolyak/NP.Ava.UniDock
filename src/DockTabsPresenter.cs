@@ -9,24 +9,42 @@
 // Also, please, mention this software in any documentation for the 
 // products that use it.
 
+using Avalonia.Controls;
 using Avalonia.Controls.Generators;
 using Avalonia.Controls.Presenters;
+using Avalonia.Controls.Templates;
+using Avalonia.Layout;
+using NP.Utilities;
 
 namespace NP.Avalonia.UniDock
 {
-    public class DockTabsPresenter : ItemsPresenter
+    public class DockTabsPresenter : ItemsControl
     {
-        protected override IItemContainerGenerator CreateItemContainerGenerator()
+        public override Control CreateContainerForItemOverride(object? item, int index, object? recycleKey)
         {
-            return new DockTabItemContainerGenerator(this);
+            var control = base.CreateContainerForItemOverride(item, index, recycleKey);
+
+            control.Classes.RemoveAllOneByOne();
+
+            control.Classes.Add("Dock");
+
+            control.DataContext = item;
+
+            return control;
         }
 
-        //private static readonly FuncTemplate<IPanel> DefaultPanel =
-        //    new FuncTemplate<IPanel>(() => new WrapPanel() { Orientation = Orientation.Horizontal });
+        private static readonly FuncTemplate<Panel?> DefaultPanel =
+            new FuncTemplate<Panel?>
+            (
+                () => 
+                new WrapPanel() 
+                    { 
+                        Orientation = Orientation.Horizontal 
+                    });
 
-        //static DockTabsPresenter()
-        //{
-        //    ItemsPanelProperty.OverrideDefaultValue<DockTabsPresenter>(DefaultPanel);
-        //}
+        static DockTabsPresenter()
+        {
+            ItemsPanelProperty.OverrideDefaultValue<DockTabsPresenter>(DefaultPanel);
+        }
     }
 }

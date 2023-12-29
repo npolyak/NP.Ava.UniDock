@@ -25,7 +25,7 @@ namespace NP.Avalonia.UniDock.Factories
             }
             else
             {
-                result = dockObj;
+                result = (Control) dockObj;
             }
 
             return result;

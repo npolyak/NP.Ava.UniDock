@@ -15,6 +15,8 @@ using Avalonia.Media;
 using NP.Ava.Visuals.Behaviors;
 using NP.Utilities.BasicInterfaces;
 using System;
+using System.Runtime.CompilerServices;
+using System.Security.Authentication;
 
 namespace NP.Avalonia.UniDock
 {
@@ -251,16 +253,16 @@ namespace NP.Avalonia.UniDock
         #region CanReattachToDefaultGroup Attached Avalonia Property
         public static bool GetCanReattachToDefaultGroup(IDockGroup obj)
         {
-            return obj.GetValue(CanReattachToDefaultGroupProperty);
+            return (obj as Control).GetValue(CanReattachToDefaultGroupProperty);
         }
 
         public static void SetCanReattachToDefaultGroup(IDockGroup obj, bool value)
         {
-            obj.SetValue(CanReattachToDefaultGroupProperty, value);
+            (obj as Control).SetValue(CanReattachToDefaultGroupProperty, value);
         }
 
         public static readonly AttachedProperty<bool> CanReattachToDefaultGroupProperty =
-            AvaloniaProperty.RegisterAttached<IDockGroup, IDockGroup, bool>
+            AvaloniaProperty.RegisterAttached<IDockGroup, Control, bool>
             (
                 "CanReattachToDefaultGroup"
             );
@@ -346,16 +348,16 @@ namespace NP.Avalonia.UniDock
         #region IsUnderLockedGroup Attached Avalonia Property
         public static bool GetIsUnderLockedGroup(IDockGroup obj)
         {
-            return obj.GetValue(IsUnderLockedGroupProperty);
+            return (obj as Control).GetValue(IsUnderLockedGroupProperty);
         }
 
         public static void SetIsUnderLockedGroup(IDockGroup obj, bool value)
         {
-            obj.SetValue(IsUnderLockedGroupProperty, value);
+            (obj as Control).SetValue(IsUnderLockedGroupProperty, value);
         }
 
         public static readonly AttachedProperty<bool> IsUnderLockedGroupProperty =
-            AvaloniaProperty.RegisterAttached<object, IDockGroup, bool>
+            AvaloniaProperty.RegisterAttached<object, Control, bool>
             (
                 "IsUnderLockedGroup",
                 false, 

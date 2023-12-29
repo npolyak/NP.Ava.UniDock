@@ -18,7 +18,7 @@
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
         <ResourceInclude Source="avares://NP.Ava.Visuals/Themes/Geometries.axaml"/>
-        <ResourceInclude Source="avares://NP.Avalonia.UniDock/Themes/DockGeometries.axaml"/>
+        <ResourceInclude Source="avares://NP.Ava.UniDock/Themes/DockGeometries.axaml"/>
       </ResourceDictionary.MergedDictionaries>
 
       <Color x:Key="OldDockSelectedColor">#FF007ACC</Color>
@@ -601,7 +601,7 @@
                                    Margin="0,0,0,0"
                                    IsVisible="{Binding Path=$parent[local:TabbedDockGroup].(local:DockAttachedProperties.IsInDockEditableState)}"/>
                         <TemplatedControl Template="{StaticResource AncorIconTemplate}"/>
-                        <ComboBox Items="{x:Static np:VisualHelper.Docks}"
+                        <ComboBox ItemsSource="{x:Static np:VisualHelper.Docks}"
                                   IsVisible="{Binding $parent[local:TabbedDockGroup].(local:DockAttachedProperties.IsInDockEditableState)}"
                                   Padding="0"
                                   BorderThickness="0"
@@ -649,7 +649,7 @@
                                                                                                RelativeSource={RelativeSource TemplatedParent}}"
                                          DockPanel.Dock="{TemplateBinding TabStripPlacement}"
                                          VerticalAlignment="Top"
-                                         Items="{Binding Path=Items, RelativeSource={RelativeSource TemplatedParent}}">
+                                         ItemsSource="{Binding Path=Items, RelativeSource={RelativeSource TemplatedParent}}">
                   <local:DockTabsPresenter.ItemsPanel>
                     <ItemsPanelTemplate>
                       <WrapPanel Orientation="{TemplateBinding TabOrientation}"/>

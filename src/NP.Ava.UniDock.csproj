@@ -34,4 +34,14 @@
 		<PackageReference Include="NP.Avalonia.UniDockService" Version="1.0.4" />
 		<PackageReference Include="NP.DependencyInjection" Version="1.0.9" />
 	</ItemGroup>
+
+	<ItemGroup>
+		<InternalsAssemblyName Include="Avalonia.Base" />
+		<InternalsAssemblyName Include="Avalonia.Controls" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="IgnoresAccessChecksToGenerator"
+						  Version="0.7.0"
+						  PrivateAssets="All" />
+	</ItemGroup>
 </Project>

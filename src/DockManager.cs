@@ -26,6 +26,7 @@ using NP.Avalonia.UniDock.Serialization;
 using NP.Avalonia.UniDock.Factories;
 using NP.Avalonia.UniDockService;
 using NP.DependencyInjection.Attributes;
+using Avalonia.LogicalTree;
 
 namespace NP.Avalonia.UniDock
 {
@@ -230,7 +231,7 @@ namespace NP.Avalonia.UniDock
         {
             var v = group.GetVisual();
 
-            return v.IsVisible && v.IsAttachedToLogicalTree && v.GetControlsWindow<Window>().IsVisible;
+            return v.IsVisible && (v as ILogical).IsAttachedToLogicalTree && v.GetControlsWindow<Window>().IsVisible;
         }
 
         public IEnumerable<RootDockGroup> AllOperatingRootDockGroups => 
@@ -388,7 +389,7 @@ namespace NP.Avalonia.UniDock
 
             var pointerAboveGroups =
                 _currentDockGroups
-                    .Where(gr => gr.Group.IsVisible && gr.Rect.ContainsPoint(pointerScreenLocation))
+                    .Where(gr => (gr.Group as Control).IsVisible && gr.Rect.ContainsPoint(pointerScreenLocation))
                     .Select(gr => gr.Group);
 
             CurrentLeafObjToInsertWithRespectTo = pointerAboveGroups.FirstOrDefault();

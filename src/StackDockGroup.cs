@@ -351,7 +351,7 @@ namespace NP.Avalonia.UniDock
 
             _sizeCoefficients.Insert(idx, sizeCoeff);
 
-            dockChild.RemoveFromParentPanel();
+            ((Control)dockChild).RemoveFromParentPanel();
 
             AddChildToStackGroup(dockChild);
 
