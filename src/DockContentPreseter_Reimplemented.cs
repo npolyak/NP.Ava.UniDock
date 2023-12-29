@@ -9,7 +9,7 @@ using NP.Utilities;
 using System;
 using System.Drawing.Printing;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     // this is the stuff containing required implementations from ContentPresenter superclass
     partial class DockContentPresenter

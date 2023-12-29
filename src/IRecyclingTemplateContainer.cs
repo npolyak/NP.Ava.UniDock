@@ -1,7 +1,7 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public interface IRecyclingTemplateContainer
     {

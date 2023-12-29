@@ -18,7 +18,7 @@ using System.Collections.Generic;
 using System.Reactive;
 using System.Reactive.Subjects;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class DockGroupBaseControl : TemplatedControl, IDockDataContextContainer
     {

@@ -20,11 +20,11 @@ using Avalonia.Metadata;
 using NP.Concepts.Behaviors;
 using System.Collections;
 using System.Collections.ObjectModel;
-using NP.Avalonia.UniDock.Factories;
+using NP.Ava.UniDock.Factories;
 using Avalonia.VisualTree;
 using NP.Ava.Visuals.Behaviors;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class StackGroup<T> : Control
         where T : Control

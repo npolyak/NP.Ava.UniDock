@@ -5,7 +5,7 @@ using Avalonia.Interactivity;
 using Avalonia.Styling;
 using System;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class DockTabItem : TabItem, IStyleable
     {

@@ -11,7 +11,7 @@
 
 using Avalonia.Controls;
 
-namespace NP.Avalonia.UniDock.Factories
+namespace NP.Ava.UniDock.Factories
 {
     public class DockVisualItemGenerator : IDockVisualItemGenerator
     {

@@ -1,7 +1,7 @@
 ﻿using Avalonia.Controls;
 using System;
 
-namespace NP.Avalonia.UniDock.Factories
+namespace NP.Ava.UniDock.Factories
 {
     public class StackGroupFactory : IStackGroupFactory
     {

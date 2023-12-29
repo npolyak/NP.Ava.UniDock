@@ -15,7 +15,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Metadata;
 using Avalonia.Styling;
 using Avalonia.VisualTree;
-using NP.Avalonia.UniDockService;
+using NP.Ava.UniDockService;
 using NP.Ava.Visuals.Behaviors;
 using NP.Concepts.Behaviors;
 using NP.Utilities;
@@ -24,7 +24,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class RootDockGroup : DockGroupBaseControl, IDockGroup, IDisposable
     {

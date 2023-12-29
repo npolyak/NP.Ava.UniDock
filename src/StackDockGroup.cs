@@ -21,14 +21,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using NP.Utilities;
 using System.Linq;
-using NP.Avalonia.UniDockService;
+using NP.Ava.UniDockService;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml.Templates;
 using Avalonia.Controls.Primitives;
 using NP.Ava.Visuals.Behaviors;
 using Avalonia.VisualTree;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class StackDockGroup : DockGroupBaseControl, IDockGroup, IDisposable, IStyleable
     {

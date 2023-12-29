@@ -21,7 +21,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public abstract class DragItemBehavior<TItem>
         where TItem : Control

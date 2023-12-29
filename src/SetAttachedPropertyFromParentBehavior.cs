@@ -17,7 +17,7 @@ using NP.Utilities;
 using System.Linq;
 using Avalonia.Controls;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class SetAttachedPropertyFromParentBehavior<TParent, T, TProp> : ForEachItemOverrideBehavior<T>
         where TParent : IDockManagerContainer

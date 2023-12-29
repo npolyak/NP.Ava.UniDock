@@ -1,7 +1,7 @@
 ﻿using NP.Concepts.Behaviors;
 using System.Collections.Generic;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class RemoveDockGroupBehavior<T> : RemoveItemBehavior<T>
         where T : IDockGroup

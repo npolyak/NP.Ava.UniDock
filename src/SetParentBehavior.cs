@@ -13,7 +13,7 @@ using NP.Concepts.Behaviors;
 using System;
 using System.Collections.Generic;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class SetParentBehavior<T> : ForEachItemOverrideBehavior<T>
         where T : IDockGroup

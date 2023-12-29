@@ -11,7 +11,7 @@
 
 using Avalonia.Controls;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class StackControlsGroup : StackGroup<Control>
     {

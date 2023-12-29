@@ -4,7 +4,7 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Layout;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class DockSeparator : GridSplitter
     {

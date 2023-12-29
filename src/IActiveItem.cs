@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public interface IActiveItem<T>
         where T : IActiveItem<T>

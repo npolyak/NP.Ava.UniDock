@@ -18,7 +18,7 @@ using Avalonia.Media;
 using Avalonia.Layout;
 using Avalonia.Markup.Xaml.Templates;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class DropPanelWithCompass : TemplatedControl
     {

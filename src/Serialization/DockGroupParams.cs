@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Serialization;
 
-namespace NP.Avalonia.UniDock.Serialization
+namespace NP.Ava.UniDock.Serialization
 {
     public class DockGroupParams
     {

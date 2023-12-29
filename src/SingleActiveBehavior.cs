@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Serialization;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class SingleActiveBehavior<TActiveItem> : VMBase
         where TActiveItem : class, IActiveItem<TActiveItem>, IDockGroup

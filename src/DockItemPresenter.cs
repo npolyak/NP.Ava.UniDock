@@ -17,7 +17,7 @@ using Avalonia.Media;
 using Avalonia.VisualTree;
 using System;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class DockItemPresenter : TemplatedControl
     {

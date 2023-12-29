@@ -18,7 +18,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Security.Authentication;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public static class DockAttachedProperties
     {

@@ -16,7 +16,7 @@ using Avalonia.Controls.Templates;
 using Avalonia.Layout;
 using NP.Utilities;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class DockTabsPresenter : ItemsControl
     {

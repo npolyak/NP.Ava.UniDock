@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Data;
 using Avalonia.Markup.Xaml.Templates;
-using NP.Avalonia.UniDockService;
+using NP.Ava.UniDockService;
 using NP.Concepts.Behaviors;
 using NP.Utilities;
 using System;
@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class DataItemsViewModelBehavior : VMBase
     {

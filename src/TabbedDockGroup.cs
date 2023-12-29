@@ -19,7 +19,7 @@ using Avalonia.Layout;
 using Avalonia.Media;
 using Avalonia.Metadata;
 using Avalonia.VisualTree;
-using NP.Avalonia.UniDockService;
+using NP.Ava.UniDockService;
 using NP.Ava.Visuals.Behaviors;
 using NP.Concepts.Behaviors;
 using NP.Utilities;
@@ -31,7 +31,7 @@ using System.Linq;
 using System.Reactive;
 using System.Reactive.Subjects;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class TabbedDockGroup : DockGroupBaseControl, ILeafDockObj
     {

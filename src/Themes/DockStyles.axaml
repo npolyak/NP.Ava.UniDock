@@ -12,7 +12,7 @@
 
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:NP.Avalonia.UniDock"
+        xmlns:local="clr-namespace:NP.Ava.UniDock"
         xmlns:np="https://np.com/visuals">
   <Styles.Resources>
     <ResourceDictionary>

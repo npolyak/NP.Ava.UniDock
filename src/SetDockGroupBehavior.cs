@@ -12,7 +12,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class SetDockGroupBehavior : IDisposable
     {

@@ -17,14 +17,14 @@ using Avalonia.LogicalTree;
 using Avalonia.Markup.Xaml.Templates;
 using Avalonia.Metadata;
 using Avalonia.VisualTree;
-using NP.Avalonia.UniDockService;
+using NP.Ava.UniDockService;
 using NP.Ava.Visuals.Behaviors;
 using NP.Concepts.Behaviors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class DockItem :
         DockGroupBaseControl, 

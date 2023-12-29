@@ -4,7 +4,7 @@ using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Templates;
 using NP.Utilities;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     /// <summary>
     /// we do not use Content and ContentTemplate any longer, instead we get them from the OwningDockItem!!!

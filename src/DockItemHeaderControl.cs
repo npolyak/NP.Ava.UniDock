@@ -13,7 +13,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml.Templates;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class DockItemHeaderControl : ContentControl
     {

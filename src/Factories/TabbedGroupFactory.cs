@@ -1,4 +1,4 @@
-﻿namespace NP.Avalonia.UniDock.Factories
+﻿namespace NP.Ava.UniDock.Factories
 {
     public class TabbedGroupFactory : ITabbedGroupFactory
     {

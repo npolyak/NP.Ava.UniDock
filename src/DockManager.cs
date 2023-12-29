@@ -22,13 +22,13 @@ using System.Collections.ObjectModel;
 using NP.Concepts.Behaviors;
 using System.ComponentModel;
 using System.IO;
-using NP.Avalonia.UniDock.Serialization;
-using NP.Avalonia.UniDock.Factories;
-using NP.Avalonia.UniDockService;
+using NP.Ava.UniDock.Serialization;
+using NP.Ava.UniDock.Factories;
+using NP.Ava.UniDockService;
 using NP.DependencyInjection.Attributes;
 using Avalonia.LogicalTree;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class DockManager : VMBase, IUniDockService
     {

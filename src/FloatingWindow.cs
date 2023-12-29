@@ -24,7 +24,7 @@ using System.Linq;
 using System.Reactive;
 using System.Threading.Tasks;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class FloatingWindow : CustomWindow, IDockManagerContainer
     {

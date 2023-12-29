@@ -3,7 +3,7 @@
 		<OutputType>Library</OutputType>
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
-		<PackageId>NP.Avalonia.UniDock</PackageId>
+		<PackageId>NP.Ava.UniDock</PackageId>
 		<PackageVersion>1.0.1</PackageVersion>
 		<Authors>Nick Polyak, Ph. D.</Authors>
 		<Company>AWebPros</Company>
@@ -22,7 +22,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<None Remove="*.nupkg" />
-		<None Remove="NP.Avalonia.UniDock.nuspec" />
+		<None Remove="NP.Ava.UniDock.nuspec" />
 	</ItemGroup>
 	<ItemGroup Condition="'$(Configuration)'=='Debug'">
 		<ProjectReference Include="$(SolutionDir)..\..\SubModules\NP.Ava.Visuals\src\NP.Ava.Visuals.csproj" />

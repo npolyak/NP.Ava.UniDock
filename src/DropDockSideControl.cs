@@ -13,7 +13,7 @@ using Avalonia;
 using Avalonia.Controls.Primitives;
 using System;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class DropDockSideControl : TemplatedControl
     {

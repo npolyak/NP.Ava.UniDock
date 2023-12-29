@@ -4,7 +4,7 @@ using Avalonia.Metadata;
 using NP.Utilities;
 using System.ComponentModel;
 
-namespace NP.Avalonia.UniDock
+namespace NP.Ava.UniDock
 {
     public class FloatingWindowContainer : IDockManagerContainer
     {

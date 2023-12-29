@@ -1,7 +1,7 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Layout;
 
-namespace NP.Avalonia.UniDock.Factories
+namespace NP.Ava.UniDock.Factories
 {
     public class DockSeparatorFactory : IDockSeparatorFactory
     {
