@@ -4,7 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<PackageId>NP.Avalonia.UniDock</PackageId>
-		<PackageVersion>1.0.51</PackageVersion>
+		<PackageVersion>1.0.1</PackageVersion>
 		<Authors>Nick Polyak, Ph. D.</Authors>
 		<Company>AWebPros</Company>
 		<Description>UniDock powerful multiplatform docking framework</Description>
@@ -40,8 +40,6 @@
 		<InternalsAssemblyName Include="Avalonia.Controls" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="IgnoresAccessChecksToGenerator"
-						  Version="0.7.0"
-						  PrivateAssets="All" />
+		<PackageReference Include="IgnoresAccessChecksToGenerator" Version="0.7.0" PrivateAssets="All" />
 	</ItemGroup>
 </Project>
