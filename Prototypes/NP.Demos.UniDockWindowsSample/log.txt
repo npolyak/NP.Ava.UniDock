@@ -1,7 +1,0 @@
-2023-12-29 13:27:21.7451 Info Message Template Auto Format enabled
-2023-12-29 13:27:21.7853 Info Registered target NLog.Targets.FileTarget(Name=logfile)
-2023-12-29 13:27:21.7853 Info Registered target NLog.Targets.ColoredConsoleTarget(Name=console)
-2023-12-29 13:27:21.8037 Info Validating config: TargetNames=logfile, console, ConfigItems=22, FilePath=C:\IDEAS\GITHUB\NP.Ava.UniDock\Prototypes\NP.Demos.UniDockWindowsSample\bin\Debug\net6.0\NLog.config
-2023-12-29 13:27:21.8113 Info Configuration initialized.
-2023-12-29 13:27:21.8113 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.1.1.1522. Product version: 5.1.1+b1175f1ad0ce4a4a9d1f4b61538202071d7be513. GlobalAssemblyCache: False
-2023-12-29 13:27:21.8113 Warn Logger: NP.NLogAdapter.NLogWrapper configured with duplicate output to target: FileTarget(Name=logfile). LoggingRule with NamePattern='*' and Level=Info has been skipped.

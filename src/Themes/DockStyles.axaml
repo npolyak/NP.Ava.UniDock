@@ -643,16 +643,22 @@
                       Height="2"/>
               </Grid>
               <DockPanel Grid.Row="1">
-                <local:DockTabsPresenter x:Name="PART_ItemsPresenter"
-                                         local:DragTabBehavior.IsSet="{TemplateBinding AllowTabDocking}"
+                <local:DockTabsPresenter local:DragTabBehavior.IsSet="{TemplateBinding AllowTabDocking}"
                                          local:DockAttachedProperties.TheDockManager="{Binding Path=(local:DockAttachedProperties.TheDockManager),
                                                                                                RelativeSource={RelativeSource TemplatedParent}}"
                                          DockPanel.Dock="{TemplateBinding TabStripPlacement}"
                                          VerticalAlignment="Top"
                                          ItemsSource="{Binding Path=Items, RelativeSource={RelativeSource TemplatedParent}}">
+					<!--<local:DockTabsPresenter.ItemTemplate>
+						<DataTemplate>
+							<Grid Height="30"
+								  Width="100"
+								  Background="Red"/>
+						</DataTemplate>
+					</local:DockTabsPresenter.ItemTemplate>-->
                   <local:DockTabsPresenter.ItemsPanel>
                     <ItemsPanelTemplate>
-                      <WrapPanel Orientation="{TemplateBinding TabOrientation}"/>
+                      <WrapPanel Orientation="{Binding $parent[local:TabbedDockGroup].TabOrientation}"/>
                     </ItemsPanelTemplate>
                   </local:DockTabsPresenter.ItemsPanel>
                 </local:DockTabsPresenter>

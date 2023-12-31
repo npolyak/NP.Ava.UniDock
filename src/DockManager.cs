@@ -231,7 +231,9 @@ namespace NP.Ava.UniDock
         {
             var v = group.GetVisual();
 
-            return v.IsVisible && (v as ILogical).IsAttachedToLogicalTree && v.GetControlsWindow<Window>().IsVisible;
+            return v.IsVisible &&
+                    (v as ILogical).IsAttachedToLogicalTree && 
+                    v.GetControlsWindow<Window>().IsVisible;
         }
 
         public IEnumerable<RootDockGroup> AllOperatingRootDockGroups => 
