@@ -140,7 +140,9 @@ namespace NP.Ava.UniDock
 
             Point2D currentPoint = e.GetPosition(itemsContainer).ToPoint2D();
 
-            if (currentPoint.Minus(_startMousePoint).ToAbs().GreaterOrEqual(PointHelper.MinimumDragDistance).Any)
+            if (currentPoint.
+                    Minus(_startMousePoint)
+                        .ToAbs().GreaterOrEqual(PointHelper.MinimumDragDistance).Any)
             {
                 _allowDrag = true;
             }
