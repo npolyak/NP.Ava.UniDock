@@ -9,17 +9,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{D257FF52-0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Utilities", "..\..\SubModules\NP.Utilities\src\NP.Utilities.csproj", "{16B0029E-C242-49F9-87B7-F0F92B7A32D4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Avalonia.Visuals", "..\..\SubModules\NP.Avalonia.Visuals\src\NP.Avalonia.Visuals.csproj", "{06657FCB-BA0E-4332-AAA4-870A87268DCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Ava.Visuals", "..\..\SubModules\NP.Ava.Visuals\src\NP.Ava.Visuals.csproj", "{06657FCB-BA0E-4332-AAA4-870A87268DCC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Concepts.Behaviors", "..\..\SubModules\NP.Concepts.Behaviors\src\NP.Concepts.Behaviors.csproj", "{647C0207-928E-46F0-B65F-3637E076889B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Avalonia.UniDock", "..\..\src\NP.Avalonia.UniDock.csproj", "{8C3840DC-A1E3-42E6-AEA8-8EA230CAF86F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Ava.UniDock", "..\..\src\NP.Ava.UniDock.csproj", "{8C3840DC-A1E3-42E6-AEA8-8EA230CAF86F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.IoCy", "..\..\SubModules\NP.IoCy\src\NP.IoCy.csproj", "{4DEC59D3-F308-4C96-8DC9-B475753B56A9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.DependencyInjection", "..\..\SubModules\NP.DependencyInjection\src\NP.DependencyInjection.csproj", "{D04CACF6-4F93-43C9-A4A4-D86EF98FE3B6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.IoC.CommonImplementations", "..\..\SubModules\NP.IoC.CommonImplementations\src\NP.IoC.CommonImplementations.csproj", "{B8D57396-4A9F-4346-805F-CDF211651D60}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.ViewModelInterfaces", "..\..\SubModules\NP.ViewModelInterfaces\src\NP.ViewModelInterfaces.csproj", "{AC229EBD-36FF-49CC-97EC-D9CB3A0ABE80}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Ava.UniDockService", "..\..\SubModules\NP.Avalonia.UniDockService\src\NP.Ava.UniDockService.csproj", "{B9684CE7-6906-4360-B40D-E2BE5C20D0F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +63,14 @@ Global
 		{B8D57396-4A9F-4346-805F-CDF211651D60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8D57396-4A9F-4346-805F-CDF211651D60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8D57396-4A9F-4346-805F-CDF211651D60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC229EBD-36FF-49CC-97EC-D9CB3A0ABE80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC229EBD-36FF-49CC-97EC-D9CB3A0ABE80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC229EBD-36FF-49CC-97EC-D9CB3A0ABE80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC229EBD-36FF-49CC-97EC-D9CB3A0ABE80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9684CE7-6906-4360-B40D-E2BE5C20D0F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9684CE7-6906-4360-B40D-E2BE5C20D0F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9684CE7-6906-4360-B40D-E2BE5C20D0F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9684CE7-6906-4360-B40D-E2BE5C20D0F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,6 +82,8 @@ Global
 		{4DEC59D3-F308-4C96-8DC9-B475753B56A9} = {D257FF52-0480-411B-8C43-90C47F876115}
 		{D04CACF6-4F93-43C9-A4A4-D86EF98FE3B6} = {D257FF52-0480-411B-8C43-90C47F876115}
 		{B8D57396-4A9F-4346-805F-CDF211651D60} = {D257FF52-0480-411B-8C43-90C47F876115}
+		{AC229EBD-36FF-49CC-97EC-D9CB3A0ABE80} = {D257FF52-0480-411B-8C43-90C47F876115}
+		{B9684CE7-6906-4360-B40D-E2BE5C20D0F1} = {D257FF52-0480-411B-8C43-90C47F876115}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {98780B67-9675-4029-9930-B8EAB892EA72}

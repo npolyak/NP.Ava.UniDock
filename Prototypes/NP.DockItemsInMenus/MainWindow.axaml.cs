@@ -4,7 +4,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.VisualTree;
-using NP.Avalonia.UniDock;
+using NP.Ava.UniDock;
 using NP.Concepts.Behaviors;
 using System.Linq;
 
@@ -29,7 +29,7 @@ namespace NP.DockItemsInMenus
                 (
                     _dockManager.AllGroupsBehavior.Result,
                     group => group.DockId,
-                    group => group.GetObservable(DockGroupBaseControl.DockIdProperty));
+                    group => (group as Control).GetObservable(DockGroupBaseControl.DockIdProperty));
 
             Opened += MainWindow_Opened;
 
