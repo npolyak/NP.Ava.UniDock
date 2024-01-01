@@ -12,7 +12,4 @@
 		<PackageReference Include="NP.Ava.UniDock" Version="1.0.1" />
 		<PackageReference Include="NP.IoCy" Version="1.0.32" />
 	</ItemGroup>
-	<ItemGroup>
-	  <ProjectReference Include="..\..\src\NP.Ava.UniDock.csproj" />
-	</ItemGroup>
 </Project>
