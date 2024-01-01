@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls;
-using NP.Avalonia.UniDock;
-using NP.Avalonia.UniDock.Factories;
+using NP.Ava.UniDock;
+using NP.Ava.UniDock.Factories;
 
 namespace NP.ComplexViewModelSaveRestoreSample
 {
@@ -12,7 +12,9 @@ namespace NP.ComplexViewModelSaveRestoreSample
 
             FloatingWindow dockWindow = new FloatingWindow();
 
-            dockWindow.Classes = new Classes("PlainFloatingWindow", "MyFloatingWindow");
+            dockWindow.Classes.Add("PlainFloatingWindow");
+            dockWindow.Classes.Add("MyFloatingWindow");
+
             dockWindow.TitleClasses = "WindowTitle";
 
             return dockWindow;

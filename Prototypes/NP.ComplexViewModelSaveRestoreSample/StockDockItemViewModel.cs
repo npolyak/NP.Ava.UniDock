@@ -1,4 +1,4 @@
-﻿using NP.Avalonia.UniDockService;
+﻿using NP.Ava.UniDockService;
 
 namespace NP.ComplexViewModelSaveRestoreSample
 {

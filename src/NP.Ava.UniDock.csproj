@@ -26,7 +26,7 @@
 	</ItemGroup>
 	<ItemGroup Condition="'$(Configuration)'=='Debug'">
 		<ProjectReference Include="$(SolutionDir)..\..\SubModules\NP.Ava.Visuals\src\NP.Ava.Visuals.csproj" />
-		<ProjectReference Include="..\SubModules\NP.Avalonia.UniDockService\src\NP.Ava.UniDockService.csproj" />
+		<ProjectReference Include="$(SolutionDir)..\..\SubModules\NP.Avalonia.UniDockService\src\NP.Ava.UniDockService.csproj" />
 		<ProjectReference Include="$(SolutionDir)..\..\SubModules\NP.DependencyInjection\src\NP.DependencyInjection.csproj" />
 	</ItemGroup>
 	<ItemGroup Condition="'$(Configuration)'=='Release'">
