@@ -14,10 +14,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="NP.Demos.UniDockWindowsSample.App">
     <Application.Styles>
-      <StyleInclude Source="avares://Avalonia.Themes.Default/Accents/BaseLight.xaml"/>
-      <StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml"/>
-      <StyleInclude Source="avares://NP.Avalonia.Visuals/Themes/TextStyles.axaml"/>
-      <StyleInclude Source="avares://NP.Avalonia.Visuals/Themes/CustomWindowStyles.axaml"/>
-      <StyleInclude Source="avares://NP.Avalonia.UniDock/Themes/DockStyles.axaml"/>
+      <SimpleTheme/>
+      <StyleInclude Source="avares://NP.Ava.Visuals/Themes/TextStyles.axaml"/>
+      <StyleInclude Source="avares://NP.Ava.Visuals/Themes/CustomWindowStyles.axaml"/>
+      <StyleInclude Source="avares://NP.Ava.UniDock/Themes/DockStyles.axaml"/>
     </Application.Styles>
 </Application>

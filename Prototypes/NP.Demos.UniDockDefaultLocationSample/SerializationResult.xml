@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DockManagerParams xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <WindowsSerializationParams>
+        <WindowParams
+            IsDockWindow="false"
+            Title="NP.Demos.UniDockWindowsSample"
+            TheWindowState="Normal"
+            WindowId="TheMainWindow"
+            DockChildWindowOwnerId="TheMainWindow">
+            <TopLeft
+                X="251"
+                Y="674" />
+            <Size
+                X="700"
+                Y="700" />
+        </WindowParams>
+        <WindowParams
+            IsDockWindow="true"
+            Title="Floating Window - Document 2"
+            TheWindowState="Normal"
+            OwnerWindowId="TheMainWindow"
+            WindowId="FloatingWindow_5"
+            DockChildWindowOwnerId="TheMainWindow"
+            TopLevelGroupId="RootDockGroup_19">
+            <TopLeft
+                X="1384"
+                Y="796" />
+            <Size
+                X="700"
+                Y="400" />
+        </WindowParams>
+        <WindowParams
+            IsDockWindow="true"
+            Title="Floating Window - RightBottom 1"
+            TheWindowState="Normal"
+            OwnerWindowId="TheMainWindow"
+            WindowId="FloatingWindow_6"
+            DockChildWindowOwnerId="TheMainWindow"
+            TopLevelGroupId="RootDockGroup_20">
+            <TopLeft
+                X="1250"
+                Y="1021" />
+            <Size
+                X="700"
+                Y="400" />
+        </WindowParams>
+        <WindowParams
+            IsDockWindow="true"
+            Title="Floating Window - LeftTop 1"
+            TheWindowState="Normal"
+            OwnerWindowId="TheMainWindow"
+            WindowId="FloatingWindow_7"
+            DockChildWindowOwnerId="TheMainWindow"
+            TopLevelGroupId="RootDockGroup_21">
+            <TopLeft
+                X="1249"
+                Y="971" />
+            <Size
+                X="500"
+                Y="500" />
+        </WindowParams>
+    </WindowsSerializationParams>
+    <DisconnectedDockGroupParams />
+    <ConnectedDockGroupParams>
+        <DockGroupParams
+            CanFloat="false"
+            CanClose="false"
+            GroupFullTypeName="NP.Ava.UniDock.RootDockGroup"
+            DockId="RootGroup"
+            ChildrenDockIds="StackDockGroup_1"
+            DefaultDockOrderInGroup="0"
+            AutoDestroy="false"
+            AutoInvisible="false"
+            ProducingUserDefinedWindowGroupId="RootGroup"
+            TheOrientation="Horizontal"
+            IsGroupLocked="false"
+            IsPredefined="false"
+            AllowTabDocking="false"
+            IsDockVisible="false" />
+        <DockGroupParams
+            CanFloat="true"
+            CanClose="true"
+            GroupFullTypeName="NP.Ava.UniDock.StackDockGroup"
+            DockId="StackDockGroup_1"
+            ParentDockId="RootGroup"
+            ChildrenDockIds="LeftBottom1 Document1 RightTop1"
+            DefaultDockOrderInGroup="0"
+            AutoDestroy="false"
+            AutoInvisible="true"
+            ProducingUserDefinedWindowGroupId="RootGroup"
+            TheOrientation="Horizontal"
+            IsGroupLocked="false"
+            IsPredefined="false"
+            AllowTabDocking="false"
+            IsDockVisible="false">
+            <SizeCoefficients>
+                <string>1*</string>
+                <string>1*</string>
+                <string>1*</string>
+            </SizeCoefficients>
+        </DockGroupParams>
+        <DockGroupParams
+            CanFloat="true"
+            CanClose="false"
+            GroupFullTypeName="NP.Ava.UniDock.DockItem"
+            DockId="LeftTop1"
+            ParentDockId="RootDockGroup_21"
+            DefaultDockOrderInGroup="0"
+            AutoDestroy="false"
+            AutoInvisible="false"
+            ProducingUserDefinedWindowGroupId="RootGroup"
+            TheOrientation="Horizontal"
+            IsGroupLocked="false"
+            IsPredefined="true"
+            AllowTabDocking="false"
+            IsDockVisible="true">
+            <HeaderRestorationInfo>LeftTop 1</HeaderRestorationInfo>
+            <ContentRestorationInfo>Avalonia.Controls.TextBlock</ContentRestorationInfo>
+        </DockGroupParams>
+        <DockGroupParams
+            CanFloat="false"
+            CanClose="true"
+            GroupFullTypeName="NP.Ava.UniDock.DockItem"
+            DockId="LeftBottom1"
+            ParentDockId="StackDockGroup_1"
+            DefaultDockOrderInGroup="0"
+            AutoDestroy="false"
+            AutoInvisible="false"
+            ProducingUserDefinedWindowGroupId="RootGroup"
+            TheOrientation="Horizontal"
+            IsGroupLocked="false"
+            IsPredefined="true"
+            AllowTabDocking="false"
+            IsDockVisible="true">
+            <HeaderRestorationInfo>LeftBottom 1</HeaderRestorationInfo>
+            <ContentRestorationInfo>Avalonia.Controls.TextBlock</ContentRestorationInfo>
+        </DockGroupParams>
+        <DockGroupParams
+            CanFloat="false"
+            CanClose="false"
+            GroupFullTypeName="NP.Ava.UniDock.DockItem"
+            DockId="Document1"
+            ParentDockId="StackDockGroup_1"
+            DefaultDockOrderInGroup="0"
+            AutoDestroy="false"
+            AutoInvisible="false"
+            ProducingUserDefinedWindowGroupId="RootGroup"
+            TheOrientation="Horizontal"
+            IsGroupLocked="false"
+            IsPredefined="true"
+            AllowTabDocking="false"
+            IsDockVisible="true">
+            <HeaderRestorationInfo>Document 1</HeaderRestorationInfo>
+            <ContentRestorationInfo>Avalonia.Controls.Grid</ContentRestorationInfo>
+        </DockGroupParams>
+        <DockGroupParams
+            CanFloat="true"
+            CanClose="true"
+            GroupFullTypeName="NP.Ava.UniDock.DockItem"
+            DockId="Document2"
+            ParentDockId="RootDockGroup_19"
+            DefaultDockOrderInGroup="0"
+            AutoDestroy="false"
+            AutoInvisible="false"
+            ProducingUserDefinedWindowGroupId="RootGroup"
+            TheOrientation="Horizontal"
+            IsGroupLocked="false"
+            IsPredefined="true"
+            AllowTabDocking="false"
+            IsDockVisible="true">
+            <HeaderRestorationInfo>Document 2</HeaderRestorationInfo>
+            <ContentRestorationInfo>Avalonia.Controls.Grid</ContentRestorationInfo>
+        </DockGroupParams>
+        <DockGroupParams
+            CanFloat="false"
+            CanClose="true"
+            GroupFullTypeName="NP.Ava.UniDock.DockItem"
+            DockId="RightTop1"
+            ParentDockId="StackDockGroup_1"
+            DefaultDockOrderInGroup="0"
+            AutoDestroy="false"
+            AutoInvisible="false"
+            ProducingUserDefinedWindowGroupId="RootGroup"
+            TheOrientation="Horizontal"
+            IsGroupLocked="false"
+            IsPredefined="true"
+            AllowTabDocking="false"
+            IsDockVisible="true">
+            <HeaderRestorationInfo>RightTop 1</HeaderRestorationInfo>
+            <ContentRestorationInfo>Avalonia.Controls.TextBlock</ContentRestorationInfo>
+        </DockGroupParams>
+        <DockGroupParams
+            CanFloat="true"
+            CanClose="true"
+            GroupFullTypeName="NP.Ava.UniDock.DockItem"
+            DockId="RightBottom1"
+            ParentDockId="RootDockGroup_20"
+            DefaultDockOrderInGroup="0"
+            AutoDestroy="false"
+            AutoInvisible="false"
+            ProducingUserDefinedWindowGroupId="RootGroup"
+            TheOrientation="Horizontal"
+            IsGroupLocked="false"
+            IsPredefined="true"
+            AllowTabDocking="false"
+            IsDockVisible="true">
+            <HeaderRestorationInfo>RightBottom 1</HeaderRestorationInfo>
+            <ContentRestorationInfo>Avalonia.Controls.TextBlock</ContentRestorationInfo>
+        </DockGroupParams>
+        <DockGroupParams
+            CanFloat="false"
+            CanClose="false"
+            GroupFullTypeName="NP.Ava.UniDock.RootDockGroup"
+            DockId="RootDockGroup_19"
+            ChildrenDockIds="Document2"
+            DefaultDockOrderInGroup="0"
+            AutoDestroy="false"
+            AutoInvisible="false"
+            ProducingUserDefinedWindowGroupId="RootGroup"
+            TheOrientation="Horizontal"
+            IsGroupLocked="false"
+            IsPredefined="false"
+            AllowTabDocking="false"
+            IsDockVisible="false" />
+        <DockGroupParams
+            CanFloat="false"
+            CanClose="false"
+            GroupFullTypeName="NP.Ava.UniDock.RootDockGroup"
+            DockId="RootDockGroup_20"
+            ChildrenDockIds="RightBottom1"
+            DefaultDockOrderInGroup="0"
+            AutoDestroy="false"
+            AutoInvisible="false"
+            ProducingUserDefinedWindowGroupId="RootGroup"
+            TheOrientation="Horizontal"
+            IsGroupLocked="false"
+            IsPredefined="false"
+            AllowTabDocking="false"
+            IsDockVisible="false" />
+        <DockGroupParams
+            CanFloat="false"
+            CanClose="false"
+            GroupFullTypeName="NP.Ava.UniDock.RootDockGroup"
+            DockId="RootDockGroup_21"
+            ChildrenDockIds="LeftTop1"
+            DefaultDockOrderInGroup="0"
+            AutoDestroy="false"
+            AutoInvisible="false"
+            ProducingUserDefinedWindowGroupId="RootGroup"
+            TheOrientation="Horizontal"
+            IsGroupLocked="false"
+            IsPredefined="false"
+            AllowTabDocking="false"
+            IsDockVisible="false" />
+    </ConnectedDockGroupParams>
+</DockManagerParams>
