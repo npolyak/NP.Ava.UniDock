@@ -711,20 +711,30 @@ namespace NP.Ava.UniDock
                                     {
                                         groupToInsertItemsInto = TabbedGroupFactory.Create();
 
-                                        int currentLeafObjIdx = currentGroup.DockChildren.IndexOf(currentDockGroupToInsertWithRespectTo!);
+                                        int currentLeafObjIdx = 
+                                                currentGroup
+                                                    .DockChildren
+                                                        .IndexOf(currentDockGroupToInsertWithRespectTo!);
                                         GridLength sizeCoeff = currentGroup.GetSizeCoeff(currentLeafObjIdx);
 
-                                        currentGroup.DockChildren?.Remove(currentDockGroupToInsertWithRespectTo!);
+                                        currentGroup
+                                                .DockChildren
+                                                ?.Remove(currentDockGroupToInsertWithRespectTo!);
 
-                                        currentGroup.DockChildren?.Insert(currentLeafObjIdx, groupToInsertItemsInto);
-                                        groupToInsertItemsInto.GroupOnlyById = currentGroup.GroupOnlyById;
-                                        groupToInsertItemsInto.ProducingUserDefinedWindowGroup = currentGroup.ProducingUserDefinedWindowGroup;
+                                        currentGroup
+                                                .DockChildren
+                                                    ?.Insert(currentLeafObjIdx, groupToInsertItemsInto);
+                                        groupToInsertItemsInto.GroupOnlyById = 
+                                                currentGroup.GroupOnlyById;
+                                        groupToInsertItemsInto.ProducingUserDefinedWindowGroup = 
+                                                currentGroup.ProducingUserDefinedWindowGroup;
 
                                         currentGroup.SetSizeCoeff(currentLeafObjIdx, sizeCoeff);
 
                                         currentDockGroupToInsertWithRespectTo?.CleanSelfOnRemove();
 
-                                        var additionaLeafItems = currentDockGroupToInsertWithRespectTo?.LeafItems;
+                                        var additionaLeafItems =
+                                                currentDockGroupToInsertWithRespectTo?.LeafItems;
 
                                         additionaLeafItems?.DoForEach(item => item.RemoveItselfFromParent());
 
@@ -818,7 +828,10 @@ namespace NP.Ava.UniDock
             RestoreDockManagerParamsFromStream(fileStream, restorePredefinedWindowsPositionParams);
         }
 
-        public void RestoreDockManagerParamsFromStream(Stream stream, bool restorePredefinedWindowsPositionParams = false)
+        public void RestoreDockManagerParamsFromStream
+        (
+            Stream stream, 
+            bool restorePredefinedWindowsPositionParams = false)
         {
             using StreamReader reader = new StreamReader(stream);
 
