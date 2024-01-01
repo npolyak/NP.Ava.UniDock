@@ -11,6 +11,6 @@
     <None Remove="Themes\**" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\NP.Avalonia.UniDock.csproj" />
+    <ProjectReference Include="..\..\src\NP.Ava.UniDock.csproj" />
   </ItemGroup>
 </Project>

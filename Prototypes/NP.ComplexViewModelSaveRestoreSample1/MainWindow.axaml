@@ -14,7 +14,7 @@
     <ResourceDictionary>
 		<np:DockManager x:Key="TheDockManager"/>
       <ResourceDictionary.MergedDictionaries>
-        <ResourceInclude Source="avares://NP.Avalonia.Visuals/Themes/Geometries.axaml"/>
+        <ResourceInclude Source="avares://NP.Ava.Visuals/Themes/Geometries.axaml"/>
       </ResourceDictionary.MergedDictionaries>
 		<DataTemplate x:Key="TestUserControlHeaderDataTemplate">
 			<TextBlock Text="StartingUC"/>
@@ -94,7 +94,7 @@
     </ResourceDictionary>
   </Window.Resources>
   <Window.Styles>
-    <StyleInclude Source="avares://NP.Avalonia.UniDock/Themes/DockStyles.axaml"/>
+    <StyleInclude Source="avares://NP.Ava.UniDock/Themes/DockStyles.axaml"/>
   </Window.Styles>
   <Grid DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
         RowDefinitions="Auto, *, Auto">
