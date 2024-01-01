@@ -12,11 +12,11 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using NP.Avalonia.Visuals;
-using NP.Avalonia.Visuals.Behaviors;
-using NP.Avalonia.Visuals.Controls;
-using NP.Avalonia.UniDock;
-using NP.Avalonia.UniDock.Serialization;
+using NP.Ava.Visuals;
+using NP.Ava.Visuals.Behaviors;
+using NP.Ava.Visuals.Controls;
+using NP.Ava.UniDock;
+using NP.Ava.UniDock.Serialization;
 using NP.Utilities;
 using System;
 using System.IO;
