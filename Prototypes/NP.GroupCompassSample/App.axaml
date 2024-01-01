@@ -3,10 +3,9 @@
              xmlns:np="https://np.com/visuals"
              x:Class="NP.GroupCompassSample.App">
     <Application.Styles>
-      <StyleInclude Source="avares://Avalonia.Themes.Default/Accents/BaseLight.xaml"/>
-      <StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml"/>
-      <StyleInclude Source="avares://NP.Avalonia.Visuals/Themes/CustomWindowStyles.axaml"/>
-      <StyleInclude Source="avares://NP.Avalonia.UniDock/Themes/DockStyles.axaml"/>
+      <SimpleTheme/>
+      <StyleInclude Source="avares://NP.Ava.Visuals/Themes/CustomWindowStyles.axaml"/>
+      <StyleInclude Source="avares://NP.Ava.UniDock/Themes/DockStyles.axaml"/>
 
       <Style Selector="np|FloatingWindow.MyFloatingWindow">
         <Setter Property="Title"
