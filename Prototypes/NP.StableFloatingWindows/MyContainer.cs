@@ -1,4 +1,4 @@
-﻿using NP.Avalonia.UniDock.Factories;
+﻿using NP.Ava.UniDock.Factories;
 using NP.IoCy;
 using NP.DependencyInjection.Interfaces;
 

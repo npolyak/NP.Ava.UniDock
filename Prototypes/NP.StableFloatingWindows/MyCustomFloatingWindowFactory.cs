@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls;
-using NP.Avalonia.UniDock;
-using NP.Avalonia.UniDock.Factories;
+using NP.Ava.UniDock;
+using NP.Ava.UniDock.Factories;
 
 namespace NP.StableFloatingWindows
 {
@@ -12,7 +12,7 @@ namespace NP.StableFloatingWindows
 
             FloatingWindow dockWindow = new FloatingWindow();
 
-            dockWindow.Classes = new Classes("PlainFloatingWindow", "MyFloatingWindow");
+            dockWindow.Classes.AddRange(new[] { "PlainFloatingWindow", "MyFloatingWindow" });
             dockWindow.TitleClasses = "WindowTitle";
 
             return dockWindow;
