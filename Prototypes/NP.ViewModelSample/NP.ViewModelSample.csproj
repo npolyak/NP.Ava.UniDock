@@ -5,11 +5,11 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup Condition="'$(Configuration)'=='Debug'">
-		<ProjectReference Include="..\..\src\NP.Avalonia.UniDock.csproj" />
+		<ProjectReference Include="..\..\src\NP.Ava.UniDock.csproj" />
 		<ProjectReference Include="..\..\SubModules\NP.IoCy\src\NP.IoCy.csproj" />
 	</ItemGroup>
 	<ItemGroup Condition="'$(Configuration)'=='Release'">
-		<PackageReference Include="NP.Avalonia.UniDock" Version="1.0.48" />
+		<PackageReference Include="NP.Ava.UniDock" Version="1.0.1" />
 		<PackageReference Include="NP.IoCy" Version="1.0.32"/>
 	</ItemGroup>
 </Project>
