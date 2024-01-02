@@ -14,12 +14,12 @@
     <np:DockManager x:Key="TheDockManager"/>
   </Window.Resources>
   <Window.Styles>
-    <StyleInclude Source="avares://NP.Avalonia.UniDock/Themes/DockStyles.axaml"/>
+    <StyleInclude Source="avares://NP.Ava.UniDock/Themes/DockStyles.axaml"/>
   </Window.Styles>
 
   <Grid RowDefinitions="Auto, *, Auto"
         Margin="5">
-    <ListBox Items="{Binding Path=DockItemsViewModels, Source={StaticResource TheDockManager}}"
+    <ListBox ItemsSource="{Binding Path=DockItemsViewModels, Source={StaticResource TheDockManager}}"
              Height="70">
       <ListBox.ItemTemplate>
         <DataTemplate>
