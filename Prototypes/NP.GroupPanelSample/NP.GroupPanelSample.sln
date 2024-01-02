@@ -9,15 +9,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{D257FF52-0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Utilities", "..\..\SubModules\NP.Utilities\src\NP.Utilities.csproj", "{16B0029E-C242-49F9-87B7-F0F92B7A32D4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Avalonia.Visuals", "..\..\SubModules\NP.Avalonia.Visuals\src\NP.Avalonia.Visuals.csproj", "{06657FCB-BA0E-4332-AAA4-870A87268DCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Ava.Visuals", "..\..\SubModules\NP.Ava.Visuals\src\NP.Ava.Visuals.csproj", "{06657FCB-BA0E-4332-AAA4-870A87268DCC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Concepts.Behaviors", "..\..\SubModules\NP.Concepts.Behaviors\src\NP.Concepts.Behaviors.csproj", "{647C0207-928E-46F0-B65F-3637E076889B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Avalonia.UniDock", "..\..\src\NP.Avalonia.UniDock.csproj", "{C1205A4C-3D8E-44FB-BB7A-65CF3C4C2693}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Ava.UniDock", "..\..\src\NP.Ava.UniDock.csproj", "{C1205A4C-3D8E-44FB-BB7A-65CF3C4C2693}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.DependencyInjection", "..\..\SubModules\NP.DependencyInjection\src\NP.DependencyInjection.csproj", "{1CDF2794-5372-4395-B8A7-70555CD36710}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Avalonia.UniDockService", "..\..\SubModules\NP.Avalonia.UniDockService\src\NP.Avalonia.UniDockService.csproj", "{60413C1D-1FCE-4B75-A418-D00BBA5AB018}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Ava.UniDockService", "..\..\SubModules\NP.Avalonia.UniDockService\src\NP.Ava.UniDockService.csproj", "{60413C1D-1FCE-4B75-A418-D00BBA5AB018}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.ViewModelInterfaces", "..\..\SubModules\NP.ViewModelInterfaces\src\NP.ViewModelInterfaces.csproj", "{219BBFB8-45E7-4E1F-A258-C0637022286F}"
 EndProject

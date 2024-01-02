@@ -1,8 +1,8 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using NP.Avalonia.UniDock;
-using NP.Avalonia.Visuals.Controls;
+using NP.Ava.UniDock;
+using NP.Ava.Visuals.Controls;
 using NP.Utilities;
 
 namespace NP.GroupPanelSample

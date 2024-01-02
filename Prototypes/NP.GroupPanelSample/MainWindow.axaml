@@ -14,13 +14,13 @@
   <Window.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
-        <ResourceInclude Source="avares://NP.Avalonia.Visuals/Themes/Geometries.axaml"/>
+        <ResourceInclude Source="avares://NP.Ava.Visuals/Themes/Geometries.axaml"/>
       </ResourceDictionary.MergedDictionaries>
       <np:DockManager x:Key="TheDockManager"/>
     </ResourceDictionary>
   </Window.Resources>
   <Window.Styles>
-    <StyleInclude Source="avares://NP.Avalonia.UniDock/Themes/DockStyles.axaml"/>
+    <StyleInclude Source="avares://NP.Ava.UniDock/Themes/DockStyles.axaml"/>
 
   </Window.Styles>
   <Grid Margin="10"
