@@ -321,7 +321,7 @@ namespace NP.Ava.UniDock
             if (IsAtContentInitState)
             {
                 var dataTemplate = 
-                    DockParent.GetResource<DataTemplate>(ContentTemplateResourceKey!);
+                    DockParent.GetResource<IDataTemplate>(ContentTemplateResourceKey!);
                 
                 if (dataTemplate != null)
                 {
@@ -337,7 +337,7 @@ namespace NP.Ava.UniDock
             if (IsAtHeaderContentInitState)
             {
                 var dataTemplate =
-                    DockParent.GetResource<DataTemplate>(HeaderContentTemplateResourceKey!);
+                    DockParent.GetResource<IDataTemplate>(HeaderContentTemplateResourceKey!);
 
                 if (dataTemplate != null)
                 {
@@ -379,14 +379,14 @@ namespace NP.Ava.UniDock
 
 
         #region ContentTemplate Styled Avalonia Property
-        public DataTemplate ContentTemplate
+        public IDataTemplate ContentTemplate
         {
             get { return GetValue(ContentTemplateProperty); }
             set { SetValue(ContentTemplateProperty, value); }
         }
 
-        public static readonly StyledProperty<DataTemplate> ContentTemplateProperty =
-            AvaloniaProperty.Register<DockItem, DataTemplate>
+        public static readonly StyledProperty<IDataTemplate> ContentTemplateProperty =
+            AvaloniaProperty.Register<DockItem, IDataTemplate>
             (
                 nameof(ContentTemplate)
             );
@@ -410,14 +410,14 @@ namespace NP.Ava.UniDock
 
 
         #region HeaderTemplate Styled Avalonia Property
-        public DataTemplate HeaderTemplate
+        public IDataTemplate HeaderTemplate
         {
             get { return GetValue(HeaderTemplateProperty); }
             set { SetValue(HeaderTemplateProperty, value); }
         }
 
-        public static readonly StyledProperty<DataTemplate> HeaderTemplateProperty =
-            AvaloniaProperty.Register<DockItem, DataTemplate>
+        public static readonly StyledProperty<IDataTemplate> HeaderTemplateProperty =
+            AvaloniaProperty.Register<DockItem, IDataTemplate>
             (
                 nameof(HeaderTemplate)
             );
