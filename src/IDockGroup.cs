@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Subjects;
+using Avalonia.Controls.Templates;
 
 namespace NP.Ava.UniDock
 {
@@ -301,7 +302,7 @@ namespace NP.Ava.UniDock
                     DockAttachedProperties
                         .IsDockVisibleProperty
                         .Changed
-                        .Subscribe(OnIsDockVisbleChanged);
+                        .Subscribe(OnIsDockVisibleChanged);
             }
         }
         public static IEnumerable<ILeafDockObj> GetLeafGroups(this IDockGroup dockGroup)
@@ -342,7 +343,7 @@ namespace NP.Ava.UniDock
             return dockGroup.GetLeafGroups().SelectMany(g => g.LeafItems);
         }
 
-        private static void OnIsDockVisbleChanged(AvaloniaPropertyChangedEventArgs<bool> args)
+        private static void OnIsDockVisibleChanged(AvaloniaPropertyChangedEventArgs<bool> args)
         {
             IDockGroup? dockGroup = args.Sender as IDockGroup;
 
@@ -360,7 +361,7 @@ namespace NP.Ava.UniDock
         }
 
         public static T? GetResource<T>(this IDockGroup? dockGroup, object resourceKey)
-            where T : class
+            where T : class, IDataTemplate
         {
             if (dockGroup == null)
                 return null;

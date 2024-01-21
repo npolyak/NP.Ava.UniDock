@@ -8,6 +8,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using Avalonia.Controls.Templates;
 
 namespace NP.Ava.UniDock
 {
@@ -128,13 +129,13 @@ namespace NP.Ava.UniDock
             if (vm.HeaderContentTemplateResourceKey != null)
             {
                 dockItem.HeaderTemplate =
-                    dockGroup.GetResource<DataTemplate>(vm.HeaderContentTemplateResourceKey)!;
+                    dockGroup.GetResource<IDataTemplate>(vm.HeaderContentTemplateResourceKey)!;
             }
 
             if (vm.ContentTemplateResourceKey != null)
             {
                 dockItem.ContentTemplate =
-                    dockGroup.GetResource<DataTemplate>(vm.ContentTemplateResourceKey)!;
+                    dockGroup.GetResource<IDataTemplate>(vm.ContentTemplateResourceKey)!;
             }
 
             if (dockItem.DockParent == null)
