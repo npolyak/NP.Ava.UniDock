@@ -14,7 +14,8 @@ namespace NP.ViewModelSample
 
         static MyContainer()
         {
-            var containerBuilder = new ContainerBuilder();
+            var containerBuilder = 
+                new ContainerBuilder();
 
 
             containerBuilder.RegisterType<IStackGroupFactory, StackGroupFactory>();
