@@ -16,7 +16,7 @@ then initialize the submodules
 
     git submodule update --init
 
-the choose any prototype project (e.g. Prototypes/NP.DataContextSample) from the Prototype folder, open its solution in Visual Studio 2022 and build.
+the choose any prototype project (e.g. Prototypes/NP.DataContextSample) from the Prototype folder, open its solution in Visual Studio 2022 and build (if one prototype is not building for some reason, try a different one).
 
 # Participating in the project
 Send me a request and I'll add you as a collaborator for the project. I rely heavily on the submodules, so if you want to update also dependent projects, **do not fork the project**. Just work in your own branch(es) and create the pull requests from your branches.
