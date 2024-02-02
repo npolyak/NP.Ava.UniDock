@@ -23,6 +23,7 @@ using NP.Concepts.Behaviors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Disposables;
 
 namespace NP.Ava.UniDock
 {
@@ -33,6 +34,8 @@ namespace NP.Ava.UniDock
         IActiveItem<DockItem>,
         IRecyclingTemplateContainer
     {
+
+        private readonly CompositeDisposable _disposables = new();
         public event Action<IDockGroup>? IsDockVisibleChangedEvent;
         
         IDictionary<IDockGroup, IDisposable> IDockGroup.ChildSubscriptions => 
@@ -133,20 +136,20 @@ namespace NP.Ava.UniDock
 
         public DockItem()
         {
-            this.GetObservable(IsActiveProperty)
-                .Subscribe(OnIsActiveInWindowChanged);
+            _disposables.Add(this.GetObservable(IsActiveProperty)
+                .Subscribe(OnIsActiveInWindowChanged));
 
-            this.GetObservable(DockAttachedProperties.IsDockVisibleProperty)
-                .Subscribe(OnIsDockVisibleChanged);
+            _disposables.Add(this.GetObservable(DockAttachedProperties.IsDockVisibleProperty)
+                .Subscribe(OnIsDockVisibleChanged));
 
-            this.GetObservable(ContentTemplateResourceKeyProperty)
-                .Subscribe(OnContentTemplateResourceKeyChanged!);
+            _disposables.Add(this.GetObservable(ContentTemplateResourceKeyProperty)
+                .Subscribe(OnContentTemplateResourceKeyChanged!));
 
-            this.GetObservable(HeaderContentTemplateResourceKeyProperty)
-                .Subscribe(OnHeaderContentTemplateResourceKeyChanged!);
+            _disposables.Add(this.GetObservable(HeaderContentTemplateResourceKeyProperty)
+                .Subscribe(OnHeaderContentTemplateResourceKeyChanged!));
 
-            this.GetObservable(DockAttachedProperties.TheDockManagerProperty)
-                .Subscribe(OnDockManagerChanged);
+            _disposables.Add(this.GetObservable(DockAttachedProperties.TheDockManagerProperty)
+                .Subscribe(OnDockManagerChanged));
         }
 
         public event Action<DockItem> DockItemDestroyedEvent;
@@ -442,13 +445,19 @@ namespace NP.Ava.UniDock
         public void Remove()
         {
             IDockGroup? parent = DockParent;
+            if (DockParent is ILogical logicalParent)
+            {
+                logicalParent.AttachedToLogicalTree -= _dockParent_AttachedToLogicalTree;
+            }
+            
+            _disposables.Dispose();
 
             IDockGroup topDockGroup = this.GetDockGroupRoot();
 
             RemoveEvent?.Invoke(this);
 
             parent?.Simplify();
-
+            
             DockStaticEvents.FirePossibleDockChangeHappenedInsideEvent(topDockGroup);
         }
 
