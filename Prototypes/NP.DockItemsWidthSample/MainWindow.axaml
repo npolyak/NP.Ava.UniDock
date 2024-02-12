@@ -1,0 +1,52 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:np="https://np.com/visuals"
+        xmlns:local="clr-namespace:NP.DockItemsWidthSample"
+        Width="700"
+        Height="700"
+        np:DockAttachedProperties.DockChildWindowOwner="{Binding RelativeSource={RelativeSource Self}}"
+        np:DockAttachedProperties.TheDockManager="{DynamicResource TheDockManager}"
+        x:Class="NP.DockItemsWidthSample.MainWindow"
+        Title="NP.DockItemsWidthSample">
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceInclude Source="avares://NP.Ava.Visuals/Themes/Geometries.axaml"/>
+			</ResourceDictionary.MergedDictionaries>
+			<np:DockManager x:Key="TheDockManager" 
+							ResizePreview="True"/>
+		</ResourceDictionary>
+	</Window.Resources>
+	<Window.Styles>
+		<StyleInclude Source="avares://NP.Ava.UniDock/Themes/DockStyles.axaml"/>
+	</Window.Styles>
+	<Grid Margin="10"
+		  DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+		  Background="Gray">
+		<np:RootDockGroup np:DockAttachedProperties.TheDockManager="{StaticResource TheDockManager}">
+			<np:StackDockGroup x:Name="TheStackGroup"
+							   TheOrientation="Horizontal"
+							   IsStableGroup="True"
+							   Margin="20"
+							   InitialSizeCoefficients="250 * 250">
+				<np:DockItem Header="DockItem1"
+							 DefaultDockGroupId="Group2"
+							 DefaultDockOrderInGroup="3">
+					<TextBlock Text="Dock 1"/>
+				</np:DockItem>
+				<np:DockItem Header="DockItem2"
+						 DefaultDockGroupId="Group2"
+						 DefaultDockOrderInGroup="3">
+					<TextBlock Text="Dock 2"/>
+				</np:DockItem>
+
+				<np:DockItem Header="DockItem3"
+					 DefaultDockGroupId="Group2"
+					 DefaultDockOrderInGroup="3">
+					<TextBlock Text="Dock 3"/>
+				</np:DockItem>
+			</np:StackDockGroup>
+		</np:RootDockGroup>
+	</Grid>
+</Window>

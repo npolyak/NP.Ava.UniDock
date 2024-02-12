@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "NP.DockItemsWidthSample": {
+      "commandName": "Project"
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "environmentVariables": {
+        "DISPLAY": "10.0.0.128:0.0",
+        "LIBGL_ALWAYS_INDIRECT": "1"
+      },
+      "distributionName": ""
+    }
+  }
+}
