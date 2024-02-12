@@ -41,7 +41,7 @@ namespace NP.Ava.UniDock
                     break;
                 case nameof(UseLayoutRounding):
                 case nameof(BorderThickness):
-                    this.SetFieldValue("_layoutThickness", null!, true);
+                    this.SetFieldValue("_layoutThickness", null!, true, typeof(ContentPresenter));
                     break;
             }
         }
