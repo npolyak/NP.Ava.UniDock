@@ -344,6 +344,11 @@ namespace NP.Ava.UniDock
         {
             SetNumberDockChildren();
 
+            if (_initSizeCoefficients != null)
+            {
+
+            }
+
             GridLength sizeCoeff = 
                ((_initSizeCoefficients != null) && (idx < _initSizeCoefficients.Length)) ? 
                                _initSizeCoefficients[idx] : (dockChild.InitialSizeCoeff != null) ? 
