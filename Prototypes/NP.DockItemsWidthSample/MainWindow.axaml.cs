@@ -17,8 +17,14 @@ namespace NP.DockItemsWidthSample
             this.AttachDevTools();
 #endif
             Closed += MainWindow_Closed;
+
+            DoSmthButton.Click += DoSmthButton_Click;
         }
 
+        private void DoSmthButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            
+        }
 
         private void MainWindow_Closed(object? sender, System.EventArgs e)
         {

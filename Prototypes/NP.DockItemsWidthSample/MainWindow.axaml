@@ -6,7 +6,6 @@
         Width="700"
         Height="700"
         np:DockAttachedProperties.DockChildWindowOwner="{Binding RelativeSource={RelativeSource Self}}"
-        np:DockAttachedProperties.TheDockManager="{DynamicResource Page1_DockManager}"
         x:Class="NP.DockItemsWidthSample.MainWindow"
         Title="NP.DockItemsWidthSample">
 	<Window.Resources>
@@ -14,42 +13,91 @@
 			<ResourceDictionary.MergedDictionaries>
 				<ResourceInclude Source="avares://NP.Ava.Visuals/Themes/Geometries.axaml"/>
 			</ResourceDictionary.MergedDictionaries>
+			<np:DockManager x:Key="Global_DockManager"
+							ResizePreview="True"/>
 			<np:DockManager x:Key="Page1_DockManager" 
+							SingleWindow="True"
+							ResizePreview="True"/>
+			<np:DockManager x:Key="Page2_DockManager"
 							SingleWindow="True"
 							ResizePreview="True"/>
 		</ResourceDictionary>
 	</Window.Resources>
 	<Window.Styles>
 		<StyleInclude Source="avares://NP.Ava.UniDock/Themes/DockStyles.axaml"/>
+		<Style Selector="np|DockItem">
+			<Setter Property="Tag"
+					Value="MyTag"/>
+		</Style>
 	</Window.Styles>
 	<Grid DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
 		  Margin="10"
 		  RowDefinitions="*,Auto">
-		<np:RootDockGroup x:Name="TheRootGroup" 
-						  np:DockAttachedProperties.TheDockManager="{StaticResource Page1_DockManager}">
-			<np:StackDockGroup x:Name="TheStackGroup"
-							   TheOrientation="Horizontal"
-							   IsStableGroup="True"
-							   Margin="20"
-							   InitialSizeCoefficients="250 * 250">
-				<np:DockItem Header="DockItem1"
-							 DefaultDockGroupId="Group2"
-							 DefaultDockOrderInGroup="3">
-					<TextBlock Text="Dock 1"/>
-				</np:DockItem>
-				<np:DockItem Header="DockItem2"
-						 DefaultDockGroupId="Group2"
-						 DefaultDockOrderInGroup="3">
-					<TextBlock Text="Dock 2"/>
-				</np:DockItem>
+		<np:RootDockGroup x:Name="GlobalRootGroup"
+						  np:DockAttachedProperties.TheDockManager="{StaticResource Global_DockManager}">
+			<np:TabbedDockGroup>
+				<np:DockItem Header="Panel 1">
+					<np:RootDockGroup x:Name="Page1_RootGroup"
+									  DockId="Page1_RootGroup"
+									  np:DockAttachedProperties.TheDockManager="{StaticResource Page1_DockManager}">
+						<np:StackDockGroup x:Name="TheStackGroup"
+										   TheOrientation="Horizontal"
+										   IsStableGroup="True"
+										   InitialSizeCoefficients="250 * 250">
+							<np:DockItem x:Name="DockItem1"
+										 Header="DockItem1"
+										 DefaultDockGroupId="Page1_RootGroup"
+										 DefaultDockOrderInGroup="0">
+								<TextBlock Text="Dock 1"/>
+							</np:DockItem>
+							<np:DockItem Header="DockItem2"
+										 DefaultDockGroupId="Page1_RootGroup"
+										 DefaultDockOrderInGroup="1">
+								<TextBlock Text="Dock 2"/>
+							</np:DockItem>
 
-				<np:DockItem x:Name="TheDockItem3" 
-							 Header="DockItem3"
-					 DefaultDockGroupId="Group2"
-					 DefaultDockOrderInGroup="3">
-					<TextBlock Text="Dock 3"/>
+							<np:DockItem x:Name="TheDockItem3"
+										 Header="DockItem3"
+										 DefaultDockGroupId="Page1_RootGroup"
+										 DefaultDockOrderInGroup="2">
+								<TextBlock Text="Dock 3"/>
+							</np:DockItem>
+						</np:StackDockGroup>
+					</np:RootDockGroup>
 				</np:DockItem>
-			</np:StackDockGroup>
+				<np:DockItem Header="Panel 2">
+					<np:RootDockGroup x:Name="Page2_RootGroup"
+									  DockId="Page2_RootGroup"
+									  np:DockAttachedProperties.TheDockManager="{StaticResource Page2_DockManager}">
+						<np:StackDockGroup x:Name="Page2_StackGroup"
+										   DockId="Page2_StackGroup"
+										   TheOrientation="Vertical"
+										   IsStableGroup="True">
+							<np:DockItem Header="DockItem4"
+										 DefaultDockGroupId="Page2_RootGroup"
+										 DefaultDockOrderInGroup="0">
+								<TextBlock Text="Dock 4"/>
+							</np:DockItem>
+							<np:DockItem Header="DockItem5"
+										 DefaultDockGroupId="Page2_RootGroup"
+										 DefaultDockOrderInGroup="1">
+								<TextBlock Text="Dock 5"/>
+							</np:DockItem>
+
+							<np:DockItem x:Name="TheDockItem6"
+										 Header="DockItem6"
+										 DefaultDockGroupId="Page2_RootGroup"
+										 DefaultDockOrderInGroup="2">
+								<TextBlock Text="Dock 6"/>
+							</np:DockItem>
+						</np:StackDockGroup>
+					</np:RootDockGroup>
+				</np:DockItem>
+			</np:TabbedDockGroup>
 		</np:RootDockGroup>
+		<Button x:Name="DoSmthButton"
+				Content="Do Smth"
+				Grid.Row="1"
+				HorizontalAlignment="Right"/>
 	</Grid>
 </Window>
