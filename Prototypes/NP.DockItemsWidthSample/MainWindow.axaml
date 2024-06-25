@@ -6,7 +6,7 @@
         Width="700"
         Height="700"
         np:DockAttachedProperties.DockChildWindowOwner="{Binding RelativeSource={RelativeSource Self}}"
-        np:DockAttachedProperties.TheDockManager="{DynamicResource TheDockManager}"
+        np:DockAttachedProperties.TheDockManager="{DynamicResource Page1_DockManager}"
         x:Class="NP.DockItemsWidthSample.MainWindow"
         Title="NP.DockItemsWidthSample">
 	<Window.Resources>
@@ -14,7 +14,7 @@
 			<ResourceDictionary.MergedDictionaries>
 				<ResourceInclude Source="avares://NP.Ava.Visuals/Themes/Geometries.axaml"/>
 			</ResourceDictionary.MergedDictionaries>
-			<np:DockManager x:Key="TheDockManager" 
+			<np:DockManager x:Key="Page1_DockManager" 
 							SingleWindow="True"
 							ResizePreview="True"/>
 		</ResourceDictionary>
@@ -26,7 +26,7 @@
 		  Margin="10"
 		  RowDefinitions="*,Auto">
 		<np:RootDockGroup x:Name="TheRootGroup" 
-						  np:DockAttachedProperties.TheDockManager="{StaticResource TheDockManager}">
+						  np:DockAttachedProperties.TheDockManager="{StaticResource Page1_DockManager}">
 			<np:StackDockGroup x:Name="TheStackGroup"
 							   TheOrientation="Horizontal"
 							   IsStableGroup="True"

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup Condition="'$(Configuration)'=='Debug'">
@@ -11,5 +11,8 @@
 	<ItemGroup Condition="'$(Configuration)'=='Release'">
 		<PackageReference Include="NP.Ava.UniDock" Version="1.0.1" />
 		<PackageReference Include="NP.IoCy" Version="1.0.32" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Avalonia.Desktop" Version="11.0.10" />
 	</ItemGroup>
 </Project>

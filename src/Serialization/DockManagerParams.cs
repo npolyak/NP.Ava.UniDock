@@ -11,6 +11,7 @@
 
 using Avalonia.Controls;
 using Avalonia.VisualTree;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using NP.Utilities;
 using System.Collections.Generic;
 using System.Linq;
@@ -232,23 +233,27 @@ namespace NP.Ava.UniDock.Serialization
                 dm.ShowOwnersAndWindow(dmp, wp.WindowId!);
             }
 
-            // set the groups
-            foreach(Window w in dm.AllWindows)
-            {
-                if (w is FloatingWindow dw)
-                {
-                    string dockId = dw.TheDockGroup.DockId;
+            //// set the groups
+            //foreach(Window w in dm.AllWindows)
+            //{
+            //    if (w is FloatingWindow dw)
+            //    {
+            //        string dockId = dw.TheDockGroup.DockId;
 
-                    dm.BuildGroup(dmp, dockId, dockItems);
-                }
-                else
-                {
-                    var winGroups = 
-                        w.GetVisualDescendants().OfType<IDockGroup>().ToList();
+            //        dm.BuildGroup(dmp, dockId, dockItems);
+            //    }
+            //    else
+            //    {
+            //        var winGroups =
+            //            w.GetVisualDescendants().OfType<IDockGroup>().ToList();
 
-                    winGroups.DoForEach(g => dm.BuildGroup(dmp, g.DockId, dockItems));
-                }
-            }
+            //        winGroups.DoForEach(g => dm.BuildGroup(dmp, g.DockId, dockItems));
+            //    }
+            //}
+
+            var rootGroups = dm.ConnectedGroups.OfType<RootDockGroup>().ToList();
+
+            rootGroups.DoForEach(g => dm.BuildGroup(dmp, g.DockId, dockItems));
 
             // set the coefficients for the DockStackGroups
             foreach(var group in dm.ConnectedGroups)

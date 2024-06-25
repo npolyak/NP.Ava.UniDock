@@ -530,7 +530,14 @@ namespace NP.Ava.UniDock
 
         public void SetSizeCoefficient(int idx, GridLength coeff)
         {
-            _sizeCoefficients[idx] = coeff;
+            if (_sizeCoefficients.Count <= idx)
+            {
+                _sizeCoefficients.Insert(idx, coeff);
+            }
+            else
+            {
+                _sizeCoefficients[idx] = coeff;
+            }
 
             int internalIdx = GetInternalIdx(idx);
 
