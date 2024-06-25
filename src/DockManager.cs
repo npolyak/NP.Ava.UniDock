@@ -41,6 +41,8 @@ namespace NP.Ava.UniDock
         // To be used in the future when multiple DockManagers become available
         public string? Id { get; set; }
 
+        private string? TmpRestorationStr { get; set; }
+
         public bool ResizePreview
         {
             get => TheDockSeparatorFactory!.ResizePreview;
@@ -181,6 +183,7 @@ namespace NP.Ava.UniDock
             }
         }
 
+        public bool SingleWindow { get; set; } = false;
 
         private IList<IDockGroup> _connectedGroups = new ObservableCollection<IDockGroup>();
         public IEnumerable<IDockGroup> ConnectedGroups => _connectedGroups;
@@ -767,6 +770,10 @@ namespace NP.Ava.UniDock
                         }
                         default:
                         {
+                            if ((currentDock == null) && SingleWindow)
+                            {
+                                this.RestoreFromTmpStr();
+                            }
                             break;
                         }
                     }
@@ -792,12 +799,20 @@ namespace NP.Ava.UniDock
             }
         }
 
-        public void SaveDockManagerParamsToStream(Stream stream)
+        public string SaveDockManagerParamsToStr()
         {
             var dockManagerParams = this.ToParams();
 
             string serializationStr =
                 XmlSerializationUtils.Serialize(dockManagerParams);
+
+            return serializationStr;
+        }
+
+        public void SaveDockManagerParamsToStream(Stream stream)
+        {
+            string serializationStr =
+                SaveDockManagerParamsToStr();
 
             using StreamWriter writer = new StreamWriter(stream);
 
@@ -810,11 +825,16 @@ namespace NP.Ava.UniDock
         {
             using FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
             SaveDockManagerParamsToStream(fileStream);
+        } 
+
+        public void SaveToTmpStr()
+        {
+            TmpRestorationStr = SaveDockManagerParamsToStr();
         }
 
         public void RestoreFromFile
         (
-            string filePath, 
+            string filePath,
             bool restorePredefinedWindowsPositionParams = false)
         {
 
@@ -826,6 +846,23 @@ namespace NP.Ava.UniDock
             using FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
 
             RestoreDockManagerParamsFromStream(fileStream, restorePredefinedWindowsPositionParams);
+        }
+
+        public void RestoreFromStr(string str, bool restorePredefinedWindowsPositionParams = false)
+        {
+            using MemoryStream memoryStream = str.ToMemoryStream();
+
+            RestoreDockManagerParamsFromStream(memoryStream, restorePredefinedWindowsPositionParams);
+        }
+
+        public void RestoreFromTmpStr(bool restorePredefinedWindowsPositionParams = false)
+        {
+            if (TmpRestorationStr.IsNullOrEmpty())
+                return;
+
+            RestoreFromStr(TmpRestorationStr, restorePredefinedWindowsPositionParams);
+
+            TmpRestorationStr = null;
         }
 
         public void RestoreDockManagerParamsFromStream

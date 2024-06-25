@@ -188,6 +188,11 @@ namespace NP.Ava.UniDock
 
                 DockAttachedProperties.SetDockChildWindowOwner(dockWindow, ownerWindow);
 
+                if (dockManager.SingleWindow)
+                {
+                    dockManager.SaveToTmpStr();
+                }
+
                 // remove from the current items
                 _draggedDockGroup?.RemoveItselfFromParent();
 
@@ -200,8 +205,12 @@ namespace NP.Ava.UniDock
 
                 dockWindow.Width = _draggedDockGroup.FloatingSize.X;
                 dockWindow.Height = _draggedDockGroup.FloatingSize.Y;
-                dockWindow.TheDockGroup.DockChildren.Add(_draggedDockGroup!);
- 
+
+                if (!dockManager.MultipleWindows)
+                {
+                    dockWindow.TheDockGroup.DockChildren.Add(_draggedDockGroup!);
+                }
+
                 ClearHandlers(sender);
             }
             finally

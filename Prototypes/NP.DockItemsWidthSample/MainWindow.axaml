@@ -15,16 +15,18 @@
 				<ResourceInclude Source="avares://NP.Ava.Visuals/Themes/Geometries.axaml"/>
 			</ResourceDictionary.MergedDictionaries>
 			<np:DockManager x:Key="TheDockManager" 
+							MultipleWindows="False"
 							ResizePreview="True"/>
 		</ResourceDictionary>
 	</Window.Resources>
 	<Window.Styles>
 		<StyleInclude Source="avares://NP.Ava.UniDock/Themes/DockStyles.axaml"/>
 	</Window.Styles>
-	<Grid Margin="10"
-		  DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
-		  Background="Gray">
-		<np:RootDockGroup np:DockAttachedProperties.TheDockManager="{StaticResource TheDockManager}">
+	<Grid DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+		  Margin="10"
+		  RowDefinitions="*,Auto">
+		<np:RootDockGroup x:Name="TheRootGroup" 
+						  np:DockAttachedProperties.TheDockManager="{StaticResource TheDockManager}">
 			<np:StackDockGroup x:Name="TheStackGroup"
 							   TheOrientation="Horizontal"
 							   IsStableGroup="True"
@@ -41,12 +43,26 @@
 					<TextBlock Text="Dock 2"/>
 				</np:DockItem>
 
-				<np:DockItem Header="DockItem3"
+				<np:DockItem x:Name="TheDockItem3" 
+							 Header="DockItem3"
 					 DefaultDockGroupId="Group2"
 					 DefaultDockOrderInGroup="3">
 					<TextBlock Text="Dock 3"/>
 				</np:DockItem>
 			</np:StackDockGroup>
 		</np:RootDockGroup>
+
+		<StackPanel Orientation="Horizontal"
+					Grid.Row="1">
+
+			<Button x:Name="SaveLayoutButton"
+					HorizontalAlignment="Right"
+					Margin="10,0,10,0"
+					Content="Save Layout"/>
+			<Button x:Name="RestoreLayoutButton"
+					HorizontalAlignment="Right"
+					Margin="10,0,0,0"
+					Content="Restore Layout"/>
+		</StackPanel>
 	</Grid>
 </Window>
