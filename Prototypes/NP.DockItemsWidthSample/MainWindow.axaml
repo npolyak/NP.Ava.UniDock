@@ -15,7 +15,7 @@
 				<ResourceInclude Source="avares://NP.Ava.Visuals/Themes/Geometries.axaml"/>
 			</ResourceDictionary.MergedDictionaries>
 			<np:DockManager x:Key="TheDockManager" 
-							MultipleWindows="False"
+							SingleWindow="True"
 							ResizePreview="True"/>
 		</ResourceDictionary>
 	</Window.Resources>
@@ -51,18 +51,5 @@
 				</np:DockItem>
 			</np:StackDockGroup>
 		</np:RootDockGroup>
-
-		<StackPanel Orientation="Horizontal"
-					Grid.Row="1">
-
-			<Button x:Name="SaveLayoutButton"
-					HorizontalAlignment="Right"
-					Margin="10,0,10,0"
-					Content="Save Layout"/>
-			<Button x:Name="RestoreLayoutButton"
-					HorizontalAlignment="Right"
-					Margin="10,0,0,0"
-					Content="Restore Layout"/>
-		</StackPanel>
 	</Grid>
 </Window>

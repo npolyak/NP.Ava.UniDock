@@ -206,7 +206,7 @@ namespace NP.Ava.UniDock
                 dockWindow.Width = _draggedDockGroup.FloatingSize.X;
                 dockWindow.Height = _draggedDockGroup.FloatingSize.Y;
 
-                if (!dockManager.MultipleWindows)
+                if (dockManager.SingleWindow)
                 {
                     dockWindow.TheDockGroup.DockChildren.Add(_draggedDockGroup!);
                 }
