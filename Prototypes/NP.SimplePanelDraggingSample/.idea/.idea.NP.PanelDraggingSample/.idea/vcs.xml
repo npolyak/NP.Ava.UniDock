@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/../.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../SubModules/NP.Ava.Visuals" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../SubModules/NP.Avalonia.UniDockService" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../SubModules/NP.Concepts.Behaviors" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../SubModules/NP.DependencyInjection" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../SubModules/NP.IoC.CommonImplementations" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../SubModules/NP.IoCy" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../SubModules/NP.Utilities" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../SubModules/NP.ViewModelInterfaces" vcs="Git" />
+  </component>
+</project>
