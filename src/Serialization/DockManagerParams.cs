@@ -10,8 +10,6 @@
 // products that use it.
 
 using Avalonia.Controls;
-using Avalonia.VisualTree;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using NP.Utilities;
 using System.Collections.Generic;
 using System.Linq;

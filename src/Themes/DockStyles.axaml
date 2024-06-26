@@ -780,6 +780,8 @@
 			Value="White"/>
     <Setter Property="DataContext"
             Value="{Binding Path=DockContext, RelativeSource={RelativeSource Mode=Self}}"/>
+	<Setter Property="np:ClassesBehavior.TheClasses"
+			Value="{Binding Path=ItemPresenterClasses}"/>
     <Setter Property="HeaderBackground"
             Value="{StaticResource DockHeaderBrush}"/>
     <Setter Property="HeaderForeground"

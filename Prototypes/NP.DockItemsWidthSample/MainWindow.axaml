@@ -25,9 +25,15 @@
 	</Window.Resources>
 	<Window.Styles>
 		<StyleInclude Source="avares://NP.Ava.UniDock/Themes/DockStyles.axaml"/>
-		<Style Selector="np|DockItem">
-			<Setter Property="Tag"
-					Value="MyTag"/>
+
+		<Style Selector="np|DockItemPresenter[IsActive=True].CustomDockItem">
+			<Setter Property="HeaderBackground"
+					Value="Red"/>
+
+		</Style>
+		<Style Selector="np|DockItemPresenter[IsFullyActive=True].CustomDockItem">
+			<Setter Property="HeaderBackground"
+					Value="Red"/>
 		</Style>
 	</Window.Styles>
 	<Grid DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
@@ -46,6 +52,7 @@
 										   InitialSizeCoefficients="250 * 250">
 							<np:DockItem x:Name="DockItem1"
 										 Header="DockItem1"
+										 ItemPresenterClasses="CustomDockItem"
 										 DefaultDockGroupId="Page1_RootGroup"
 										 DefaultDockOrderInGroup="0">
 								<TextBlock Text="Dock 1"/>

@@ -67,7 +67,6 @@ namespace NP.Ava.UniDock
 
         public IRecyclingDataTemplate? RecyclingDataTemplate { get; set; }
 
-
         Control? _oldChild = null;
         public Control? OldChild 
         { 
@@ -569,5 +568,21 @@ namespace NP.Ava.UniDock
         public static readonly AttachedProperty<bool> AllowCenterDockingProperty =
             DockAttachedProperties.AllowCenterDockingProperty.AddOwner<DockItem>();
         #endregion AllowCenterDocking Styled Avalonia Property
+
+
+        #region ItemPresenterClasses Styled Avalonia Property
+        public string ItemPresenterClasses
+        {
+            get { return GetValue(ItemPresenterClassesProperty); }
+            set { SetValue(ItemPresenterClassesProperty, value); }
+        }
+
+        public static readonly StyledProperty<string> ItemPresenterClassesProperty =
+            AvaloniaProperty.Register<DockItem, string>
+            (
+                nameof(ItemPresenterClasses)
+            );
+        #endregion ItemPresenterClasses Styled Avalonia Property
+
     }
 }
