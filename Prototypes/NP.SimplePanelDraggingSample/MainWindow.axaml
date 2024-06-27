@@ -1,15 +1,19 @@
-<Window xmlns="https://github.com/avaloniaui"
+<np:CustomWindow xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:np="https://np.com/visuals"
         xmlns:local="clr-namespace:NP.SimplePanelDraggingSample"
         Width="700"
         Height="700"
+        Classes="PlainCustomWindow"
         x:Class="NP.SimplePanelDraggingSample.MainWindow"
         Title="NP.DataContextSample">
         <Grid Background="White"
               HorizontalAlignment="Stretch"
-              VerticalAlignment="Stretch">
-            
+              VerticalAlignment="Stretch"
+              RowDefinitions="Auto,*">
+            <Grid x:Name="DraggableHeader"
+                  Height="50"
+                  Background="Coral"/>
         </Grid>
-</Window>
+</np:CustomWindow>
