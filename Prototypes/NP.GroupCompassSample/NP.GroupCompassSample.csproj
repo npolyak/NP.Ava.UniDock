@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
@@ -9,6 +9,9 @@
     <Compile Remove="Themes\**" />
     <EmbeddedResource Remove="Themes\**" />
     <None Remove="Themes\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia.Desktop" Version="11.0.10" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\NP.Ava.UniDock.csproj" />
