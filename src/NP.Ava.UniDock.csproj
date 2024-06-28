@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
 		<PackageId>NP.Ava.UniDock</PackageId>
-		<PackageVersion>1.0.12</PackageVersion>
+		<PackageVersion>1.0.13</PackageVersion>
 		<Authors>Nick Polyak, Ph. D.</Authors>
 		<Company>AWebPros</Company>
 		<Description>UniDock powerful multiplatform docking framework</Description>
@@ -27,8 +27,8 @@
 		<ProjectReference Include="$(SolutionDir)..\..\SubModules\NP.DependencyInjection\src\NP.DependencyInjection.csproj" />
 	</ItemGroup>
 	<ItemGroup Condition="'$(Configuration)'=='Release'">
-		<PackageReference Include="NP.Ava.Visuals" Version="1.0.22" />
-		<PackageReference Include="NP.Ava.UniDockService" Version="1.0.3" />
+		<PackageReference Include="NP.Ava.Visuals" Version="1.0.23" />
+		<PackageReference Include="NP.Ava.UniDockService" Version="1.0.4" />
 		<PackageReference Include="NP.DependencyInjection" Version="1.0.10" />
 	</ItemGroup>
 
