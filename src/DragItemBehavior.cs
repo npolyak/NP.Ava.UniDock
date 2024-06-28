@@ -90,7 +90,7 @@ namespace NP.Ava.UniDock
                 return;
             }
             
-            CurrentScreenPointBehavior.Capture(itemsContainer);
+            CurrentScreenPointBehavior.Capture(itemsContainer, e);
 
             if (CurrentScreenPointBehavior.CapturedControl != itemsContainer)
                 return;
@@ -172,7 +172,7 @@ namespace NP.Ava.UniDock
             FloatingWindow dockWindow;
             try
             {
-                CurrentScreenPointBehavior.ReleaseCapture();
+                CurrentScreenPointBehavior.ReleaseCapture(e);
 
                 floatingWindow?.SetCloseIsNotAllowed();
 
@@ -186,7 +186,10 @@ namespace NP.Ava.UniDock
                 dockWindow.ProducingUserDefinedWindowGroup = 
                     _draggedDockGroup.ProducingUserDefinedWindowGroup;
 
-                dockWindow.SetMovePtr();
+                if (OSUtils.IsWindows)
+                {
+                    dockWindow.SetMovePtr();
+                }
 
                 DockAttachedProperties.SetTheDockManager(dockWindow, dockManager);
 
@@ -208,6 +211,27 @@ namespace NP.Ava.UniDock
                 dockWindow.TheDockGroup.DockChildren.Add(_draggedDockGroup!);
 
                 ClearHandlers(sender);
+
+                if (!OSUtils.IsWindows)
+                {
+
+                    void ResetFocusToNewWindow(object? sender, PointerEventArgs e)
+                    {
+                        if (dockWindow?.IsLoaded != true)
+                        {
+                            return;
+                        }
+
+                        CurrentScreenPointBehavior.ReleaseCapture(e);
+
+                        itemsContainer.PointerMoved -= ResetFocusToNewWindow;
+
+                        dockWindow.InitialSetup(e);
+                    }
+
+                    itemsContainer.PointerMoved -= ResetFocusToNewWindow;
+                    itemsContainer.PointerMoved += ResetFocusToNewWindow;
+                }
             }
             finally
             {
@@ -236,5 +260,6 @@ namespace NP.Ava.UniDock
 
             dockWindow.ShowDockWindow();
         }
+
     }
 }

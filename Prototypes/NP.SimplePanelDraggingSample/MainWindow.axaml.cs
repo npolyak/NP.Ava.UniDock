@@ -52,11 +52,10 @@ namespace NP.SimplePanelDraggingSample
         {
             Point2D currentMousePoint = e.GetPosition(DraggableHeader).ToPoint2D();
 
-            if (
-                currentMousePoint
-                .Minus(_startMousePoint!)
-                .ToAbs()
-                .Less(PointHelper.MinimumDragDistance).Any)
+            if ( currentMousePoint
+                    .Minus(_startMousePoint!)
+                    .ToAbs()
+                    .Less(PointHelper.MinimumDragDistance).Any )
             {
                 return;
             }
@@ -78,7 +77,6 @@ namespace NP.SimplePanelDraggingSample
 
             DraggableHeader.PointerMoved += AnotherDraggableHeaderOnPointerMoved;
             
-
             _customWindow.Closed += CustomWindowOnClosed;
 
 

@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reactive;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace NP.Ava.UniDock
@@ -254,16 +255,55 @@ namespace NP.Ava.UniDock
         public void SetMovePtr()
         {
             SetInitialPosition();
-            this.Activated += CustomWindow_Activated!;
+
+            if (OSUtils.IsWindows)
+            {
+                this.Activated += CustomWindow_Activated!;
+            }
+        }
+
+        public void InitialSetup(PointerEventArgs e)
+        {
+            if (this.HeaderControl != null)
+            {
+                CurrentScreenPointBehavior.Capture(HeaderControl, e);
+                this.HeaderControl.PointerMoved += SetUpOnPointerMoved;
+            }
+        }
+
+        private void SetUpOnPointerMoved(object? sender, PointerEventArgs e)
+        {
+            this.MinDistanceToZero();
+            this.HeaderControl.PointerReleased += OnPointerReleasedAtInitStage;
+            this.SetDragWindowOnMovePointer(e);
+            this.HeaderControl.PointerMoved -= SetUpOnPointerMoved;
+        }
+
+        private void OnPointerReleasedAtInitStage(object? sender, PointerReleasedEventArgs e)
+        {
+            this.HeaderControl.PointerMoved -= SetUpOnPointerMoved;
+            this.HeaderControl.PointerReleased -= OnPointerReleasedAtInitStage;
+            CurrentScreenPointBehavior.ReleaseCapture(e);
+            MinDistanceToDefault();
+            SetDragOnMovePointer(e);
         }
 
         private async void CustomWindow_Activated(object sender, EventArgs e)
         {
             this.Activated -= CustomWindow_Activated!;
-            SetInitialPosition();
-            SetDragOnMovePointer();
+            await SetInitialParams(true);
+        }
 
-            await Task.Delay(200);
+        private async Task SetInitialParams(bool setPtr)
+        {
+            SetInitialPosition();
+
+            if (setPtr)
+            {
+                SetDragOnMovePointer(null);
+
+                await Task.Delay(200);
+            }
 
             TheDockManager?.SetGroups();
         }
@@ -275,13 +315,13 @@ namespace NP.Ava.UniDock
             Position = StartWindowPosition;
         }
 
-        protected override void SetDragOnMovePointer()
+        protected override void SetDragOnMovePointer(PointerEventArgs e)
         {
             TheDockManager!.DraggedWindow = this;
 
-            CurrentScreenPointBehavior.Capture(HeaderControl);
+            CurrentScreenPointBehavior.Capture(HeaderControl, e);
 
-            base.SetDragOnMovePointer();
+            base.SetDragOnMovePointer(e);
         }
 
         protected override void OnPointerReleased(object sender, PointerReleasedEventArgs e)
