@@ -1,13 +1,11 @@
 using System;
 using System.Linq;
-using Avalonia;
+using System.Runtime.InteropServices;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
-using Avalonia.Interactivity;
 using Avalonia.VisualTree;
 using NP.Ava.Visuals;
-using NP.Ava.Visuals.Behaviors;
 using NP.Ava.Visuals.Controls;
 using NP.Utilities;
 
@@ -35,6 +33,8 @@ namespace NP.SimplePanelDraggingSample
         {
             InitializeComponent();
 
+            var runtimeId = RuntimeInformation.RuntimeIdentifier;
+
             DraggableHeader.PointerPressed += OnPointerPressed;
         }
 
@@ -47,9 +47,7 @@ namespace NP.SimplePanelDraggingSample
             DraggableHeader.PointerMoved += OnPointerMoved;
 
         }
-
-        private bool _afterLoaded = false;
-
+        
         private void OnPointerMoved(object? sender, PointerEventArgs e)
         {
             Point2D currentMousePoint = e.GetPosition(DraggableHeader).ToPoint2D();
@@ -64,8 +62,7 @@ namespace NP.SimplePanelDraggingSample
             }
 
             //var positionInScreen = this.PointToScreen(e.GetPosition())
-
-            _afterLoaded = false;
+            
             e.Pointer.Capture(null);
 
             DraggableHeader.PointerMoved -= OnPointerMoved;
@@ -80,14 +77,7 @@ namespace NP.SimplePanelDraggingSample
             };
 
             DraggableHeader.PointerMoved += AnotherDraggableHeaderOnPointerMoved;
-
-            _customWindow.Loaded += CustomWindowOnLoaded;
-
-            _customWindow.Activated += CustomWindowOnActivated;
-
-            _customWindow.Initialized += CustomWindowOnInitialized;
-
-            _customWindow.Opened += CustomWindowOnOpened;
+            
 
             _customWindow.Closed += CustomWindowOnClosed;
 
@@ -97,7 +87,7 @@ namespace NP.SimplePanelDraggingSample
 
         private void AnotherDraggableHeaderOnPointerMoved(object? sender, PointerEventArgs e)
         {
-            if (!_afterLoaded || _customWindow == null)
+            if (_customWindow?.IsLoaded != true)
             {
                 return;
             }
@@ -111,9 +101,6 @@ namespace NP.SimplePanelDraggingSample
                 return;
             
             DraggableHeader.PointerMoved -= AnotherDraggableHeaderOnPointerMoved;
-            
-            //headerControl.PointerPressed += HeaderControlOnPointerPressed;
-            //headerControl.PointerEntered += HeaderControlOnPointerEntered;
 
             headerControl.PointerMoved += CustomWindowOnPointerMoved;
             headerControl.PointerReleased += HeaderControlOnPointerReleased;
@@ -131,51 +118,10 @@ namespace NP.SimplePanelDraggingSample
             _customWindow.SetDragWindowOnMovePointer(e);
         }
 
-        private void HeaderControlOnPointerEntered(object? sender, PointerEventArgs e)
-        {
-
-        }
-
 
         private void CustomWindowOnClosed(object? sender, EventArgs e)
         {
             _customWindow = null;
-        }
-
-        private void CustomWindowOnOpened(object? sender, EventArgs e)
-        {
-            
-        }
-
-        private void CustomWindowOnInitialized(object? sender, EventArgs e)
-        {
-            
-        }
-
-        private void CustomWindowOnPointerEntered(object? sender, PointerEventArgs e)
-        {
-            
-        }
-
-        private void CustomWindowOnActivated(object? sender, EventArgs e)
-        {
-            
-        }
-
-        private void CustomWindowOnLoaded(object? sender, RoutedEventArgs e)
-        {
-
-
-            _afterLoaded = true;
-
-            //CurrentScreenPointBehavior.Capture(headerControl);
-
-            //headerControl.AddHandler(PointerMovedEvent, HeaderControlOnPointerMoved, RoutingStrategies.Tunnel, true );
-        }
-
-        private void HeaderControlOnPointerMoved(object? sender, PointerEventArgs e)
-        {
-            
         }
     }
 }
