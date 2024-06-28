@@ -214,6 +214,7 @@ namespace NP.Ava.UniDock
 
                 if (!OSUtils.IsWindows)
                 {
+                    CurrentScreenPointBehavior.Capture(itemsContainer, e);
 
                     void ResetFocusToNewWindow(object? sender, PointerEventArgs e)
                     {
@@ -228,7 +229,7 @@ namespace NP.Ava.UniDock
 
                         dockWindow.InitialSetup(e);
                     }
-
+                    dockWindow.SetInitialPosition();
                     itemsContainer.PointerMoved -= ResetFocusToNewWindow;
                     itemsContainer.PointerMoved += ResetFocusToNewWindow;
                 }

@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reactive;
+using System.Reflection.Metadata;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
@@ -271,12 +272,16 @@ namespace NP.Ava.UniDock
             }
         }
 
-        private void SetUpOnPointerMoved(object? sender, PointerEventArgs e)
+        private async void SetUpOnPointerMoved(object? sender, PointerEventArgs e)
         {
             this.MinDistanceToZero();
             this.HeaderControl.PointerReleased += OnPointerReleasedAtInitStage;
             this.SetDragWindowOnMovePointer(e);
             this.HeaderControl.PointerMoved -= SetUpOnPointerMoved;
+            
+            await Task.Delay(200);
+
+            TheDockManager?.SetGroups();
         }
 
         private void OnPointerReleasedAtInitStage(object? sender, PointerReleasedEventArgs e)
@@ -291,24 +296,16 @@ namespace NP.Ava.UniDock
         private async void CustomWindow_Activated(object sender, EventArgs e)
         {
             this.Activated -= CustomWindow_Activated!;
-            await SetInitialParams(true);
-        }
-
-        private async Task SetInitialParams(bool setPtr)
-        {
             SetInitialPosition();
 
-            if (setPtr)
-            {
-                SetDragOnMovePointer(null);
+            SetDragOnMovePointer(null);
 
-                await Task.Delay(200);
-            }
+            await Task.Delay(200);
 
             TheDockManager?.SetGroups();
         }
 
-        private void SetInitialPosition()
+        public void SetInitialPosition()
         {
             StartPointerPosition = CurrentScreenPointBehavior.CurrentScreenPointValue.ToPixelPoint();
             StartWindowPosition = StartPointerPosition - new PixelPoint(60, 10);
