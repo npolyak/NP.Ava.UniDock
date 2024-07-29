@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
 		<PackageId>NP.Ava.UniDock</PackageId>
-		<PackageVersion>1.0.13</PackageVersion>
+		<PackageVersion>1.0.14</PackageVersion>
 		<Authors>Nick Polyak, Ph. D.</Authors>
 		<Company>AWebPros</Company>
 		<Description>UniDock powerful multiplatform docking framework</Description>
