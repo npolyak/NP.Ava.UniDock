@@ -157,6 +157,11 @@ namespace NP.Ava.UniDock
                 return;
             }
 
+            if (dockManager.DragDropWithinSingleWindow)
+            {
+                return;
+            }
+
             if (dockManager.SingleWindow)
             {
                 dockManager.SaveToTmpStr();

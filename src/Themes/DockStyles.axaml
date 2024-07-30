@@ -692,11 +692,11 @@
 					<Grid x:Name="PART_OverlayWindowHolder" 
 						  Grid.Row="1"
                           Grid.Column="1"
-						  np:OverlayWindowBehavior.OverlayedControl="{Binding RelativeSource={RelativeSource Self}}"
-						  np:OverlayWindowBehavior.IsOpen="{Binding Path=ShowCompass, RelativeSource={RelativeSource TemplatedParent}}"
-						  np:OverlayWindowBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
+						  np:OverlayBehavior.OverlayedControl="{Binding RelativeSource={RelativeSource Self}}"
+						  np:OverlayBehavior.IsOpen="{Binding Path=ShowCompass, RelativeSource={RelativeSource TemplatedParent}}"
+						  np:OverlayBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
 						                                             Converter={x:Static np:ToControlContainerConverter.Instance}}">
-						<np:OverlayWindowBehavior.ContentTemplate>
+						<np:OverlayBehavior.ContentTemplate>
 							<DataTemplate>
 								<local:DropPanelWithCompass
 	                                      AllowCenterDocking="{Binding Path=Control.AllowCenterDocking}">
@@ -708,7 +708,7 @@
 									</local:DropPanelWithCompass.AllowCenterDocking>
 								</local:DropPanelWithCompass>
 							</DataTemplate>
-						</np:OverlayWindowBehavior.ContentTemplate>
+						</np:OverlayBehavior.ContentTemplate>
 					</Grid>
                 </Grid>
               </DockPanel>
@@ -825,17 +825,17 @@
             </Grid>
             <Grid x:Name="PART_OverlayWindowHolder" 
 				  Grid.Row="1"
-				  np:OverlayWindowBehavior.OverlayedControl="{Binding RelativeSource={RelativeSource Self}}"
-				  np:OverlayWindowBehavior.IsOpen="{Binding Path=ShowCompass}"
-				  np:OverlayWindowBehavior.Content="{Binding Path=DataContext, 
+				  np:OverlayBehavior.OverlayedControl="{Binding RelativeSource={RelativeSource Self}}"
+				  np:OverlayBehavior.IsOpen="{Binding Path=ShowCompass}"
+				  np:OverlayBehavior.Content="{Binding Path=DataContext, 
 				                                             RelativeSource={RelativeSource TemplatedParent},
 															 Converter={x:Static np:ToControlContainerConverter.Instance}}">
-				<np:OverlayWindowBehavior.ContentTemplate>
+				<np:OverlayBehavior.ContentTemplate>
 					<DataTemplate>
 						<local:DropPanelWithCompass x:Name="PART_DropPanelWithCompass"
 													AllowCenterDocking="{Binding Path=Control.AllowCenterDocking}"/>
 					</DataTemplate>
-				</np:OverlayWindowBehavior.ContentTemplate>
+				</np:OverlayBehavior.ContentTemplate>
               <np:DockContentPresenter x:Name="Body"
 									   OwningDockItem="{Binding Path=DockContext, RelativeSource={RelativeSource TemplatedParent}}"
                                        DockDataContext="{Binding Path=DockContext.DockDataContext, RelativeSource={RelativeSource TemplatedParent}}"
@@ -1035,10 +1035,10 @@
 										  Template="{TemplateBinding HeaderControlTemplate}"/>
 						<Grid x:Name="PART_OverlayWindowHolder"
 							  Grid.Row="1"
-						      np:OverlayWindowBehavior.OverlayedControl="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-							  np:OverlayWindowBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
+						      np:OverlayBehavior.OverlayedControl="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+							  np:OverlayBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
 						                                                 Converter={x:Static np:ToControlContainerConverter.Instance}}">
-							<np:OverlayWindowBehavior.IsOpen>
+							<np:OverlayBehavior.IsOpen>
 								<MultiBinding Converter="{x:Static np:OrConverter.Instance}">
 									<Binding Path="ShowCompass" 
 											 RelativeSource="{RelativeSource TemplatedParent}"/>
@@ -1046,8 +1046,8 @@
 											 RelativeSource="{RelativeSource TemplatedParent}"
 											 Converter="{x:Static ObjectConverters.IsNotNull}"/>
 								</MultiBinding>
-							</np:OverlayWindowBehavior.IsOpen>
-							<np:OverlayWindowBehavior.ContentTemplate>
+							</np:OverlayBehavior.IsOpen>
+							<np:OverlayBehavior.ContentTemplate>
 								<DataTemplate>
 									<Grid>
 										<local:DropPanelWithCompass
@@ -1063,7 +1063,7 @@
 												AllowCenterDocking="{Binding Control.IsGroupLocked, Converter={x:Static np:BoolConverters.Not}}"/>
 									</Grid>
 								</DataTemplate>
-							</np:OverlayWindowBehavior.ContentTemplate>
+							</np:OverlayBehavior.ContentTemplate>
 
 							<Grid x:Name="SelectGroup"
 	                              Background="Cyan"
@@ -1083,10 +1083,10 @@
         <ControlTemplate>
           <Grid x:Name="PART_RootPanel"
                 Background="{TemplateBinding Background}"
-				np:OverlayWindowBehavior.IsOpen="{Binding Path=ShowCompass, RelativeSource={RelativeSource TemplatedParent}}"
-				np:OverlayWindowBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
+				np:OverlayBehavior.IsOpen="{Binding Path=ShowCompass, RelativeSource={RelativeSource TemplatedParent}}"
+				np:OverlayBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
 						                                    Converter={x:Static np:ToControlContainerConverter.Instance}}">
-			  <np:OverlayWindowBehavior.ContentTemplate>
+			  <np:OverlayBehavior.ContentTemplate>
 				  <DataTemplate>
 					  <local:DropPanelWithCompass
 							ShowHull="False"
@@ -1098,7 +1098,7 @@
 							AllowVerticalDocking="{Binding Path=Control.ShowCompassCenter, 
                                                            Converter={x:Static BoolConverters.Not}}"/>					  
 				  </DataTemplate>
-			  </np:OverlayWindowBehavior.ContentTemplate>
+			  </np:OverlayBehavior.ContentTemplate>
           </Grid>
         </ControlTemplate>
       </Setter.Value>

@@ -49,6 +49,10 @@ namespace NP.Ava.UniDock
             set => TheDockSeparatorFactory!.ResizePreview = value;   
         }
 
+        public bool DragDropWithinSingleWindow { get; set; }
+
+        public bool SingleWindow { get; set; } = false;
+
         [Inject]
         private IStackGroupFactory StackGroupFactory { get; set; } =
             new StackGroupFactory();
@@ -182,8 +186,6 @@ namespace NP.Ava.UniDock
                 _predefinedWindows.Remove(window);
             }
         }
-
-        public bool SingleWindow { get; set; } = false;
 
         private IList<IDockGroup> _connectedGroups = new ObservableCollection<IDockGroup>();
         public IEnumerable<IDockGroup> ConnectedGroups => _connectedGroups;

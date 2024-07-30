@@ -67,7 +67,7 @@ namespace NP.Ava.UniDock
                     return null;
 
                 DropPanelWithCompass? dropPanel =
-                     OverlayWindowBehavior.GetOverlayWindow(overlayWindowHolderPanel)?
+                     OverlayBehavior.GetOverlayWindow(overlayWindowHolderPanel)?
                                           .GetVisualDescendants()
                                           ?.OfType<DropPanelWithCompass>()?.FirstOrDefault();
 

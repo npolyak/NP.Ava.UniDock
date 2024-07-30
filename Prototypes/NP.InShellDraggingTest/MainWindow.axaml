@@ -1,0 +1,48 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:np="https://np.com/visuals"
+        xmlns:local="clr-namespace:NP.InShellDraggingTest"
+        Width="700"
+        Height="700"
+        np:DockAttachedProperties.TheDockManager="{DynamicResource TheDockManager}"
+        x:Class="NP.InShellDraggingTest.MainWindow"
+        Title="NP.InShellDraggingTest"
+        BorderBrush="Gray">
+  <Window.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://NP.Ava.Visuals/Themes/Geometries.axaml"/>
+      </ResourceDictionary.MergedDictionaries>
+		<!--<np:DockManager x:Key="TheDockManager"
+                        DragDropWithinSingleWindow="True" 
+                        ResizePreview="True"/>-->
+        <np:DockManager x:Key="TheDockManager"
+                        ResizePreview="True"/>
+    </ResourceDictionary>
+  </Window.Resources>
+  <Window.Styles>
+    <StyleInclude Source="avares://NP.Ava.UniDock/Themes/DockStyles.axaml"/>
+  </Window.Styles>
+	<Grid RowDefinitions="*, Auto">
+		<np:RootDockGroup np:DockAttachedProperties.TheDockManager="{StaticResource TheDockManager}">
+			<np:StackDockGroup TheOrientation="Horizontal">
+				<np:DockItem Header="Tab1"
+							 DefaultDockGroupId="Group1"
+							 DefaultDockOrderInGroup="2">
+					<TextBlock Text="Hello World!"/>
+				</np:DockItem>
+				<np:DockItem Header="Tab2"
+							 DefaultDockGroupId="Group1"
+							 DefaultDockOrderInGroup="2">
+					<TextBlock Text="Hi World!"/>
+				</np:DockItem>
+                <np:DockItem Header="Tab3"
+                             DefaultDockGroupId="Group1"
+                             DefaultDockOrderInGroup="2">
+                    <TextBlock Text="Hi World1!"/>
+                </np:DockItem>
+			</np:StackDockGroup>
+		</np:RootDockGroup>
+	</Grid>
+</Window>
