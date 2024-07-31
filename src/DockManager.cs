@@ -9,6 +9,8 @@
 // Also, please, mention this software in any documentation for the 
 // products that use it.
 
+global using Rect2D = NP.Utilities.Rect2D<double>;
+
 using Avalonia.Controls;
 using NP.Ava.Visuals.Behaviors;
 using System.Collections.Generic;

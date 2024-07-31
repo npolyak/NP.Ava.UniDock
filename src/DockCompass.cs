@@ -9,6 +9,8 @@
 // Also, please, mention this software in any documentation for the 
 // products that use it.
 
+global using Point2D = NP.Utilities.Point2D<double>;
+
 using Avalonia;
 using Avalonia.Controls.Primitives;
 using Avalonia.VisualTree;
