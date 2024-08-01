@@ -164,6 +164,29 @@ namespace NP.Ava.UniDock
         private readonly IList<FloatingWindow> _floatingWindows = new ObservableCollection<FloatingWindow>();
         public IEnumerable<FloatingWindow> FloatingWindows => _floatingWindows;
 
+
+        #region CurrentSide Property
+        private Side2D _currentSide = Side2D.Center;
+        public Side2D CurrentSide
+        {
+            get
+            {
+                return this._currentSide;
+            }
+            set
+            {
+                if (this._currentSide == value)
+                {
+                    return;
+                }
+
+                this._currentSide = value;
+                this.OnPropertyChanged(nameof(CurrentSide));
+            }
+        }
+        #endregion CurrentSide Property
+
+
         private UnionBehavior<Window> _allWindowsBehavior;
         internal void AddWindow(Window window)
         {
@@ -338,11 +361,11 @@ namespace NP.Ava.UniDock
         /// group into which we insert dragged item(s)
         /// </summary>
         private IDockGroup? _currentLeafObjToInsertWithRespectTo = null;
-        private IDockGroup? CurrentLeafObjToInsertWithRespectTo
+        public IDockGroup? CurrentLeafObjToInsertWithRespectTo
         {
             get => _currentLeafObjToInsertWithRespectTo;
 
-            set
+            private set
             {
                 if (ReferenceEquals(_currentLeafObjToInsertWithRespectTo, value))
                     return;
@@ -358,6 +381,8 @@ namespace NP.Ava.UniDock
                 {
                     _currentLeafObjToInsertWithRespectTo.ShowCompass = true;
                 }
+
+                OnPropertyChanged(nameof(CurrentLeafObjToInsertWithRespectTo));
             }
         }
 
@@ -399,9 +424,27 @@ namespace NP.Ava.UniDock
             var pointerAboveGroups =
                 _currentDockGroups
                     .Where(gr => (gr.Group as Control).IsVisible && gr.Rect.ContainsPoint(pointerScreenLocation))
-                    .Select(gr => gr.Group);
+                    .Select(gr => gr.Group).ToList();
+
+            if (pointerAboveGroups.Any())
+            {
+
+            }
 
             CurrentLeafObjToInsertWithRespectTo = pointerAboveGroups.FirstOrDefault();
+
+            if (CurrentLeafObjToInsertWithRespectTo == null)
+            {
+                CurrentSide = Side2D.Center;
+            }
+            else
+            {
+                Control currentControl = CurrentLeafObjToInsertWithRespectTo.TheControl;
+
+                Rect2D screenControlBounds = currentControl.GetScreenBounds();
+
+                CurrentSide = screenControlBounds.GetSide(pointerScreenLocation);
+            }
 
             var rootDockGroup = CurrentLeafObjToInsertWithRespectTo?.GetDockGroupRoot() as RootDockGroup; 
             if ((CurrentLeafObjToInsertWithRespectTo != null) &&

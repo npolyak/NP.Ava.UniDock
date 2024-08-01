@@ -316,7 +316,7 @@ namespace NP.Ava.UniDock
             {
                 control = leafDockChild.GetVisual();
             }
-
+            
             return (Control) control;
         }
 

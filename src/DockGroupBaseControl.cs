@@ -150,6 +150,8 @@ namespace NP.Ava.UniDock
         // into a StackDockPanel
         public GridLength? InitialSizeCoeff { get; set; }
 
+        public virtual Control TheControl => this;
+
         static DockGroupBaseControl()
         {
             DockIdProperty

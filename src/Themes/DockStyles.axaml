@@ -692,12 +692,11 @@
 					<Grid x:Name="PART_OverlayWindowHolder" 
 						  Grid.Row="1"
                           Grid.Column="1"
-                          np:OverlayBehavior.OverlayContainingPanel="{Binding #OverlayPanel}"
 						  np:OverlayBehavior.OverlayedControl="{Binding RelativeSource={RelativeSource Self}}"
 						  np:OverlayBehavior.IsOpen="{Binding Path=ShowCompass, RelativeSource={RelativeSource TemplatedParent}}"
 						  np:OverlayBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
 						                                             Converter={x:Static np:ToControlContainerConverter.Instance}}">
-						<np:OverlayBehavior.ContentTemplate>
+						<!--<np:OverlayBehavior.ContentTemplate>
 							<DataTemplate>
 								<local:DropPanelWithCompass
 	                                      AllowCenterDocking="{Binding Path=Control.AllowCenterDocking}">
@@ -709,7 +708,7 @@
 									</local:DropPanelWithCompass.AllowCenterDocking>
 								</local:DropPanelWithCompass>
 							</DataTemplate>
-						</np:OverlayBehavior.ContentTemplate>
+						</np:OverlayBehavior.ContentTemplate>-->
                         <Grid x:Name="OverlayPanel"/>
 					</Grid>
                 </Grid>
@@ -825,29 +824,27 @@
                          Grid.Row="1"
                          Fill="Black"/>
             </Grid>
-            <Grid x:Name="PART_OverlayWindowHolder"
-                  Grid.Row="1"
-				  np:OverlayBehavior.OverlayedControl="{Binding RelativeSource={RelativeSource Self}}"
-				  np:OverlayBehavior.IsOpen="{Binding Path=ShowCompass}"
-				  np:OverlayBehavior.Content="{Binding Path=DataContext, 
-				                                             RelativeSource={RelativeSource TemplatedParent},
-															 Converter={x:Static np:ToControlContainerConverter.Instance}}">
-				<np:OverlayBehavior.ContentTemplate>
+              <Grid x:Name="PART_OverlayWindowHolder"
+                    Grid.Row="1"
+                    np:OverlayBehavior.OverlayedControl="{Binding RelativeSource={RelativeSource Self}}"
+                    np:OverlayBehavior.Content="{Binding Path=DataContext, 
+				                                        RelativeSource={RelativeSource TemplatedParent},
+                                                        Converter={x:Static np:ToControlContainerConverter.Instance}}">
+                  <!--<np:OverlayBehavior.ContentTemplate>
 					<DataTemplate>
 						<local:DropPanelWithCompass x:Name="PART_DropPanelWithCompass"
 													AllowCenterDocking="{Binding Path=Control.AllowCenterDocking}"/>
 					</DataTemplate>
-				</np:OverlayBehavior.ContentTemplate>
-              <np:DockContentPresenter x:Name="Body"
-									   OwningDockItem="{Binding Path=DockContext, RelativeSource={RelativeSource TemplatedParent}}"
-                                       DockDataContext="{Binding Path=DockContext.DockDataContext, RelativeSource={RelativeSource TemplatedParent}}"
-                                       Content="{Binding Path=DockContext.Content, RelativeSource={RelativeSource TemplatedParent}}"
-                                       ContentTemplate="{Binding Path=DockContext.ContentTemplate, RelativeSource={RelativeSource TemplatedParent}}"
-                                       HorizontalAlignment="Stretch"
-                                       VerticalContentAlignment="Stretch"
-                                       Margin="{Binding Path=DataContext.Padding, RelativeSource={RelativeSource TemplatedParent}}"/>
-                <Grid x:Name="OverlayPanel"/>
-            </Grid>
+				</np:OverlayBehavior.ContentTemplate>-->
+                  <np:DockContentPresenter x:Name="Body"
+                                           OwningDockItem="{Binding Path=DockContext, RelativeSource={RelativeSource TemplatedParent}}"
+                                           DockDataContext="{Binding Path=DockContext.DockDataContext, RelativeSource={RelativeSource TemplatedParent}}"
+                                           Content="{Binding Path=DockContext.Content, RelativeSource={RelativeSource TemplatedParent}}"
+                                           ContentTemplate="{Binding Path=DockContext.ContentTemplate, RelativeSource={RelativeSource TemplatedParent}}"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalContentAlignment="Stretch"
+                                           Margin="{Binding Path=DataContext.Padding, RelativeSource={RelativeSource TemplatedParent}}"/>
+              </Grid>
           </Grid>
         </ControlTemplate>
       </Setter.Value>
@@ -1041,7 +1038,7 @@
 						      np:OverlayBehavior.OverlayedControl="{Binding RelativeSource={RelativeSource TemplatedParent}}"
 							  np:OverlayBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
 						                                                 Converter={x:Static np:ToControlContainerConverter.Instance}}">
-							<np:OverlayBehavior.IsOpen>
+							<!--<np:OverlayBehavior.IsOpen>
 								<MultiBinding Converter="{x:Static np:OrConverter.Instance}">
 									<Binding Path="ShowCompass" 
 											 RelativeSource="{RelativeSource TemplatedParent}"/>
@@ -1066,7 +1063,7 @@
 												AllowCenterDocking="{Binding Control.IsGroupLocked, Converter={x:Static np:BoolConverters.Not}}"/>
 									</Grid>
 								</DataTemplate>
-							</np:OverlayBehavior.ContentTemplate>
+							</np:OverlayBehavior.ContentTemplate>-->
 
 							<Grid x:Name="SelectGroup"
 	                              Background="Cyan"
@@ -1085,27 +1082,26 @@
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate>
-          <Grid x:Name="PART_RootPanel"
-                Background="{TemplateBinding Background}"
-				np:OverlayBehavior.IsOpen="{Binding Path=ShowCompass, RelativeSource={RelativeSource TemplatedParent}}"
-				np:OverlayBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
-						                                    Converter={x:Static np:ToControlContainerConverter.Instance}}">
-			  <np:OverlayBehavior.ContentTemplate>
-				  <DataTemplate>
-					  <local:DropPanelWithCompass
-							ShowHull="False"
-							CompassHorizontalAlignment="Stretch"
-							CompassVerticalAlignment="Stretch"
-							AllowCenterDocking="{Binding Path=Control.ShowCompassCenter}"
-							AllowHorizontalDocking="{Binding Path=Control.ShowCompassCenter, 
-                                                             Converter={x:Static BoolConverters.Not}}"
-							AllowVerticalDocking="{Binding Path=Control.ShowCompassCenter, 
-                                                           Converter={x:Static BoolConverters.Not}}"/>					  
-				  </DataTemplate>
-			  </np:OverlayBehavior.ContentTemplate>
+            <Grid x:Name="PART_RootPanel"
+                  Background="{TemplateBinding Background}"
+                  np:OverlayBehavior.OverlayContainingPanel="{Binding #OverlayPanel}"
+                  np:OverlayBehavior.CurrentSide="{Binding Path=TheDockManager.CurrentSide, RelativeSource={RelativeSource TemplatedParent}}"
+                  np:OverlayBehavior.OverlayedControl="{Binding Path=TheDockManager.CurrentLeafObjToInsertWithRespectTo.TheControl, RelativeSource={RelativeSource TemplatedParent}}"
+                  np:OverlayBehavior.IsOpen="{Binding $self.(np:OverlayBehavior.OverlayedControl), Converter={x:Static ObjectConverters.IsNotNull}}"
+                  np:OverlayBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
+                                                       Converter={x:Static np:ToControlContainerConverter.Instance}}">
+                <np:OverlayBehavior.ContentTemplate>
+                    <DataTemplate>
+                        <Border HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                BorderThickness="4"
+                                BorderBrush="Violet"
+                                CornerRadius="5"/>
+                    </DataTemplate>
+                </np:OverlayBehavior.ContentTemplate>
 
-              <Grid x:Name="OverlayPanel"/>
-          </Grid>
+                <Grid x:Name="OverlayPanel"/>
+            </Grid>
         </ControlTemplate>
       </Setter.Value>
     </Setter>

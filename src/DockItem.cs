@@ -259,6 +259,8 @@ namespace NP.Ava.UniDock
 
         public Control GetVisual() => (TheVisual as Control) ?? this;
 
+        public override Control TheControl => GetVisual();
+
         public IDockGroup? GetContainingGroup() => DockParent;
 
         private bool _isSelected = false;
@@ -449,7 +451,7 @@ namespace NP.Ava.UniDock
             {
                 logicalParent.AttachedToLogicalTree -= _dockParent_AttachedToLogicalTree;
             }
-            
+
             _disposables.Dispose();
 
             IDockGroup topDockGroup = this.GetDockGroupRoot();

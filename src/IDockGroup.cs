@@ -41,6 +41,8 @@ namespace NP.Ava.UniDock
 
         IDockGroup? DockParent { get; set; }
 
+        Control TheControl { get; }
+
         bool IsDockVisible
         {
             get => DockAttachedProperties.GetIsDockVisible((AvaloniaObject)this);
