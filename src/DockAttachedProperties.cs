@@ -13,6 +13,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
 using NP.Ava.Visuals.Behaviors;
+using NP.Utilities;
 using NP.Utilities.BasicInterfaces;
 using System;
 using System.Runtime.CompilerServices;
@@ -90,18 +91,18 @@ namespace NP.Ava.UniDock
         }
 
         #region DockSide Attached Avalonia Property
-        public static DockKind? GetDockSide(AvaloniaObject obj)
+        public static Side2D? GetDockSide(AvaloniaObject obj)
         {
             return obj.GetValue(DockSideProperty);
         }
 
-        public static void SetDockSide(AvaloniaObject obj, DockKind? value)
+        public static void SetDockSide(AvaloniaObject obj, Side2D? value)
         {
             obj.SetValue(DockSideProperty, value);
         }
 
-        public static readonly AttachedProperty<DockKind?> DockSideProperty =
-            AvaloniaProperty.RegisterAttached<object, Control, DockKind?>
+        public static readonly AttachedProperty<Side2D?> DockSideProperty =
+            AvaloniaProperty.RegisterAttached<object, Control, Side2D?>
             (
                 "DockSide"
             );

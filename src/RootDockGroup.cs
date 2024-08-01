@@ -70,7 +70,7 @@ namespace NP.Ava.UniDock
             }
         }
 
-        public DockKind? CurrentGroupDock => DropPanel?.DockSide;
+        public Side2D? CurrentGroupDock => DropPanel?.DockSide;
 
 
         #region ActiveDockItem Direct Avalonia Property

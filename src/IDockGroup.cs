@@ -137,7 +137,7 @@ namespace NP.Ava.UniDock
 
         Control GetVisual() => (Control) this;
 
-        DockKind? CurrentGroupDock { get; }
+        Side2D? CurrentGroupDock { get; }
 
         IEnumerable<DockItem> LeafItems
         {
@@ -511,7 +511,7 @@ namespace NP.Ava.UniDock
             return dropPanel;
         }
 
-        public static DockKind? GetCurrentGroupDock(this Control control)
+        public static Side2D? GetCurrentGroupDock(this Control control)
         {
             return control.GetDropPanel()?.DockSide;
         }

@@ -20,6 +20,7 @@ using Avalonia.VisualTree;
 using NP.Ava.UniDockService;
 using NP.Ava.Visuals.Behaviors;
 using NP.Concepts.Behaviors;
+using NP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -273,7 +274,7 @@ namespace NP.Ava.UniDock
         public DropPanelWithCompass? DropPanel =>
             this?.TheVisual?.GetDropPanel();
 
-        public DockKind? CurrentGroupDock =>
+        public Side2D? CurrentGroupDock =>
             DropPanel?.DockSide;
 
         public DockManager? TheDockManager

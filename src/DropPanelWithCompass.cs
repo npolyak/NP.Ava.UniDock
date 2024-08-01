@@ -17,6 +17,7 @@ using System;
 using Avalonia.Media;
 using Avalonia.Layout;
 using Avalonia.Markup.Xaml.Templates;
+using NP.Utilities;
 
 namespace NP.Ava.UniDock
 {
@@ -24,14 +25,14 @@ namespace NP.Ava.UniDock
     {
 
         #region DockSide Styled Avalonia Property
-        public DockKind? DockSide
+        public Side2D? DockSide
         {
             get { return GetValue(DockSideProperty); }
             set { SetValue(DockSideProperty, value); }
         }
 
-        public static readonly StyledProperty<DockKind?> DockSideProperty =
-            AvaloniaProperty.Register<DropPanelWithCompass, DockKind?>
+        public static readonly StyledProperty<Side2D?> DockSideProperty =
+            AvaloniaProperty.Register<DropPanelWithCompass, Side2D?>
             (
                 nameof(DockSide)
             );

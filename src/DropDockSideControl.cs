@@ -11,13 +11,14 @@
 
 using Avalonia;
 using Avalonia.Controls.Primitives;
+using NP.Utilities;
 using System;
 
 namespace NP.Ava.UniDock
 {
     public class DropDockSideControl : TemplatedControl
     {
-        public DockKind SelectDockSide { get; set; }
+        public Side2D SelectDockSide { get; set; }
 
         private IDisposable? _disposableSubscription = null;
         public DropDockSideControl()
@@ -26,7 +27,7 @@ namespace NP.Ava.UniDock
                  DockAttachedProperties.DockSideProperty.Changed.Subscribe(OnDockSideChanged);
         }
 
-        private void OnDockSideChanged(AvaloniaPropertyChangedEventArgs<DockKind?> dockSideChange)
+        private void OnDockSideChanged(AvaloniaPropertyChangedEventArgs<Side2D?> dockSideChange)
         {
             if (dockSideChange.Sender != this)
                 return;

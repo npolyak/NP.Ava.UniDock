@@ -75,7 +75,7 @@ namespace NP.Ava.UniDock
             }
         }
 
-        public DockKind? CurrentGroupDock => DropPanel?.DockSide;
+        public Side2D? CurrentGroupDock => DropPanel?.DockSide;
 
         public Point FloatingSize { get; set; } = new Point(700, 400);
 

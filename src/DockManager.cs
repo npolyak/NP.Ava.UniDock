@@ -416,9 +416,9 @@ namespace NP.Ava.UniDock
             }
         }
 
-        private void DropWithOrientation(IDockGroup? currentDockGroupToInsertWithRespectTo, DockKind dock, IDockGroup draggedGroup)
+        private void DropWithOrientation(IDockGroup? currentDockGroupToInsertWithRespectTo, Side2D dock, IDockGroup draggedGroup)
         {
-            if (dock == DockKind.Center)
+            if (dock == Side2D.Center)
             {
                 throw new Exception("Programming ERROR: dock should be one of Left, Top, Right, Bottom");
             }
@@ -447,7 +447,7 @@ namespace NP.Ava.UniDock
             DraggedWindow?.Close();
         }
 
-        private void SetOrientationParentChildRelationship(IDockGroup parentGroup, IDockGroup childGroup, DockKind? dock, IDockGroup draggedGroup)
+        private void SetOrientationParentChildRelationship(IDockGroup parentGroup, IDockGroup childGroup, Side2D? dock, IDockGroup draggedGroup)
         {
             int childIdx =
                 parentGroup
@@ -671,7 +671,7 @@ namespace NP.Ava.UniDock
 
                 IDockGroup? currentDockGroupToInsertWithRespectTo = CurrentLeafObjToInsertWithRespectTo;
 
-                DockKind ? currentDock = CurrentLeafObjToInsertWithRespectTo?.CurrentGroupDock;
+                Side2D ? currentDock = CurrentLeafObjToInsertWithRespectTo?.CurrentGroupDock;
 
                 if (currentDock == null)
                 {
@@ -684,7 +684,7 @@ namespace NP.Ava.UniDock
                 {
                     switch (currentDock)
                     {
-                        case DockKind.Center:
+                        case Side2D.Center:
                         {
                             if (currentDockGroupToInsertWithRespectTo is RootDockGroup ||
                                 currentDockGroupToInsertWithRespectTo is StackDockGroup)
@@ -763,10 +763,10 @@ namespace NP.Ava.UniDock
 
                          break;
                         }
-                        case DockKind.Left:
-                        case DockKind.Top:
-                        case DockKind.Right:
-                        case DockKind.Bottom:
+                        case Side2D.Left:
+                        case Side2D.Top:
+                        case Side2D.Right:
+                        case Side2D.Bottom:
                         {
                             DropWithOrientation(currentDockGroupToInsertWithRespectTo, currentDock.Value, draggedGroup);
 

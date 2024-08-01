@@ -219,7 +219,7 @@ namespace NP.Ava.UniDock
 
         public IList<IDockGroup>? DockChildren => Items;
 
-        public DockKind? CurrentGroupDock => this.GetCurrentGroupDock();
+        public Side2D? CurrentGroupDock => this.GetCurrentGroupDock();
 
         private readonly SingleSelectionBehavior<DockItem> _singleSelectionBehavior =
             new SingleSelectionBehavior<DockItem>();

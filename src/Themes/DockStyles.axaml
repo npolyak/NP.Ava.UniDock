@@ -827,7 +827,6 @@
             </Grid>
             <Grid x:Name="PART_OverlayWindowHolder"
                   Grid.Row="1"
-                  np:OverlayBehavior.OverlayContainingPanel="{Binding #OverlayPanel}"
 				  np:OverlayBehavior.OverlayedControl="{Binding RelativeSource={RelativeSource Self}}"
 				  np:OverlayBehavior.IsOpen="{Binding Path=ShowCompass}"
 				  np:OverlayBehavior.Content="{Binding Path=DataContext, 
@@ -1039,7 +1038,6 @@
 										  Template="{TemplateBinding HeaderControlTemplate}"/>
 						<Grid x:Name="PART_OverlayWindowHolder"
 							  Grid.Row="1"
-                              np:OverlayBehavior.OverlayContainingPanel="{Binding #OverlayPanel}"
 						      np:OverlayBehavior.OverlayedControl="{Binding RelativeSource={RelativeSource TemplatedParent}}"
 							  np:OverlayBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
 						                                                 Converter={x:Static np:ToControlContainerConverter.Instance}}">
@@ -1091,8 +1089,7 @@
                 Background="{TemplateBinding Background}"
 				np:OverlayBehavior.IsOpen="{Binding Path=ShowCompass, RelativeSource={RelativeSource TemplatedParent}}"
 				np:OverlayBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
-						                                    Converter={x:Static np:ToControlContainerConverter.Instance}}"
-                np:OverlayBehavior.OverlayContainingPanel="{Binding #OverlayPanel}">
+						                                    Converter={x:Static np:ToControlContainerConverter.Instance}}">
 			  <np:OverlayBehavior.ContentTemplate>
 				  <DataTemplate>
 					  <local:DropPanelWithCompass

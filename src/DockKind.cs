@@ -10,38 +10,30 @@
 // products that use it.
 
 using Avalonia.Layout;
+using NP.Utilities;
 
 namespace NP.Ava.UniDock
 {
-    public enum DockKind
-    {
-        Center,
-        Left,
-        Top,
-        Right,
-        Bottom
-    }
-
     public static class DockKindHelper
     {
-        public static Orientation? ToOrientation(this DockKind? dock)
+        public static Orientation? ToOrientation(this Side2D? dock)
         {
             return dock switch
             {
-                DockKind.Left => Orientation.Horizontal,
-                DockKind.Right => Orientation.Horizontal,
-                DockKind.Top => Orientation.Vertical,
-                DockKind.Bottom => Orientation.Vertical,
+                Side2D.Left => Orientation.Horizontal,
+                Side2D.Right => Orientation.Horizontal,
+                Side2D.Top => Orientation.Vertical,
+                Side2D.Bottom => Orientation.Vertical,
                 _ => null
             };
         }
 
-        public static int ToInsertIdx(this int idx, DockKind? dock)
+        public static int ToInsertIdx(this int idx, Side2D? dock)
         {
             switch(dock)
             {
-                case DockKind.Right:
-                case DockKind.Bottom:
+                case Side2D.Right:
+                case Side2D.Bottom:
                     return idx + 1;
 
                 default:
