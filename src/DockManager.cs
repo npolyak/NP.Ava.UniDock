@@ -514,26 +514,7 @@ namespace NP.Ava.UniDock
 
             Point2D size = rootGroupScreenBounds.GetSize();
 
-            double x = positionWithinRootGroup.X, y = positionWithinRootGroup.Y;
-            if (x < 0)
-            {
-                x = 0;
-            }
-            else if (x > size.X)
-            {
-                x = size.X;
-            }
-
-            if (y < 0)
-            {
-                y = 0;
-            }
-            else if (y > size.Y)
-            {
-                y = size.Y;
-            }
-
-            PositionWithinCurrentRootDockGroup = new Point(x, y);
+            PositionWithinCurrentRootDockGroup = size.CreateRectFromSize().LocationWithinBoundaries(positionWithinRootGroup).ToPoint();
         }
 
 
