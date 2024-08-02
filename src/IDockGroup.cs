@@ -30,7 +30,7 @@ namespace NP.Ava.UniDock
         public string DockId { get; set; }
 
         event Action<IDockGroup> DockIdChanged;
-
+        
         event Action<IDockGroup> IsDockVisibleChangedEvent;
 
         internal void FireIsDockVisibleChangedEvent();
@@ -42,6 +42,8 @@ namespace NP.Ava.UniDock
         IDockGroup? DockParent { get; set; }
 
         Control TheControl { get; }
+
+        object HeadingObj { get; }
 
         bool IsDockVisible
         {

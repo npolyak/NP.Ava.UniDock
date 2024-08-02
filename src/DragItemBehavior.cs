@@ -115,6 +115,9 @@ namespace NP.Ava.UniDock
         private void ClearHandlers(object sender, PointerEventArgs e)
         {
             ClearHandlers(sender);
+
+            _draggedDockGroup?.TheDockManager?.CompleteDragDropAction();
+            _draggedDockGroup = null;
         }
 
         private void ClearHandlers(object sender)
@@ -157,10 +160,7 @@ namespace NP.Ava.UniDock
                 return;
             }
 
-            if (dockManager.DragDropWithinSingleWindow)
-            {
-                return;
-            }
+            dockManager.DragHeading = _draggedDockGroup.HeadingObj;
 
             if (dockManager.SingleWindow)
             {
@@ -171,6 +171,12 @@ namespace NP.Ava.UniDock
             IDockGroup topDockGroup = _draggedDockGroup.GetDockGroupRoot();
 
             Window parentWindow = (parentItem as Control).GetVisualAncestors().OfType<Window>().First();
+
+            if (dockManager.DragDropWithinSingleWindow)
+            {
+                dockManager.DraggedDockGroup = _draggedDockGroup;
+                return;
+            }
 
             FloatingWindow? floatingWindow = parentWindow as FloatingWindow;
 

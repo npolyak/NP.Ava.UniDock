@@ -48,6 +48,8 @@ namespace NP.Ava.UniDock
             FireDockIdChanged();
         }
 
+        public virtual object? HeadingObj => null;
+
         public override string ToString() => DockId;
 
         #region ShowCompass Styled Avalonia Property

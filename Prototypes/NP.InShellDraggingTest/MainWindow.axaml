@@ -14,11 +14,11 @@
       <ResourceDictionary.MergedDictionaries>
         <ResourceInclude Source="avares://NP.Ava.Visuals/Themes/Geometries.axaml"/>
       </ResourceDictionary.MergedDictionaries>
-		<!--<np:DockManager x:Key="TheDockManager"
-                        DragDropWithinSingleWindow="True" 
-                        ResizePreview="True"/>-->
-        <np:DockManager x:Key="TheDockManager"
+		<np:DockManager x:Key="TheDockManager"
+                        DragDropWithinSingleWindow="True"
                         ResizePreview="True"/>
+        <!--<np:DockManager x:Key="TheDockManager"
+                        ResizePreview="True"/>-->
     </ResourceDictionary>
   </Window.Resources>
   <Window.Styles>

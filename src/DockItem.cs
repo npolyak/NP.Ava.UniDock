@@ -413,6 +413,7 @@ namespace NP.Ava.UniDock
             );
         #endregion Header Styled Avalonia Property
 
+        public object HeadingObj => Header;
 
         #region HeaderTemplate Styled Avalonia Property
         public IDataTemplate HeaderTemplate

@@ -187,6 +187,28 @@ namespace NP.Ava.UniDock
         #endregion CurrentSide Property
 
 
+        #region DragHeading Property
+        private object _dragHeading;
+        public object DragHeading
+        {
+            get
+            {
+                return this._dragHeading;
+            }
+            internal set
+            {
+                if (this._dragHeading == value)
+                {
+                    return;
+                }
+
+                this._dragHeading = value;
+                this.OnPropertyChanged(nameof(DragHeading));
+            }
+        }
+        #endregion DragHeading Property
+
+
         private UnionBehavior<Window> _allWindowsBehavior;
         internal void AddWindow(Window window)
         {
@@ -293,6 +315,25 @@ namespace NP.Ava.UniDock
             }
         }
 
+        private IDockGroup? _draggedDockGroup;
+        internal IDockGroup? DraggedDockGroup
+        {
+            get => _draggedDockGroup;
+
+            set
+            {
+                if (ReferenceEquals(_draggedDockGroup, value))
+                    return;
+
+                _draggedDockGroup = value;
+
+                if (_draggedDockGroup != null)
+                {
+                    BeginDragAction();
+                }
+            }
+        }
+
         FloatingWindow? _draggedWindow;
         public FloatingWindow? DraggedWindow
         {
@@ -304,10 +345,7 @@ namespace NP.Ava.UniDock
 
                 _draggedWindow = value;
 
-                if (_draggedWindow != null)
-                {
-                    BeginDragAction();
-                }
+                _draggedDockGroup = _draggedWindow?.TheDockGroup ?? null;
             }
         }
 
@@ -323,7 +361,7 @@ namespace NP.Ava.UniDock
         IDisposable? _pointerMovedSubscription;
         private void BeginDragAction()
         {
-            if (_draggedWindow == null)
+            if (_draggedDockGroup == null)
                 return;
 
             SetGroups();
@@ -333,27 +371,30 @@ namespace NP.Ava.UniDock
                                           .Subscribe(OnPointerMoved);
         }
 
+        public IEnumerable<IDockGroup> ExcludedGroups =>
+            this.DragDropWithinSingleWindow ? Enumerable.Empty<IDockGroup>() : _draggedDockGroup?.GetDockGroupSelfAndDescendants().NullToEmpty();
+
         internal void SetGroups()
         {
-            if (_draggedWindow == null)
+            if (_draggedDockGroup == null)
             {
                 return;
             }
 
             _currentDockGroups =
                 AllOperatingLeafGroupsWOLeafParents
-                    .Except(_draggedWindow.TheDockGroup.GetDockGroupSelfAndDescendants())
-                    .Where(g => g.GroupOnlyById == _draggedWindow.GroupOnlyById)
+                    .Except(ExcludedGroups)
+                    .Where(g => g.GroupOnlyById == _draggedDockGroup.GroupOnlyById)
                     .Select(g => GroupToPair(g)).ToList();
 
-            bool hasAnyNonLockedLeafItems = _draggedWindow.GetLeafGroupsWithoutLock().Any();
+            bool hasAnyNonLockedLeafItems = _draggedDockGroup.GetLeafGroupsWithoutLock().Any();
             _currentDockGroups.DoForEach(g => g.Group.AllowCenterDocking = hasAnyNonLockedLeafItems);
 
             _rootGroups =
                 AllOperatingRootDockGroups
-                    .Except(_draggedWindow.TheDockGroup.ToCollection())
+                    .Except(_draggedDockGroup.ToCollection().OfType<RootDockGroup>())
                     .Except(_currentDockGroups.OfType<RootDockGroup>())
-                    .Where(g => g.GroupOnlyById == _draggedWindow.GroupOnlyById)
+                    .Where(g => g.GroupOnlyById == _draggedDockGroup.GroupOnlyById)
                     .Select(g => GroupToPair(g)).ToList();
         }
 
@@ -449,7 +490,7 @@ namespace NP.Ava.UniDock
             var rootDockGroup = CurrentLeafObjToInsertWithRespectTo?.GetDockGroupRoot() as RootDockGroup; 
             if ((CurrentLeafObjToInsertWithRespectTo != null) &&
                 (CurrentLeafObjToInsertWithRespectTo is not RootDockGroup) &&
-                rootDockGroup?.GroupOnlyById == DraggedWindow?.GroupOnlyById)
+                rootDockGroup?.GroupOnlyById == DraggedDockGroup?.GroupOnlyById)
             {
                 CurrentRootDockGroup = rootDockGroup;
             }
@@ -701,12 +742,17 @@ namespace NP.Ava.UniDock
         {
             FloatingWindow? currentWindowToDropInto =  CurrentLeafObjToInsertWithRespectTo?.GetGroupWindow(); 
 
+            if (DraggedWindow == null)
+            {
+                ClearAll();
+                return;
+            }
             try
             {
                 _pointerMovedSubscription?.Dispose();
                 _pointerMovedSubscription = null;
 
-                IDockGroup? draggedGroup = DraggedWindow?.TheDockGroup?.TheChild;
+                IDockGroup? draggedGroup = DraggedWindow?.TheDockGroup?.TheChild ?? DraggedDockGroup;
                 
                 currentWindowToDropInto?.SetCloseIsNotAllowed();
 
@@ -735,7 +781,7 @@ namespace NP.Ava.UniDock
                                 draggedGroup.RemoveItselfFromParent();
                                 currentDockGroupToInsertWithRespectTo.DockChildren.Add(draggedGroup);
 
-                                var firstLeafItem = DraggedWindow?.LeafItems?.FirstOrDefault();
+                                var firstLeafItem = DraggedDockGroup?.LeafItems?.FirstOrDefault();
 
                                 firstLeafItem?.Select();
                             }
@@ -804,7 +850,7 @@ namespace NP.Ava.UniDock
 
                             DraggedWindow?.CloseIfAllowed();
 
-                         break;
+                            break;
                         }
                         case Side2D.Left:
                         case Side2D.Top:
@@ -828,22 +874,29 @@ namespace NP.Ava.UniDock
             }
             finally
             {
-                if (CurrentLeafObjToInsertWithRespectTo != null)
-                {
-                    CurrentLeafObjToInsertWithRespectTo = null;
-                }
-
-                if (CurrentRootDockGroup != null)
-                {
-                    CurrentRootDockGroup = null;
-                }
-
-                currentWindowToDropInto?.ResetIsCloseAllowed();
-                DraggedWindow?.ResetIsCloseAllowed();
-                DraggedWindow?.CloseIfAllowed();
-
-                DraggedWindow = null;
+                ClearAll();
             }
+        }
+
+        private void ClearAll()
+        {
+            FloatingWindow? currentWindowToDropInto = CurrentLeafObjToInsertWithRespectTo?.GetGroupWindow();
+
+            if (CurrentLeafObjToInsertWithRespectTo != null)
+            {
+                CurrentLeafObjToInsertWithRespectTo = null;
+            }
+
+            if (CurrentRootDockGroup != null)
+            {
+                CurrentRootDockGroup = null;
+            }
+
+            currentWindowToDropInto?.ResetIsCloseAllowed();
+            DraggedWindow?.ResetIsCloseAllowed();
+            DraggedWindow?.CloseIfAllowed();
+
+            DraggedWindow = null;
         }
 
         public string SaveDockManagerParamsToStr()
