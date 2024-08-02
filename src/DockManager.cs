@@ -29,6 +29,7 @@ using NP.Ava.UniDock.Factories;
 using NP.Ava.UniDockService;
 using NP.DependencyInjection.Attributes;
 using Avalonia.LogicalTree;
+using Avalonia;
 
 namespace NP.Ava.UniDock
 {
@@ -452,8 +453,13 @@ namespace NP.Ava.UniDock
                     _currentRootDockGroup.ShowCompassCenter = false;
                     _currentRootDockGroup.ShowCompass = true;
                 }
+                else
+                {
+
+                }
             }
         }
+
 
         private void OnPointerMoved(Point2D pointerScreenLocation)
         {
@@ -494,11 +500,64 @@ namespace NP.Ava.UniDock
             {
                 CurrentRootDockGroup = rootDockGroup;
             }
-            else
+            else if (!DragDropWithinSingleWindow)
             {
                 CurrentRootDockGroup = null;
             }
+
+            if (CurrentRootDockGroup == null)
+                return;
+
+            Rect2D rootGroupScreenBounds = CurrentRootDockGroup.GetScreenBounds();
+
+            Point2D positionWithinRootGroup = pointerScreenLocation.Minus(rootGroupScreenBounds.StartPoint);
+
+            Point2D size = rootGroupScreenBounds.GetSize();
+
+            double x = positionWithinRootGroup.X, y = positionWithinRootGroup.Y;
+            if (x < 0)
+            {
+                x = 0;
+            }
+            else if (x > size.X)
+            {
+                x = size.X;
+            }
+
+            if (y < 0)
+            {
+                y = 0;
+            }
+            else if (y > size.Y)
+            {
+                y = size.Y;
+            }
+
+            PositionWithinCurrentRootDockGroup = new Point(x, y);
         }
+
+
+        #region PositionWithinCurrentRootDockGroup Property
+        private Point _positionWithinCurrentRootDockGroup;
+        public Point PositionWithinCurrentRootDockGroup
+        {
+            get
+            {
+                return this._positionWithinCurrentRootDockGroup;
+            }
+            set
+            {
+                if (this._positionWithinCurrentRootDockGroup == value)
+                {
+                    return;
+                }
+
+                this._positionWithinCurrentRootDockGroup = value;
+                this.OnPropertyChanged(nameof(PositionWithinCurrentRootDockGroup));
+            }
+        }
+        #endregion PositionWithinCurrentRootDockGroup Property
+
 
         private void DropWithOrientation(IDockGroup? currentDockGroupToInsertWithRespectTo, Side2D dock, IDockGroup draggedGroup)
         {

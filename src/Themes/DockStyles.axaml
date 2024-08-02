@@ -1101,12 +1101,14 @@
                 </np:OverlayBehavior.ContentTemplate>
 
                 <Grid x:Name="OverlayPanel"/>
-                <Grid x:Name="HeadingPanel">
+                <Grid x:Name="HeadingPanel"
+                      DataContext="{Binding Path=TheDockManager, RelativeSource={RelativeSource TemplatedParent}}">
                     <ContentControl x:Name="DragHeadingControl"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Top"
+                                    Margin="{Binding Path=PositionWithinCurrentRootDockGroup, Converter={x:Static np:ShiftFromTopLeftMarginConverter.TheInstance}}"
                                     IsVisible="{Binding Path=#PART_RootPanel.(np:OverlayBehavior.IsOpen)}"
-                                    Content="{Binding Path=TheDockManager, RelativeSource={RelativeSource TemplatedParent}}">
+                                    Content="{Binding}">
                         <ContentControl.ContentTemplate>
                             <DataTemplate DataType="np:DockManager">
                                 <Border Background="Blue"
