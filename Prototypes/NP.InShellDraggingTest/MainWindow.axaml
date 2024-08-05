@@ -27,21 +27,23 @@
 	<Grid RowDefinitions="*, Auto">
 		<np:RootDockGroup np:DockAttachedProperties.TheDockManager="{StaticResource TheDockManager}">
 			<np:StackDockGroup TheOrientation="Horizontal">
-				<np:DockItem Header="Tab1"
-							 DefaultDockGroupId="Group1"
-							 DefaultDockOrderInGroup="2">
-					<TextBlock Text="Hello World!"/>
-				</np:DockItem>
-				<np:DockItem Header="Tab2"
-							 DefaultDockGroupId="Group1"
-							 DefaultDockOrderInGroup="2">
-					<TextBlock Text="Hi World!"/>
-				</np:DockItem>
-                <np:DockItem Header="Tab3"
-                             DefaultDockGroupId="Group1"
-                             DefaultDockOrderInGroup="2">
-                    <TextBlock Text="Hi World1!"/>
-                </np:DockItem>
+                <np:TabbedDockGroup>
+                    <np:DockItem Header="Tab1"
+                                 DefaultDockGroupId="Group1"
+                                 DefaultDockOrderInGroup="2">
+                        <TextBlock Text="Hello World!"/>
+                    </np:DockItem>
+                    <np:DockItem Header="Tab2"
+                                 DefaultDockGroupId="Group1"
+                                 DefaultDockOrderInGroup="2">
+                        <TextBlock Text="Hi World!"/>
+                    </np:DockItem>
+                    <np:DockItem Header="Tab3"
+                                 DefaultDockGroupId="Group1"
+                                 DefaultDockOrderInGroup="2">
+                        <TextBlock Text="Hi World1!"/>
+                    </np:DockItem>
+                </np:TabbedDockGroup>
 			</np:StackDockGroup>
 		</np:RootDockGroup>
 	</Grid>

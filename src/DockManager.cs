@@ -486,12 +486,6 @@ namespace NP.Ava.UniDock
             CurrentLeafObjToInsertWithRespectTo = pointerAboveGroups.FirstOrDefault();
 
 
-            if (CurrentLeafObjToInsertWithRespectTo is DockItem)
-            {
-
-            }
-
-
             if (CurrentLeafObjToInsertWithRespectTo == null)
             {
                 CurrentSide = Side2D.Center;
@@ -615,32 +609,36 @@ namespace NP.Ava.UniDock
                 GridLength sizeCoeff = parentGroup.GetSizeCoeff(childIdx);
 
                 childGroup.RemoveItselfFromParent();
-                StackDockGroup insertGroup = StackGroupFactory.Create();
+                StackDockGroup stackGroupToInsert = StackGroupFactory.Create();
 
-                insertGroup.GroupOnlyById = parentGroup.GroupOnlyById;
+                stackGroupToInsert.GroupOnlyById = parentGroup.GroupOnlyById;
 
-                insertGroup.TheOrientation = orientation;
+                stackGroupToInsert.TheOrientation = orientation;
 
-                insertGroup.ProducingUserDefinedWindowGroup = parentGroup.ProducingUserDefinedWindowGroup;
+                stackGroupToInsert.ProducingUserDefinedWindowGroup = parentGroup.ProducingUserDefinedWindowGroup;
 
-                parentGroup.DockChildren.Insert(childIdx, insertGroup);
+                parentGroup.DockChildren.Insert(childIdx, stackGroupToInsert);
 
                 int originalChildIdx = 0;
 
-                insertGroup.DockChildren?.Insert(originalChildIdx, childGroup);
+                stackGroupToInsert.DockChildren?.Insert(originalChildIdx, childGroup);
 
                 int insertIdx = 0.ToInsertIdx(dock);
 
-                insertGroup.DockChildren?.Insert(insertIdx, draggedGroup);
+                var tabbedGroupToInsertItemsInto = TabbedGroupFactory.Create();
+
+                stackGroupToInsert.DockChildren?.Insert(insertIdx, tabbedGroupToInsertItemsInto);
+
+                tabbedGroupToInsertItemsInto.DockChildren.Insert(0, draggedGroup);
 
                 if (insertIdx == 0)
                 {
                     originalChildIdx = 1;
                 }
 
-                GridLength originalChildCoeff = insertGroup.GetSizeCoefficient(originalChildIdx);
+                GridLength originalChildCoeff = stackGroupToInsert.GetSizeCoefficient(originalChildIdx);
 
-                insertGroup.SetSizeCoeff(insertIdx, originalChildCoeff);
+                stackGroupToInsert.SetSizeCoeff(insertIdx, originalChildCoeff);
 
                 parentGroup.SetSizeCoeff(childIdx, sizeCoeff);
             }
@@ -790,6 +788,74 @@ namespace NP.Ava.UniDock
             removedGroup.DockIdChanged -= AddedGroup_DockIdChanged;
         }
 
+        private void InsertAsTab(IDockGroup draggedGroup)
+        {
+            IDockGroup? currentDockGroupToInsertWithRespectTo = CurrentLeafObjToInsertWithRespectTo;
+
+            if (currentDockGroupToInsertWithRespectTo == null)
+                return;
+
+            var leafItems =
+                draggedGroup?.GetLeafGroupsIncludingGroupsWithLock()
+                  .Where(group => !group.IsGroupLocked)
+                  .SelectMany(g => g.LeafItems).ToList();
+
+            if (leafItems.IsNullOrEmptyCollection())
+                return;
+
+            leafItems!.DoForEach(item => item.RemoveItselfFromParent());
+
+            var firstLeafItem = leafItems?.FirstOrDefault();
+
+            IDockGroup groupToInsertItemsInto =
+                currentDockGroupToInsertWithRespectTo?.GetContainingGroup()!;
+
+            var tabbedGroupToInsertItemsInto = groupToInsertItemsInto as TabbedDockGroup;
+
+            if (tabbedGroupToInsertItemsInto == null)
+            {
+                tabbedGroupToInsertItemsInto = TabbedGroupFactory.Create();
+
+                int currentLeafObjIdx =
+                        groupToInsertItemsInto
+                            .DockChildren
+                                .IndexOf(currentDockGroupToInsertWithRespectTo!);
+                GridLength sizeCoeff = groupToInsertItemsInto.GetSizeCoeff(currentLeafObjIdx);
+
+                groupToInsertItemsInto
+                        .DockChildren
+                        ?.Remove(currentDockGroupToInsertWithRespectTo!);
+
+                groupToInsertItemsInto
+                        .DockChildren
+                            ?.Insert(currentLeafObjIdx, tabbedGroupToInsertItemsInto);
+                tabbedGroupToInsertItemsInto.GroupOnlyById =
+                        groupToInsertItemsInto.GroupOnlyById;
+                tabbedGroupToInsertItemsInto.ProducingUserDefinedWindowGroup =
+                        groupToInsertItemsInto.ProducingUserDefinedWindowGroup;
+
+                groupToInsertItemsInto.SetSizeCoeff(currentLeafObjIdx, sizeCoeff);
+
+                currentDockGroupToInsertWithRespectTo?.CleanSelfOnRemove();
+
+                var additionaLeafItems =
+                        currentDockGroupToInsertWithRespectTo?.LeafItems;
+
+                additionaLeafItems?.DoForEach(item => item.RemoveItselfFromParent());
+
+                if (additionaLeafItems != null)
+                {
+                    leafItems = leafItems?.Union(additionaLeafItems).ToList();
+                }
+
+                tabbedGroupToInsertItemsInto.ApplyTemplate();
+            }
+
+            tabbedGroupToInsertItemsInto.DockChildren.InsertCollectionAtStart(leafItems);
+
+            firstLeafItem?.Select();
+        }
+
         private void AddGroupToDockLayout(IDockGroup? draggedGroup)
         {
             IDockGroup? currentDockGroupToInsertWithRespectTo = CurrentLeafObjToInsertWithRespectTo;
@@ -819,65 +885,7 @@ namespace NP.Ava.UniDock
                         }
                         else
                         {
-                            var leafItems =
-                                draggedGroup?.GetLeafGroupsIncludingGroupsWithLock()
-                                              .Where(group => !group.IsGroupLocked)
-                                              .SelectMany(g => g.LeafItems).ToList();
-
-                            if (!leafItems.IsNullOrEmptyCollection())
-                            {
-                                leafItems.DoForEach(item => item.RemoveItselfFromParent());
-
-                                var firstLeafItem = leafItems?.FirstOrDefault();
-
-                                IDockGroup currentGroup =
-                                    currentDockGroupToInsertWithRespectTo?.GetContainingGroup()!;
-
-                                var groupToInsertItemsInto = currentGroup as TabbedDockGroup;
-
-                                if (groupToInsertItemsInto == null)
-                                {
-                                    groupToInsertItemsInto = TabbedGroupFactory.Create();
-
-                                    int currentLeafObjIdx =
-                                            currentGroup
-                                                .DockChildren
-                                                    .IndexOf(currentDockGroupToInsertWithRespectTo!);
-                                    GridLength sizeCoeff = currentGroup.GetSizeCoeff(currentLeafObjIdx);
-
-                                    currentGroup
-                                            .DockChildren
-                                            ?.Remove(currentDockGroupToInsertWithRespectTo!);
-
-                                    currentGroup
-                                            .DockChildren
-                                                ?.Insert(currentLeafObjIdx, groupToInsertItemsInto);
-                                    groupToInsertItemsInto.GroupOnlyById =
-                                            currentGroup.GroupOnlyById;
-                                    groupToInsertItemsInto.ProducingUserDefinedWindowGroup =
-                                            currentGroup.ProducingUserDefinedWindowGroup;
-
-                                    currentGroup.SetSizeCoeff(currentLeafObjIdx, sizeCoeff);
-
-                                    currentDockGroupToInsertWithRespectTo?.CleanSelfOnRemove();
-
-                                    var additionaLeafItems =
-                                            currentDockGroupToInsertWithRespectTo?.LeafItems;
-
-                                    additionaLeafItems?.DoForEach(item => item.RemoveItselfFromParent());
-
-                                    if (additionaLeafItems != null)
-                                    {
-                                        leafItems = leafItems?.Union(additionaLeafItems).ToList();
-                                    }
-
-                                    groupToInsertItemsInto.ApplyTemplate();
-                                }
-
-                                groupToInsertItemsInto.DockChildren.InsertCollectionAtStart(leafItems);
-
-                                firstLeafItem?.Select();
-                            }
+                            InsertAsTab(draggedGroup);
                         }
 
                         DraggedWindow?.CloseIfAllowed();
@@ -925,6 +933,11 @@ namespace NP.Ava.UniDock
 
                     if (draggedGroup == null || ReferenceEquals(CurrentLeafObjToInsertWithRespectTo, draggedGroup))
                         return;
+
+                    if (currentDockGroupToInsertWithRespectTo.DockChildren.Count == 1 && currentDockGroupToInsertWithRespectTo.DockChildren.Contains(draggedGroup))
+                    {
+                        return;
+                    }
 
                     IDockGroup? parentItem = _draggedDockGroup.DockParent;
                     draggedGroup.RemoveItselfFromParent();

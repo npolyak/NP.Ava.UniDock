@@ -696,21 +696,6 @@
 						  np:OverlayBehavior.IsOpen="{Binding Path=ShowCompass, RelativeSource={RelativeSource TemplatedParent}}"
 						  np:OverlayBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
 						                                             Converter={x:Static np:ToControlContainerConverter.Instance}}">
-						<!--<np:OverlayBehavior.ContentTemplate>
-							<DataTemplate>
-								<local:DropPanelWithCompass
-	                                      AllowCenterDocking="{Binding Path=Control.AllowCenterDocking}">
-									<local:DropPanelWithCompass.AllowCenterDocking>
-										<MultiBinding Converter="{x:Static np:BoolConverters.And}">
-											<Binding Path="Control.AllowCenterDocking"/>
-											<Binding Path="Control.AllowTabDocking"/>
-										</MultiBinding>
-									</local:DropPanelWithCompass.AllowCenterDocking>
-								</local:DropPanelWithCompass>
-							</DataTemplate>
-						</np:OverlayBehavior.ContentTemplate>
-                        <Grid x:Name="OverlayPanel"/>
-                        -->
 					</Grid>
                 </Grid>
               </DockPanel>
@@ -1039,39 +1024,6 @@
 						      np:OverlayBehavior.OverlayedControl="{Binding RelativeSource={RelativeSource TemplatedParent}}"
 							  np:OverlayBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
 						                                                 Converter={x:Static np:ToControlContainerConverter.Instance}}">
-							<!--<np:OverlayBehavior.IsOpen>
-								<MultiBinding Converter="{x:Static np:OrConverter.Instance}">
-									<Binding Path="ShowCompass" 
-											 RelativeSource="{RelativeSource TemplatedParent}"/>
-									<Binding Path="(np:GridPartsResizeBehavior.CurrentSplitterPosition)" 
-											 RelativeSource="{RelativeSource TemplatedParent}"
-											 Converter="{x:Static ObjectConverters.IsNotNull}"/>
-								</MultiBinding>
-							</np:OverlayBehavior.IsOpen>
-							<np:OverlayBehavior.ContentTemplate>
-								<DataTemplate>
-									<Grid>
-										<local:DropPanelWithCompass
-											    np:GridPartsResizeBehavior.CurrentSplitterPosition="{Binding Path=Control.(np:GridPartsResizeBehavior.CurrentSplitterPosition)}"
-											    TheOrientation="{Binding Path=Control.TheOrientation}"
-												ShowSeparator="{Binding Path=Control.(np:GridPartsResizeBehavior.CurrentSplitterPosition),
-												                        Converter={x:Static ObjectConverters.IsNotNull}}"
-												ShowCompass="{Binding Path=Control.(np:GridPartsResizeBehavior.CurrentSplitterPosition),
-												                      Converter={x:Static ObjectConverters.IsNull}}"
-												ShowHull="{Binding Control.IsGroupLocked}"
-												AllowHorizontalDocking="{Binding Control.IsGroupLocked}"
-												AllowVerticalDocking="{Binding Control.IsGroupLocked}"
-												AllowCenterDocking="{Binding Control.IsGroupLocked, Converter={x:Static np:BoolConverters.Not}}"/>
-									</Grid>
-								</DataTemplate>
-							</np:OverlayBehavior.ContentTemplate>-->
-
-							<!--<Grid x:Name="SelectGroup"
-	                              Background="Cyan"
-	                              Opacity="0.1"
-	                              IsVisible="{Binding Path=(np:DockAttachedProperties.ShowGroupBoundaries),
-                                                                  RelativeSource={RelativeSource TemplatedParent}}"/>-->
-                            <!--<Grid x:Name="OverlayPanel"/>-->
 						</Grid>
 					</Grid>
 				</ControlTemplate>
