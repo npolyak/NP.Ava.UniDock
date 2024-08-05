@@ -14,1069 +14,1122 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:NP.Ava.UniDock"
         xmlns:np="https://np.com/visuals">
-  <Styles.Resources>
-    <ResourceDictionary>
-      <ResourceDictionary.MergedDictionaries>
-        <ResourceInclude Source="avares://NP.Ava.Visuals/Themes/Geometries.axaml"/>
-        <ResourceInclude Source="avares://NP.Ava.UniDock/Themes/DockGeometries.axaml"/>
-      </ResourceDictionary.MergedDictionaries>
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://NP.Ava.Visuals/Themes/Geometries.axaml"/>
+                <ResourceInclude Source="avares://NP.Ava.UniDock/Themes/DockGeometries.axaml"/>
+            </ResourceDictionary.MergedDictionaries>
 
-      <Color x:Key="OldDockSelectedColor">#FF007ACC</Color>
-      <Color x:Key="OldDockMouseOverColor">#FF1C97EA</Color>
-      <Color x:Key="DockMouseOverColor">#FFDDE6FF</Color>
-      <Color x:Key="DockSelectedColor">#FFCCD5F0</Color>
-      <Color x:Key="DockHeaderColor">#FFEEEEF2</Color>
-      <Color x:Key="DockSeparatorColor">#FFCCCEDB</Color>
-      <Color x:Key="DockSeparatorPreviewColor">#5A000000</Color>
-		
-      <SolidColorBrush x:Key="DockMouseOverBrush"
-                       Color="{StaticResource DockMouseOverColor}"/>
-      <SolidColorBrush x:Key="DockSelectedBrush"
-                       Color="{StaticResource DockSelectedColor}"/>
-      <SolidColorBrush x:Key="DockHeaderBrush"
-                     Color="{StaticResource DockHeaderColor}"/>
-      <SolidColorBrush x:Key="DockSeparatorBrush"
-               Color="{StaticResource DockSeparatorColor}"/>
+            <Color x:Key="OldDockSelectedColor">#FF007ACC</Color>
+            <Color x:Key="OldDockMouseOverColor">#FF1C97EA</Color>
+            <Color x:Key="DockMouseOverColor">#FFDDE6FF</Color>
+            <Color x:Key="DockSelectedColor">#FFFFFFFF</Color>
+            <Color x:Key="DockHeaderColor">#FFFFFFFF</Color>
+            <Color x:Key="DockSeparatorColor">#FFFFFFFF</Color>
+            <Color x:Key="DockSeparatorPreviewColor">#FFFFFFFF</Color>
+            <Color x:Key="VeryLightGray">#FFF4F4F4</Color>
+            <Color x:Key="LightGray1">#FFE6E6E6</Color>
+            <Color x:Key="LightGray2">#FFB6B6B6</Color>
+            <Color x:Key="LightGray3">#FF858585</Color>
 
-      <ControlTemplate x:Key="DockItemButtonsTemplate">
-        <Button x:Name="CloseButton"
-                Classes="CloseButton"/>
-      </ControlTemplate>
+            <SolidColorBrush x:Key="DockMouseOverBrush"
+                             Color="{StaticResource DockMouseOverColor}"/>
+            <SolidColorBrush x:Key="DockSelectedBrush"
+                             Color="{StaticResource VeryLightGray}"/>
+            <SolidColorBrush x:Key="DockHeaderBrush"
+                             Color="{StaticResource VeryLightGray}"/>
+            <SolidColorBrush x:Key="DockSeparatorBrush"
+                             Color="Transparent"/>
+            <SolidColorBrush x:Key="BackgroundBrush"
+                             Color="{StaticResource VeryLightGray}"/>
+            <SolidColorBrush x:Key="TabBackgroundBrush"
+                             Color="{StaticResource LightGray1}"/>
+            <SolidColorBrush x:Key="TabForegroundBrush"
+                             Color="{StaticResource LightGray3}"/>
+            <SolidColorBrush x:Key="TabSelectedBackgroundBrush"
+                             Color="{StaticResource LightGray2}"/>
 
-      <ControlTemplate x:Key="DockEditToggleButtonTemplate">
-        <ToggleButton Classes="WindowIconButton IconButton IconToggleButton"
-              np:AttachedProperties.IconData="{StaticResource Pencil}"
-              ToolTip.Tip="Edit"
-              IsVisible="{Binding $parent[Window].(np:DockAttachedProperties.TheDockManager).IsInEditableState}"
-              IsChecked="{Binding $parent[Window].(np:DockAttachedProperties.IsInDockEditableState), Mode=TwoWay}"/>
-      </ControlTemplate>
+            <ControlTemplate x:Key="DockItemButtonsTemplate">
+                <Button x:Name="CloseButton"
+                        Classes="CloseButton"/>
+            </ControlTemplate>
 
-      <ControlTemplate x:Key="FloatingWindowButtonsTemplate">
-        <StackPanel x:Name="FloatingWindowButtonsPanel"
-                    Orientation="Horizontal">
-          <TemplatedControl Template="{StaticResource DockEditToggleButtonTemplate}"/>
-          <TemplatedControl Template="{StaticResource CustomWindowButtonsTemplate}"/>
-        </StackPanel>
-      </ControlTemplate>
+            <ControlTemplate x:Key="DockEditToggleButtonTemplate">
+                <ToggleButton Classes="WindowIconButton IconButton IconToggleButton"
+                              np:AttachedProperties.IconData="{StaticResource Pencil}"
+                              ToolTip.Tip="Edit"
+                              IsVisible="{Binding $parent[Window].(np:DockAttachedProperties.TheDockManager).IsInEditableState}"
+                              IsChecked="{Binding $parent[Window].(np:DockAttachedProperties.IsInDockEditableState), Mode=TwoWay}"/>
+            </ControlTemplate>
 
-      <ControlTemplate x:Key="AncorIconTemplate">
-        <Grid Background="Transparent"
-                ToolTip.Tip="Stable Group"
-                IsVisible="{Binding Path=$parent[np:IDockGroup].IsStableGroup}">
-          <Path Data="{StaticResource Anchor}"
-                Classes="DockIndicatorIcon"/>
-        </Grid>
-      </ControlTemplate>
-    </ResourceDictionary>
-  </Styles.Resources>
-  <StyleInclude Source="avares://NP.Ava.Visuals/Themes/TextStyles.axaml"/>
-  <StyleInclude Source="avares://NP.Ava.Visuals/Themes/ButtonStyles.axaml"/>
+            <ControlTemplate x:Key="FloatingWindowButtonsTemplate">
+                <StackPanel x:Name="FloatingWindowButtonsPanel"
+                            Orientation="Horizontal">
+                    <TemplatedControl Template="{StaticResource DockEditToggleButtonTemplate}"/>
+                    <TemplatedControl Template="{StaticResource CustomWindowButtonsTemplate}"/>
+                </StackPanel>
+            </ControlTemplate>
 
-  <Style Selector="Button.CloseButton">
-    <Setter Property="np:ClassesBehavior.InsertClasses"
-            Value="HeaderIconButton WindowIconButton IconButton"/>
-    <Setter Property="Width"
-            Value="15"/>
-    <Setter Property="Height"
-            Value="15"/>
-    <Setter Property="np:AttachedProperties.IconData"
-            Value="{StaticResource CloseIcon}"/>
-    <Setter Property="np:CallAction.TheEvent"
-            Value="{x:Static Button.ClickEvent}"/>
-    <Setter Property="np:CallAction.MethodName"
-            Value="Remove"/>
-    <Setter Property="np:AttachedProperties.IconMargin"
-            Value="3"/>
-    <Setter Property="np:AttachedProperties.IconWidth"
-            Value="10"/>
-    <Setter Property="np:AttachedProperties.IconHeight"
-            Value="10"/>
-    <Setter Property="IsEnabled">
-      <Setter.Value>
-        <MultiBinding Converter="{x:Static np:BoolConverters.And}">
-          <Binding Path="CanClose"/>
-          <Binding Path="HasStableDescendant"
-                   Converter="{x:Static np:BoolConverters.Not}"/>
-        </MultiBinding>
-      </Setter.Value>
-    </Setter>
-  </Style>
+            <ControlTemplate x:Key="AncorIconTemplate">
+                <Grid Background="Transparent"
+                      ToolTip.Tip="Stable Group"
+                      IsVisible="{Binding Path=$parent[np:IDockGroup].IsStableGroup}">
+                    <Path Data="{StaticResource Anchor}"
+                          Classes="DockIndicatorIcon"/>
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </Styles.Resources>
+    <StyleInclude Source="avares://NP.Ava.Visuals/Themes/TextStyles.axaml"/>
+    <StyleInclude Source="avares://NP.Ava.Visuals/Themes/ButtonStyles.axaml"/>
 
-  <Style Selector="Button.TabCloseButton">
-    <Setter Property="IsEnabled">
-      <Setter.Value>
-        <MultiBinding Converter="{x:Static np:BoolConverters.And}">
-          <Binding Path="CanClose"/>
-          <Binding Path="HasStableDescendant"
-                   Converter="{x:Static np:BoolConverters.Not}"/>
-          <Binding Path="$parent[np:TabbedDockGroup].AllowTabDocking"/>
-        </MultiBinding>
-      </Setter.Value>
-    </Setter>
-  </Style>
+    <Style Selector="Button.CloseButton">
+        <Setter Property="np:ClassesBehavior.InsertClasses"
+                Value="HeaderIconButton WindowIconButton IconButton"/>
+        <Setter Property="Width"
+                Value="15"/>
+        <Setter Property="Height"
+                Value="15"/>
+        <Setter Property="np:AttachedProperties.IconData"
+                Value="{StaticResource CloseIcon}"/>
+        <Setter Property="np:CallAction.TheEvent"
+                Value="{x:Static Button.ClickEvent}"/>
+        <Setter Property="np:CallAction.MethodName"
+                Value="Remove"/>
+        <Setter Property="np:AttachedProperties.IconMargin"
+                Value="3"/>
+        <Setter Property="np:AttachedProperties.IconWidth"
+                Value="10"/>
+        <Setter Property="np:AttachedProperties.IconHeight"
+                Value="10"/>
+        <Setter Property="IsEnabled">
+            <Setter.Value>
+                <MultiBinding Converter="{x:Static np:BoolConverters.And}">
+                    <Binding Path="CanClose"/>
+                    <Binding Path="HasStableDescendant"
+                             Converter="{x:Static np:BoolConverters.Not}"/>
+                </MultiBinding>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
-  <Style Selector="ToggleButton.EditButton">
-    <Setter Property="np:AttachedProperties.IconData"
-            Value="{StaticResource Pencil}"/>
-    <Setter Property="ToolTip.Tip"
-            Value="Edit"/>
-  </Style>
+    <Style Selector="Button.TabCloseButton">
+        <Setter Property="IsEnabled">
+            <Setter.Value>
+                <MultiBinding Converter="{x:Static np:BoolConverters.And}">
+                    <Binding Path="CanClose"/>
+                    <Binding Path="HasStableDescendant"
+                             Converter="{x:Static np:BoolConverters.Not}"/>
+                    <Binding Path="$parent[np:TabbedDockGroup].AllowTabDocking"/>
+                </MultiBinding>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
-  <Style Selector="local|DockSideControl">
-    <Setter Property="BorderBrush"
-            Value="Gray"/>
-    <Setter Property="BorderThickness"
-            Value="2,6,2,2"/>
-    <Setter Property="Background"
-            Value="Transparent"/>
-    <Setter Property="Width"
-            Value="30"/>
-    <Setter Property="Height"
-            Value="30"/>
-    <Setter Property="Margin"
-            Value="5"/>
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="local:DockSideControl">
-          <Border BorderThickness="{TemplateBinding BorderThickness}"
-                  BorderBrush="{TemplateBinding BorderBrush}"
-                  Background="{TemplateBinding Background}"/>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
+    <Style Selector="ToggleButton.EditButton">
+        <Setter Property="np:AttachedProperties.IconData"
+                Value="{StaticResource Pencil}"/>
+        <Setter Property="ToolTip.Tip"
+                Value="Edit"/>
+    </Style>
 
-  <Style Selector="local|DockCompass">
-    <Setter Property="Background"
-            Value="#AFD3D3D3"/>
-    <Setter Property="Margin"
-            Value="5"/>
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="local:DockCompass">
-          <Grid RowDefinitions="*,*,*"
-                ColumnDefinitions="*,*,*">
-            <Path Data="{StaticResource DockPaneEmpty}"
-                  Fill="{TemplateBinding Background}"
-                  Stretch="Fill"
-                  Grid.RowSpan="3"
-                  Grid.ColumnSpan="3"
-                  HorizontalAlignment="Center"
-                  VerticalAlignment="Center"
-                  IsVisible="{TemplateBinding ShowHull}"
-                  Width="120"
-                  Height="120"/>
-            <np:DockSideControl x:Name="CenterControl"
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                local:DockAttachedProperties.DockSide="Center"
-                                IsVisible="{TemplateBinding AllowCenterDocking}"/>
-            <np:DockSideControl Grid.Row="1"
-                                local:DockAttachedProperties.DockSide="Left"
-                                IsVisible="{TemplateBinding AllowHorizontalDocking}"
-                                HorizontalAlignment="Left"/>
-            <np:DockSideControl Grid.Column="1"
-                                local:DockAttachedProperties.DockSide="Top"
-                                IsVisible="{TemplateBinding AllowVerticalDocking}"
-                                VerticalAlignment="Top"/>
-            <np:DockSideControl Grid.Row="1"
-                                Grid.Column="2"
-                                local:DockAttachedProperties.DockSide="Right"
-                                IsVisible="{TemplateBinding AllowHorizontalDocking}"
-                                HorizontalAlignment="Right"/>
-            <np:DockSideControl Grid.Row="2"
-                                Grid.Column="1"
-                                local:DockAttachedProperties.DockSide="Bottom"
-                                IsVisible="{TemplateBinding AllowVerticalDocking}"
-                                VerticalAlignment="Bottom"/>
-          </Grid>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
+    <Style Selector="local|DockSideControl">
+        <Setter Property="BorderBrush"
+                Value="Gray"/>
+        <Setter Property="BorderThickness"
+                Value="2,6,2,2"/>
+        <Setter Property="Background"
+                Value="Transparent"/>
+        <Setter Property="Width"
+                Value="30"/>
+        <Setter Property="Height"
+                Value="30"/>
+        <Setter Property="Margin"
+                Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:DockSideControl">
+                    <Border BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Background="{TemplateBinding Background}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style Selector="local|DockCompass">
+        <Setter Property="Background"
+                Value="#AFD3D3D3"/>
+        <Setter Property="Margin"
+                Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:DockCompass">
+                    <Grid RowDefinitions="*,*,*"
+                          ColumnDefinitions="*,*,*">
+                        <Path Data="{StaticResource DockPaneEmpty}"
+                              Fill="{TemplateBinding Background}"
+                              Stretch="Fill"
+                              Grid.RowSpan="3"
+                              Grid.ColumnSpan="3"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              IsVisible="{TemplateBinding ShowHull}"
+                              Width="120"
+                              Height="120"/>
+                        <np:DockSideControl x:Name="CenterControl"
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            local:DockAttachedProperties.DockSide="Center"
+                                            IsVisible="{TemplateBinding AllowCenterDocking}"/>
+                        <np:DockSideControl Grid.Row="1"
+                                            local:DockAttachedProperties.DockSide="Left"
+                                            IsVisible="{TemplateBinding AllowHorizontalDocking}"
+                                            HorizontalAlignment="Left"/>
+                        <np:DockSideControl Grid.Column="1"
+                                            local:DockAttachedProperties.DockSide="Top"
+                                            IsVisible="{TemplateBinding AllowVerticalDocking}"
+                                            VerticalAlignment="Top"/>
+                        <np:DockSideControl Grid.Row="1"
+                                            Grid.Column="2"
+                                            local:DockAttachedProperties.DockSide="Right"
+                                            IsVisible="{TemplateBinding AllowHorizontalDocking}"
+                                            HorizontalAlignment="Right"/>
+                        <np:DockSideControl Grid.Row="2"
+                                            Grid.Column="1"
+                                            local:DockAttachedProperties.DockSide="Bottom"
+                                            IsVisible="{TemplateBinding AllowVerticalDocking}"
+                                            VerticalAlignment="Bottom"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 
-  <Style Selector="local|DropDockSideControl">
-    <Setter Property="IsHitTestVisible"
-            Value="False"/>
-    <Setter Property="IsVisible"
-            Value="{Binding Path=IsSelected, RelativeSource={RelativeSource Mode=Self}}"/>
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="local:DropDockSideControl">
-          <Grid Background="{TemplateBinding Background}"/>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="Background"
-            Value="#2000D0FF"/>
-  </Style>
-	
-  <Style Selector="local|DropPanelWithCompass">
-    <Setter Property="CompassHorizontalAlignment"
-            Value="Center"/>
-    <Setter Property="CompassVerticalAlignment"
-            Value="Center"/>
-	<Setter Property="ShowCompass"
-			Value="True"/>
-	<Setter Property="ShowSeparator"
-			Value="False"/>
-    <Setter Property="Template">
-		<ControlTemplate TargetType="local:DropPanelWithCompass">
-			<Grid>
-				<Grid IsVisible="{TemplateBinding ShowSeparator}">
-					<Grid Background="{StaticResource DockSeparatorPreviewColor}">
-						<Grid.HorizontalAlignment>
-							<Binding Path="TheOrientation"
-		                             RelativeSource="{RelativeSource TemplatedParent}">
-								<Binding.Converter>
-									<np:OrientationToHorizontalAlignmentConverter HorizontalValue="Left"
-																	              VerticalValue="Stretch"/>
-								</Binding.Converter>
-							</Binding>
-						</Grid.HorizontalAlignment>
-						<Grid.VerticalAlignment>
-							<Binding Path="TheOrientation"
-		                             RelativeSource="{RelativeSource TemplatedParent}">
-								<Binding.Converter>
-									<np:OrientationToVerticalAlignmentConverter HorizontalValue="Stretch"
-																	            VerticalValue="Top"/>
-								</Binding.Converter>
-							</Binding>
-						</Grid.VerticalAlignment>
-						<Grid.Width>
-							<Binding Path="TheOrientation"
-									 RelativeSource="{RelativeSource TemplatedParent}">
-								<Binding.Converter>
-									<np:OrientationToDoubleConverter HorizontalValue="4"
-																	 VerticalValue="NaN"/>
-								</Binding.Converter>
-							</Binding>
-						</Grid.Width>
-						<Grid.Height>
-							<Binding Path="TheOrientation"
-		                             RelativeSource="{RelativeSource TemplatedParent}">
-								<Binding.Converter>
-									<np:OrientationToDoubleConverter HorizontalValue="NaN"
-																	 VerticalValue="4"/>
-								</Binding.Converter>
-							</Binding>
-						</Grid.Height>
-						<Grid.RenderTransform>
-							<Binding Path="TheOrientation"
-		                             RelativeSource="{RelativeSource TemplatedParent}">
-								<Binding.Converter>
-									<np:OrientationToTransformConverter>
-										<np:OrientationToTransformConverter.HorizontalValue>
-											<TranslateTransform X="{Binding Path=(np:GridPartsResizeBehavior.CurrentSplitterPosition), 
+    <Style Selector="local|DropDockSideControl">
+        <Setter Property="IsHitTestVisible"
+                Value="False"/>
+        <Setter Property="IsVisible"
+                Value="{Binding Path=IsSelected, RelativeSource={RelativeSource Mode=Self}}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:DropDockSideControl">
+                    <Grid Background="{TemplateBinding Background}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background"
+                Value="#2000D0FF"/>
+    </Style>
+
+    <Style Selector="local|DropPanelWithCompass">
+        <Setter Property="CompassHorizontalAlignment"
+                Value="Center"/>
+        <Setter Property="CompassVerticalAlignment"
+                Value="Center"/>
+        <Setter Property="ShowCompass"
+                Value="True"/>
+        <Setter Property="ShowSeparator"
+                Value="False"/>
+        <Setter Property="Template">
+            <ControlTemplate TargetType="local:DropPanelWithCompass">
+                <Grid>
+                    <Grid IsVisible="{TemplateBinding ShowSeparator}">
+                        <Grid Background="{StaticResource DockSeparatorPreviewColor}">
+                            <Grid.HorizontalAlignment>
+                                <Binding Path="TheOrientation"
+                                         RelativeSource="{RelativeSource TemplatedParent}">
+                                    <Binding.Converter>
+                                        <np:OrientationToHorizontalAlignmentConverter HorizontalValue="Left"
+                                                                                      VerticalValue="Stretch"/>
+                                    </Binding.Converter>
+                                </Binding>
+                            </Grid.HorizontalAlignment>
+                            <Grid.VerticalAlignment>
+                                <Binding Path="TheOrientation"
+                                         RelativeSource="{RelativeSource TemplatedParent}">
+                                    <Binding.Converter>
+                                        <np:OrientationToVerticalAlignmentConverter HorizontalValue="Stretch"
+                                                                                    VerticalValue="Top"/>
+                                    </Binding.Converter>
+                                </Binding>
+                            </Grid.VerticalAlignment>
+                            <Grid.Width>
+                                <Binding Path="TheOrientation"
+                                         RelativeSource="{RelativeSource TemplatedParent}">
+                                    <Binding.Converter>
+                                        <np:OrientationToDoubleConverter HorizontalValue="4"
+                                                                         VerticalValue="NaN"/>
+                                    </Binding.Converter>
+                                </Binding>
+                            </Grid.Width>
+                            <Grid.Height>
+                                <Binding Path="TheOrientation"
+                                         RelativeSource="{RelativeSource TemplatedParent}">
+                                    <Binding.Converter>
+                                        <np:OrientationToDoubleConverter HorizontalValue="NaN"
+                                                                         VerticalValue="4"/>
+                                    </Binding.Converter>
+                                </Binding>
+                            </Grid.Height>
+                            <Grid.RenderTransform>
+                                <Binding Path="TheOrientation"
+                                         RelativeSource="{RelativeSource TemplatedParent}">
+                                    <Binding.Converter>
+                                        <np:OrientationToTransformConverter>
+                                            <np:OrientationToTransformConverter.HorizontalValue>
+                                                <TranslateTransform X="{Binding Path=(np:GridPartsResizeBehavior.CurrentSplitterPosition), 
 												                            RelativeSource={RelativeSource TemplatedParent}}"
-												                Y="0"/>
-										</np:OrientationToTransformConverter.HorizontalValue>
-										<np:OrientationToTransformConverter.VerticalValue>
-											<TranslateTransform X="0"
-					                                            Y="{Binding Path=(np:GridPartsResizeBehavior.CurrentSplitterPosition), 
+                                                                    Y="0"/>
+                                            </np:OrientationToTransformConverter.HorizontalValue>
+                                            <np:OrientationToTransformConverter.VerticalValue>
+                                                <TranslateTransform X="0"
+                                                                    Y="{Binding Path=(np:GridPartsResizeBehavior.CurrentSplitterPosition), 
 												                            RelativeSource={RelativeSource TemplatedParent}}"/>
-										</np:OrientationToTransformConverter.VerticalValue>
-									</np:OrientationToTransformConverter>
-								</Binding.Converter>
-							</Binding>
-						</Grid.RenderTransform>
-					</Grid>
-				</Grid>
-				<Grid x:Name="CompassPanel"
-					  RowDefinitions="*,*"
-					  ColumnDefinitions="*,*"
-					  IsVisible="{TemplateBinding ShowCompass}">
-					<local:DropDockSideControl SelectDockSide="Center"
-											   Grid.RowSpan="2"
-											   Grid.ColumnSpan="2"
-											   local:DockAttachedProperties.DockSide="{TemplateBinding DockSide}"/>
-					<local:DropDockSideControl SelectDockSide="Top"
-											   Grid.ColumnSpan="2"
-											   local:DockAttachedProperties.DockSide="{TemplateBinding DockSide}"/>
-					<local:DropDockSideControl SelectDockSide="Bottom"
-											   Grid.Row="1"
-											   Grid.ColumnSpan="2"
-											   local:DockAttachedProperties.DockSide="{TemplateBinding DockSide}"/>
-					<local:DropDockSideControl SelectDockSide="Left"
-											   Grid.RowSpan="2"
-											   local:DockAttachedProperties.DockSide="{TemplateBinding DockSide}"/>
-					<local:DropDockSideControl SelectDockSide="Right"
-											   Grid.RowSpan="2"
-											   Grid.Column="1"
-											   local:DockAttachedProperties.DockSide="{TemplateBinding DockSide}"/>
-					<local:DockCompass Grid.RowSpan="2"
-									   Grid.ColumnSpan="2"
-									   HorizontalAlignment="{TemplateBinding CompassHorizontalAlignment}"
-									   VerticalAlignment="{TemplateBinding CompassVerticalAlignment}"
-									   ShowHull="{TemplateBinding ShowHull}"
-									   AllowCenterDocking="{TemplateBinding AllowCenterDocking}"
-									   AllowHorizontalDocking="{TemplateBinding AllowHorizontalDocking}"
-									   AllowVerticalDocking="{TemplateBinding AllowVerticalDocking}"
-									   local:DockAttachedProperties.DockSide="{Binding Path=DockSide, 
+                                            </np:OrientationToTransformConverter.VerticalValue>
+                                        </np:OrientationToTransformConverter>
+                                    </Binding.Converter>
+                                </Binding>
+                            </Grid.RenderTransform>
+                        </Grid>
+                    </Grid>
+                    <Grid x:Name="CompassPanel"
+                          RowDefinitions="*,*"
+                          ColumnDefinitions="*,*"
+                          IsVisible="{TemplateBinding ShowCompass}">
+                        <local:DropDockSideControl SelectDockSide="Center"
+                                                   Grid.RowSpan="2"
+                                                   Grid.ColumnSpan="2"
+                                                   local:DockAttachedProperties.DockSide="{TemplateBinding DockSide}"/>
+                        <local:DropDockSideControl SelectDockSide="Top"
+                                                   Grid.ColumnSpan="2"
+                                                   local:DockAttachedProperties.DockSide="{TemplateBinding DockSide}"/>
+                        <local:DropDockSideControl SelectDockSide="Bottom"
+                                                   Grid.Row="1"
+                                                   Grid.ColumnSpan="2"
+                                                   local:DockAttachedProperties.DockSide="{TemplateBinding DockSide}"/>
+                        <local:DropDockSideControl SelectDockSide="Left"
+                                                   Grid.RowSpan="2"
+                                                   local:DockAttachedProperties.DockSide="{TemplateBinding DockSide}"/>
+                        <local:DropDockSideControl SelectDockSide="Right"
+                                                   Grid.RowSpan="2"
+                                                   Grid.Column="1"
+                                                   local:DockAttachedProperties.DockSide="{TemplateBinding DockSide}"/>
+                        <local:DockCompass Grid.RowSpan="2"
+                                           Grid.ColumnSpan="2"
+                                           HorizontalAlignment="{TemplateBinding CompassHorizontalAlignment}"
+                                           VerticalAlignment="{TemplateBinding CompassVerticalAlignment}"
+                                           ShowHull="{TemplateBinding ShowHull}"
+                                           AllowCenterDocking="{TemplateBinding AllowCenterDocking}"
+                                           AllowHorizontalDocking="{TemplateBinding AllowHorizontalDocking}"
+                                           AllowVerticalDocking="{TemplateBinding AllowVerticalDocking}"
+                                           local:DockAttachedProperties.DockSide="{Binding Path=DockSide, 
                                                                              Mode=TwoWay, 
                                                                              RelativeSource={RelativeSource TemplatedParent}}">
-						<local:DockCompass.StartOrEndPointerDetection>
-							<MultiBinding Converter="{x:Static BoolConverters.And}">
-								<Binding Path="IsVisible"
-										 Mode="OneWay"
-										 RelativeSource="{RelativeSource TemplatedParent}"/>
-								<Binding Path="IsAttached"
-										 Mode="OneWay"
-										 RelativeSource="{RelativeSource Self}"/>
-							</MultiBinding>
-						</local:DockCompass.StartOrEndPointerDetection>
-					</local:DockCompass>
-				</Grid>
-			</Grid>
-		</ControlTemplate>
-    </Setter>
-  </Style>
+                            <local:DockCompass.StartOrEndPointerDetection>
+                                <MultiBinding Converter="{x:Static BoolConverters.And}">
+                                    <Binding Path="IsVisible"
+                                             Mode="OneWay"
+                                             RelativeSource="{RelativeSource TemplatedParent}"/>
+                                    <Binding Path="IsAttached"
+                                             Mode="OneWay"
+                                             RelativeSource="{RelativeSource Self}"/>
+                                </MultiBinding>
+                            </local:DockCompass.StartOrEndPointerDetection>
+                        </local:DockCompass>
+                    </Grid>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
 
-  <Style Selector="local|DropPanelWithCompass[DockSide=Center]">
-    <Setter Property="SelectBackground"
-            Value="Green"/>
-  </Style>
+    <Style Selector="local|DropPanelWithCompass[DockSide=Center]">
+        <Setter Property="SelectBackground"
+                Value="Green"/>
+    </Style>
 
-  <Style Selector="ContextMenu.LogicalChildrenVisibility">
-    <Setter Property="np:LogicalChildrenBehavior.TheLogicalChildBehavior">
-      <Setter.Value>
-        <np:HasVisibleLogicalChildrenBehavior/>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="IsVisible"
-            Value="{Binding Path=(np:AttachedProperties.HasVisibleLogicalChildren), 
+    <Style Selector="ContextMenu.LogicalChildrenVisibility">
+        <Setter Property="np:LogicalChildrenBehavior.TheLogicalChildBehavior">
+            <Setter.Value>
+                <np:HasVisibleLogicalChildrenBehavior/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="IsVisible"
+                Value="{Binding Path=(np:AttachedProperties.HasVisibleLogicalChildren), 
                             RelativeSource={RelativeSource Self}}" />
-  </Style>
+    </Style>
 
-  <Style Selector="MenuItem.RestoreDefaultLocation">
-    <Setter Property="Header"
-            Value="Restore Default Location"/>
-    <Setter Property="np:CallAction.TheEvent"
-            Value="{x:Static MenuItem.ClickEvent}"/>
-    <Setter Property="np:CallAction.MethodName"
-            Value="ReattachToDefaultGroup"/>
-    <Setter Property="IsVisible"
-            Value="{Binding Path=CanReattachToDefaultGroup}"/>
-  </Style>
+    <Style Selector="MenuItem.RestoreDefaultLocation">
+        <Setter Property="Header"
+                Value="Restore Default Location"/>
+        <Setter Property="np:CallAction.TheEvent"
+                Value="{x:Static MenuItem.ClickEvent}"/>
+        <Setter Property="np:CallAction.MethodName"
+                Value="ReattachToDefaultGroup"/>
+        <Setter Property="IsVisible"
+                Value="{Binding Path=CanReattachToDefaultGroup}"/>
+    </Style>
 
-  <Style Selector="MenuItem.RestoreDefaultLocationStatic">
-    <Setter Property="np:CallAction.StaticType"
-            Value="np:DockGroupHelper"/>
-  </Style>
+    <Style Selector="MenuItem.RestoreDefaultLocationStatic">
+        <Setter Property="np:CallAction.StaticType"
+                Value="np:DockGroupHelper"/>
+    </Style>
 
-  <Style Selector="np|DockItemHeaderControl">
-    <Setter Property="HorizontalContentAlignment"
-            Value="Left"/>
-    <Setter Property="VerticalContentAlignment"
-            Value="Center"/>
-    <Setter Property="Padding"
-            Value="5,3"/>
-    <Setter Property="ButtonsTemplate"
-            Value="{StaticResource DockItemButtonsTemplate}"/>
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="np:DockItemHeaderControl">
-          <Grid x:Name="PART_HeaderPanel"
-                Background="{TemplateBinding Background}">
-            <Grid.ContextMenu>
-              <ContextMenu Classes="LogicalChildrenVisibility">
-                <MenuItem Classes="RestoreDefaultLocation RestoreDefaultLocationStatic"/>
-              </ContextMenu>
-            </Grid.ContextMenu>
-            <Grid Margin="{TemplateBinding Padding}">
-              <ContentPresenter x:Name="Header"
-                                Content="{TemplateBinding Content}"
-                                ContentTemplate="{TemplateBinding ContentTemplate}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+    <Style Selector="np|DockItemHeaderControl">
+        <Setter Property="HorizontalContentAlignment"
+                Value="Left"/>
+        <Setter Property="VerticalContentAlignment"
+                Value="Center"/>
+        <Setter Property="Padding"
+                Value="5,3"/>
+        <Setter Property="ButtonsTemplate"
+                Value="{StaticResource DockItemButtonsTemplate}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="np:DockItemHeaderControl">
+                    <Grid x:Name="PART_HeaderPanel"
+                          Background="{TemplateBinding Background}">
+                        <Grid.ContextMenu>
+                            <ContextMenu Classes="LogicalChildrenVisibility">
+                                <MenuItem Classes="RestoreDefaultLocation RestoreDefaultLocationStatic"/>
+                            </ContextMenu>
+                        </Grid.ContextMenu>
+                        <Grid Margin="{TemplateBinding Padding}">
+                            <ContentPresenter x:Name="Header"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
 
-              <TemplatedControl x:Name="ButtonsControl"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                np:HandleEventBehavior.TheEvent="{x:Static InputElement.PointerPressedEvent}"
-                                Template="{TemplateBinding ButtonsTemplate}"/>
-            </Grid>
-          </Grid>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
+                            <TemplatedControl x:Name="ButtonsControl"
+                                              HorizontalAlignment="Right"
+                                              VerticalAlignment="Center"
+                                              np:HandleEventBehavior.TheEvent="{x:Static InputElement.PointerPressedEvent}"
+                                              Template="{TemplateBinding ButtonsTemplate}"/>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
-  <Style Selector="np|DockTabItem.Dock">
-    <Setter Property="Background" Value="Transparent"/>
-    <Setter Property="FontSize" Value="12"/>
-    <Setter Property="Foreground" Value="Black"/>
-    <Setter Property="HorizontalContentAlignment" Value="Left"/>
-    <Setter Property="Padding" Value="6,2,3,2"/>
-    <Setter Property="np:DockAttachedProperties.IconButtonForeground"
-            Value="Transparent"/>
-    <Setter Property="IsSelected"
-            Value="{Binding Path=Content.IsSelected, Mode=OneWay, RelativeSource={RelativeSource Self}}" />
-    <Setter Property="np:CallAction.TheEvent"
-            Value="{x:Static InputElement.PointerPressedEvent}"/>
-    <Setter Property="np:CallAction.TargetObject"
-            Value="{Binding Path=Content, RelativeSource={RelativeSource Self}}" />
-    <Setter Property="np:CallAction.MethodName"
-            Value="Select"/>
-    <Setter Property="np:CallAction.TheRoutingStrategy"
-            Value="Bubble"/>
-    <Setter Property="IsVisible"
-            Value="{Binding Path=Content.(np:DockAttachedProperties.IsDockVisible), 
+    <Style Selector="np|DockTabItem.Dock">
+        <Setter Property="Background"
+                Value="{StaticResource TabBackgroundBrush}"/>
+        <Setter Property="FontSize"
+                Value="12"/>
+        <Setter Property="Foreground"
+                Value="{StaticResource TabForegroundBrush}"/>
+        <Setter Property="Margin"
+                Value="5"/>
+        <Setter Property="HorizontalContentAlignment"
+                Value="Left"/>
+        <Setter Property="Padding"
+                Value="6,2,6,2"/>
+        <Setter Property="np:DockAttachedProperties.IconButtonForeground"
+                Value="Transparent"/>
+        <Setter Property="IsSelected"
+                Value="{Binding Path=Content.IsSelected, Mode=OneWay, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="np:CallAction.TheEvent"
+                Value="{x:Static InputElement.PointerPressedEvent}"/>
+        <Setter Property="np:CallAction.TargetObject"
+                Value="{Binding Path=Content, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="np:CallAction.MethodName"
+                Value="Select"/>
+        <Setter Property="np:CallAction.TheRoutingStrategy"
+                Value="Bubble"/>
+        <Setter Property="CornerRadius"
+                Value="5"/>
+        <Setter Property="IsVisible"
+                Value="{Binding Path=Content.(np:DockAttachedProperties.IsDockVisible), 
                             RelativeSource={RelativeSource Self}}" />
-    <Setter Property="IsActive"
-            Value="{Binding Path=Content.IsActive, 
+        <Setter Property="IsActive"
+                Value="{Binding Path=Content.IsActive, 
                             RelativeSource={RelativeSource Self}}"/>
-    <Setter Property="IsFullyActive">
-      <Setter.Value>
-        <MultiBinding Converter="{x:Static BoolConverters.And}">
-          <Binding Path="IsActive"
-                   RelativeSource="{RelativeSource Self}"/>
-          <Binding Path="IsActive"
-                   RelativeSource="{RelativeSource AncestorType=Window}"/>
-        </MultiBinding>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="Template">
-      <ControlTemplate>
-        <Grid ColumnDefinitions="Auto, Auto"
-              Background="{TemplateBinding Background}"
-              DataContext="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}">
-          <Grid.ContextMenu>
-            <ContextMenu Classes="LogicalChildrenVisibility">
-              <MenuItem Classes="RestoreDefaultLocation RestoreDefaultLocationStatic"/>
-            </ContextMenu>
-          </Grid.ContextMenu>
-          <np:DockContentPresenter
-              Name="PART_ContentPresenter"
-			  IsHeader="True"
-              BorderBrush="{TemplateBinding BorderBrush}"
-              BorderThickness="{TemplateBinding BorderThickness}"
-			  OwningDockItem="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"
-              DockDataContext="{Binding Path=Content.DockDataContext, RelativeSource={RelativeSource TemplatedParent}}"
-              ContentTemplate="{Binding Path=Content.HeaderTemplate, RelativeSource={RelativeSource TemplatedParent}}"
-              Content="{Binding Path=Content.Header, RelativeSource={RelativeSource TemplatedParent}}"
-              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-              Margin="{TemplateBinding Margin}"
-              Padding="{TemplateBinding Padding}"/>
-          <Button x:Name="CloseButton"
-                  Classes="CloseButton TabCloseButton"
-                  Foreground="{Binding Path=(np:DockAttachedProperties.IconButtonForeground), RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                  Grid.Column="1"
-                  Margin="6,2,2,2"/>
-        </Grid>
-      </ControlTemplate>
-    </Setter>
-  </Style>
+        <Setter Property="IsFullyActive">
+            <Setter.Value>
+                <MultiBinding Converter="{x:Static BoolConverters.And}">
+                    <Binding Path="IsActive"
+                             RelativeSource="{RelativeSource Self}"/>
+                    <Binding Path="IsActive"
+                             RelativeSource="{RelativeSource AncestorType=Window}"/>
+                </MultiBinding>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid ColumnDefinitions="Auto, Auto"
+                      DataContext="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}">
+                    <Border HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Grid.ColumnSpan="2"/>
+                    <!--<Grid.ContextMenu>
+                        <ContextMenu Classes="LogicalChildrenVisibility">
+                          <MenuItem Classes="RestoreDefaultLocation RestoreDefaultLocationStatic"/>
+                        </ContextMenu>
+                      </Grid.ContextMenu>-->
 
-  <Style Selector="np|DockTabItem.Dock:pointerover">
-    <Setter Property="Background"
-            Value="{StaticResource DockMouseOverBrush}"/>
-    <!--<Setter Property="Foreground"
+                    <np:DockContentPresenter
+                        Name="PART_ContentPresenter"
+                        IsHeader="True"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        OwningDockItem="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"
+                        DockDataContext="{Binding Path=Content.DockDataContext, RelativeSource={RelativeSource TemplatedParent}}"
+                        ContentTemplate="{Binding Path=Content.HeaderTemplate, RelativeSource={RelativeSource TemplatedParent}}"
+                        Content="{Binding Path=Content.Header, RelativeSource={RelativeSource TemplatedParent}}"
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Margin="{TemplateBinding Margin}"
+                        Padding="{TemplateBinding Padding}"/>
+                    <Button x:Name="CloseButton"
+                            Classes="CloseButton TabCloseButton"
+                            HorizontalAlignment="Left"
+                            Foreground="{Binding Path=(np:DockAttachedProperties.IconButtonForeground), RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                            Grid.Column="1"
+                            Margin="2,2,2,2"/>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="np|DockTabItem.Dock:pointerover">
+        <Setter Property="Background"
+                Value="{StaticResource DockMouseOverBrush}"/>
+        <!--<Setter Property="Foreground"
             Value="White"/>-->
-    <Setter Property="np:DockAttachedProperties.IconButtonForeground"
-            Value="#FF000000"/>
-  </Style>
+        <Setter Property="np:DockAttachedProperties.IconButtonForeground"
+                Value="#FF000000"/>
+    </Style>
 
 
-  <Style Selector="np|DockTabItem.Dock[IsSelected=True]">
-    <Setter Property="Background"
-            Value="{StaticResource DockHeaderBrush}"/>
-  </Style>
+    <Style Selector="np|DockTabItem.Dock[IsSelected=True]">
+        <!--<Setter Property="Background"
+                Value="{StaticResource TabBackgroundBrush}"/>-->
+        <Setter Property="Background"
+                Value="{StaticResource TabSelectedBackgroundBrush}"/>
+        <Setter Property="Foreground"
+                Value="Black"/>
+        <Setter Property="FontWeight"
+                Value="Bold"/>
+    </Style>
 
-  <Style Selector="np|DockTabItem.Dock[IsActive=True]">
-    <Setter Property="Background"
-            Value="{StaticResource DockSelectedBrush}"/>
-  </Style>
+    <Style Selector="np|DockTabItem.Dock[IsActive=True]">
+        <Setter Property="Background"
+                Value="{StaticResource TabSelectedBackgroundBrush}"/>
+        <Setter Property="Foreground"
+                Value="Black"/>
+        <Setter Property="FontWeight"
+                Value="Bold"/>
+    </Style>
 
-  <Style Selector="np|DockTabItem.Dock[IsFullyActive=True]">
-    <Setter Property="Background"
-            Value="#F5CC84"/>
-  </Style>
+    <!--<Style Selector="np|DockTabItem.Dock[IsFullyActive=True]">
+        <Setter Property="Background"
+                Value="TabBackgroundBrush"/>
+    </Style>-->
 
-  <Style Selector="np|DockSeparator">
-    <Setter Property="Focusable" Value="True" />
-    <Setter Property="MinWidth" Value="1" />
-    <Setter Property="MinHeight" Value="1" />
-    <Setter Property="Background"
-            Value="{StaticResource DockSeparatorBrush}"/>
-    <Setter Property="HorizontalAlignment"
-        Value="Stretch"/>
-    <Setter Property="VerticalAlignment"
-        Value="Stretch"/>
-	  <Setter Property="PreviewContent"
-			  Value="{x:Null}"/>
-    <Setter Property="Template">
-      <ControlTemplate>
-        <Border BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                Background="{TemplateBinding Background}"/>
-      </ControlTemplate>
-    </Setter>
-  </Style>
+    <Style Selector="np|DockSeparator">
+        <Setter Property="Focusable"
+                Value="True" />
+        <Setter Property="MinWidth"
+                Value="1" />
+        <Setter Property="MinHeight"
+                Value="1" />
+        <Setter Property="Background"
+                Value="{StaticResource DockSeparatorBrush}"/>
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch"/>
+        <Setter Property="VerticalAlignment"
+                Value="Stretch"/>
+        <Setter Property="PreviewContent"
+                Value="{x:Null}"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Background="{TemplateBinding Background}"/>
+            </ControlTemplate>
+        </Setter>
+    </Style>
 
-  <Style Selector="np|DockSeparator[TheOrientation=Horizontal]">
-    <Setter Property="Height"
-            Value="4"/>
-  </Style>
+    <Style Selector="np|DockSeparator[TheOrientation=Horizontal]">
+        <Setter Property="Height"
+                Value="4"/>
+    </Style>
 
-  <Style Selector="np|DockSeparator[TheOrientation=Vertical]">
-    <Setter Property="Width"
-            Value="4"/>
-  </Style>
+    <Style Selector="np|DockSeparator[TheOrientation=Vertical]">
+        <Setter Property="Width"
+                Value="4"/>
+    </Style>
 
-  <Style Selector="local|TabbedDockGroup">
-    <Setter Property="HorizontalAlignment"
-            Value="Stretch"/>
-    <Setter Property="VerticalAlignment"
-            Value="Stretch"/>
-    <Setter Property="np:DockAttachedProperties.IsInDockEditableState"
-            Value="{Binding Path=(np:DockAttachedProperties.IsInDockEditableState),
+    <Style Selector="local|TabbedDockGroup">
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch"/>
+        <Setter Property="VerticalAlignment"
+                Value="Stretch"/>
+        <Setter Property="Background"
+                Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="np:DockAttachedProperties.IsInDockEditableState"
+                Value="{Binding Path=(np:DockAttachedProperties.IsInDockEditableState),
                             RelativeSource={RelativeSource AncestorType=Window}}"/>
-    <Setter Property="ShowHeader">
-      <Setter.Value>
-        <MultiBinding Converter="{x:Static np:BoolConverters.And}">
-          <Binding Path="(np:DockAttachedProperties.IsInDockEditableState)"
-                   RelativeSource="{RelativeSource Self}"/>
-          <Binding Path="(np:DockAttachedProperties.IsUnderLockedGroup)"
-                   Converter="{x:Static np:BoolConverters.Not}"
-                   RelativeSource="{RelativeSource Self}"/>
-        </MultiBinding>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="IsVisible"
-            Value="{Binding Path=(np:DockAttachedProperties.IsDockVisible), 
+        <Setter Property="ShowHeader">
+            <Setter.Value>
+                <MultiBinding Converter="{x:Static np:BoolConverters.And}">
+                    <Binding Path="(np:DockAttachedProperties.IsInDockEditableState)"
+                             RelativeSource="{RelativeSource Self}"/>
+                    <Binding Path="(np:DockAttachedProperties.IsUnderLockedGroup)"
+                             Converter="{x:Static np:BoolConverters.Not}"
+                             RelativeSource="{RelativeSource Self}"/>
+                </MultiBinding>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="IsVisible"
+                Value="{Binding Path=(np:DockAttachedProperties.IsDockVisible), 
                             RelativeSource={RelativeSource Self}}"/>
-    <Setter Property="TabSeparatorBackground"
-            Value="{StaticResource DockHeaderBrush}"/>
-    <Setter Property="Background"
-            Value="White"/>
-    <Setter Property="HeaderBackground"
-        Value="{StaticResource DockHeaderBrush}"/>
-    <Setter Property="HeaderForeground"
-            Value="Black"/>
-    <Setter Property="IsFullyActive">
-      <Setter.Value>
-        <MultiBinding Converter="{x:Static BoolConverters.And}">
-          <Binding Path="SelectedItem.IsActive"
-                   RelativeSource="{RelativeSource Self}"/>
-          <Binding Path="IsActive"
-                   RelativeSource="{RelativeSource AncestorType=Window}"/>
-        </MultiBinding>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="local:TabbedDockGroup">
-          <Border
-              Margin="{TemplateBinding Margin}"
-              BorderBrush="{TemplateBinding BorderBrush}"
-              BorderThickness="{TemplateBinding BorderThickness}"
-              Background="{TemplateBinding Background}"
-              HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-              VerticalAlignment="{TemplateBinding VerticalAlignment}">
-            <Grid RowDefinitions="Auto, *">
-              <Grid RowDefinitions="Auto, Auto"
-                    IsVisible="{Binding Path=ShowHeader, RelativeSource={RelativeSource TemplatedParent}}">
-                <np:DockItemHeaderControl x:Name="Header"
-                                          DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                          Background="{Binding Path=HeaderBackground, RelativeSource={RelativeSource TemplatedParent}}"
-                                          Foreground="{Binding Path=HeaderForeground, RelativeSource={RelativeSource TemplatedParent}}"
-                                          np:DragHeaderBehavior.IsSet="True"
-                                          Height="22">
-                  <np:DockItemHeaderControl.ButtonsTemplate>
-                    <ControlTemplate>
-                      <StackPanel Orientation="Horizontal"
-                                  np:HandleEventBehavior.TheEvent="{x:Static InputElement.PointerPressedEvent}">
-                        <TextBlock Text="{Binding Path=$parent[local:TabbedDockGroup].DockId, StringFormat='DockId:\{0\}'}"
-                                   IsVisible="{Binding Path=$parent[local:TabbedDockGroup].(local:DockAttachedProperties.IsInDockEditableState)}"
-                                   Margin="5,0"
-                                   IsHitTestVisible="False"/>
-                        <CheckBox  Content="Allow Tab Docking"
-                                   IsChecked="{Binding Path=AllowTabDocking, Mode=TwoWay}"
-                                   Height="22"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   Margin="0,0,0,0"
-                                   IsVisible="{Binding Path=$parent[local:TabbedDockGroup].(local:DockAttachedProperties.IsInDockEditableState)}"/>
-                        <TemplatedControl Template="{StaticResource AncorIconTemplate}"/>
-                        <ComboBox ItemsSource="{x:Static np:VisualHelper.Docks}"
-                                  IsVisible="{Binding $parent[local:TabbedDockGroup].(local:DockAttachedProperties.IsInDockEditableState)}"
-                                  Padding="0"
-                                  BorderThickness="0"
-                                  Margin="5,0"
-                                  Foreground="Black"
-                                  Opacity="0.7"
-                                  Background="Transparent"
-                                  ToolTip.Tip="Choose Side for Tabs"
-                                  HorizontalAlignment="Center"
-                                  VerticalAlignment="Center"
-                                  SelectedItem="{Binding Path=TabStripPlacement,
+        <Setter Property="TabSeparatorBackground"
+                Value="{StaticResource DockHeaderBrush}"/>
+        <Setter Property="HeaderBackground"
+                Value="{StaticResource DockHeaderBrush}"/>
+        <Setter Property="HeaderForeground"
+                Value="Black"/>
+        <Setter Property="IsFullyActive">
+            <Setter.Value>
+                <MultiBinding Converter="{x:Static BoolConverters.And}">
+                    <Binding Path="SelectedItem.IsActive"
+                             RelativeSource="{RelativeSource Self}"/>
+                    <Binding Path="IsActive"
+                             RelativeSource="{RelativeSource AncestorType=Window}"/>
+                </MultiBinding>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:TabbedDockGroup">
+                    <Border
+                        Margin="{TemplateBinding Margin}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Background="{TemplateBinding Background}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                        <Grid RowDefinitions="Auto, *">
+                            <Grid RowDefinitions="Auto, Auto"
+                                  IsVisible="{Binding Path=ShowHeader, RelativeSource={RelativeSource TemplatedParent}}">
+                                <np:DockItemHeaderControl x:Name="Header"
+                                                          DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                                          Background="{Binding Path=HeaderBackground, RelativeSource={RelativeSource TemplatedParent}}"
+                                                          Foreground="{Binding Path=HeaderForeground, RelativeSource={RelativeSource TemplatedParent}}"
+                                                          np:DragHeaderBehavior.IsSet="True"
+                                                          Height="22">
+                                    <np:DockItemHeaderControl.ButtonsTemplate>
+                                        <ControlTemplate>
+                                            <StackPanel Orientation="Horizontal"
+                                                        np:HandleEventBehavior.TheEvent="{x:Static InputElement.PointerPressedEvent}">
+                                                <TextBlock Text="{Binding Path=$parent[local:TabbedDockGroup].DockId, StringFormat='DockId:\{0\}'}"
+                                                           IsVisible="{Binding Path=$parent[local:TabbedDockGroup].(local:DockAttachedProperties.IsInDockEditableState)}"
+                                                           Margin="5,0"
+                                                           IsHitTestVisible="False"/>
+                                                <CheckBox  Content="Allow Tab Docking"
+                                                           IsChecked="{Binding Path=AllowTabDocking, Mode=TwoWay}"
+                                                           Height="22"
+                                                           VerticalAlignment="Center"
+                                                           HorizontalAlignment="Center"
+                                                           Margin="0,0,0,0"
+                                                           IsVisible="{Binding Path=$parent[local:TabbedDockGroup].(local:DockAttachedProperties.IsInDockEditableState)}"/>
+                                                <TemplatedControl Template="{StaticResource AncorIconTemplate}"/>
+                                                <ComboBox ItemsSource="{x:Static np:VisualHelper.Docks}"
+                                                          IsVisible="{Binding $parent[local:TabbedDockGroup].(local:DockAttachedProperties.IsInDockEditableState)}"
+                                                          Padding="0"
+                                                          BorderThickness="0"
+                                                          Margin="5,0"
+                                                          Foreground="Black"
+                                                          Opacity="0.7"
+                                                          Background="Transparent"
+                                                          ToolTip.Tip="Choose Side for Tabs"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"
+                                                          SelectedItem="{Binding Path=TabStripPlacement,
                                                          Mode=TwoWay,
                                                          RelativeSource={RelativeSource AncestorType=np:TabbedDockGroup}}">
-                          <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                              <Grid Background="Transparent"
-                                      ToolTip.Tip="{Binding StringFormat='\{0\}'}">
-                                <Path Width="13"
-                                      Height="13"
-                                      Stretch="Fill"
-                                      HorizontalAlignment="Center"
-                                      VerticalAlignment="Center"
-                                      np:FindResourceBehavior.TheProp="{x:Static Path.DataProperty}"
-                                      np:FindResourceBehavior.ResourceKey="{Binding StringFormat='Border\{0\}'}"
-                                      Opacity="0.5"
-                                      Fill="{Binding $parent[ComboBox].Foreground}"/>
-                              </Grid>
-                            </DataTemplate>
-                          </ComboBox.ItemTemplate>
-                        </ComboBox>
-                        <Button x:Name="CloseButton"
-                                Classes="CloseButton"/>
-                      </StackPanel>
-                    </ControlTemplate>
-                  </np:DockItemHeaderControl.ButtonsTemplate>
-                </np:DockItemHeaderControl>
-                <Grid x:Name="Separator"
-                      Grid.Row="1"
-                      Height="2"/>
-              </Grid>
-              <DockPanel Grid.Row="1">
-                <local:DockTabsPresenter local:DragTabBehavior.IsSet="{TemplateBinding AllowTabDocking}"
-                                         local:DockAttachedProperties.TheDockManager="{Binding Path=(local:DockAttachedProperties.TheDockManager),
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Grid Background="Transparent"
+                                                                  ToolTip.Tip="{Binding StringFormat='\{0\}'}">
+                                                                <Path Width="13"
+                                                                      Height="13"
+                                                                      Stretch="Fill"
+                                                                      HorizontalAlignment="Center"
+                                                                      VerticalAlignment="Center"
+                                                                      np:FindResourceBehavior.TheProp="{x:Static Path.DataProperty}"
+                                                                      np:FindResourceBehavior.ResourceKey="{Binding StringFormat='Border\{0\}'}"
+                                                                      Opacity="0.5"
+                                                                      Fill="{Binding $parent[ComboBox].Foreground}"/>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
+                                                </ComboBox>
+                                                <Button x:Name="CloseButton"
+                                                        Classes="CloseButton"/>
+                                            </StackPanel>
+                                        </ControlTemplate>
+                                    </np:DockItemHeaderControl.ButtonsTemplate>
+                                </np:DockItemHeaderControl>
+                                <Grid x:Name="Separator"
+                                      Grid.Row="1"
+                                      Height="2"/>
+                            </Grid>
+                            <DockPanel Grid.Row="1">
+                                <local:DockTabsPresenter local:DragTabBehavior.IsSet="{TemplateBinding AllowTabDocking}"
+                                                         local:DockAttachedProperties.TheDockManager="{Binding Path=(local:DockAttachedProperties.TheDockManager),
                                                                                                RelativeSource={RelativeSource TemplatedParent}}"
-                                         DockPanel.Dock="{TemplateBinding TabStripPlacement}"
-                                         VerticalAlignment="Top"
-                                         ItemsSource="{Binding Path=Items, RelativeSource={RelativeSource TemplatedParent}}">
-					<!--<local:DockTabsPresenter.ItemTemplate>
+                                                         DockPanel.Dock="{TemplateBinding TabStripPlacement}"
+                                                         VerticalAlignment="Top"
+                                                         ItemsSource="{Binding Path=Items, RelativeSource={RelativeSource TemplatedParent}}">
+                                    <!--<local:DockTabsPresenter.ItemTemplate>
 						<DataTemplate>
 							<Grid Height="30"
 								  Width="100"
 								  Background="Red"/>
 						</DataTemplate>
 					</local:DockTabsPresenter.ItemTemplate>-->
-                  <local:DockTabsPresenter.ItemsPanel>
-                    <ItemsPanelTemplate>
-                      <WrapPanel Orientation="{Binding $parent[local:TabbedDockGroup].TabOrientation}"/>
-                    </ItemsPanelTemplate>
-                  </local:DockTabsPresenter.ItemsPanel>
-                </local:DockTabsPresenter>
-                <Grid>
-                  <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                  </Grid.RowDefinitions>
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                  </Grid.ColumnDefinitions>
-                  <Grid x:Name="PART_TabSeparator"
-                        Background="{TemplateBinding TabSeparatorBackground}"
-                        IsVisible="{Binding Path=NumberDockChildren, 
+                                    <local:DockTabsPresenter.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel Orientation="{Binding $parent[local:TabbedDockGroup].TabOrientation}"/>
+                                        </ItemsPanelTemplate>
+                                    </local:DockTabsPresenter.ItemsPanel>
+                                </local:DockTabsPresenter>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid x:Name="PART_TabSeparator"
+                                          Background="{TemplateBinding TabSeparatorBackground}"
+                                          IsVisible="{Binding Path=NumberDockChildren, 
                                           Converter={x:Static np:IntConverters.IsPositiveConverter},
                                           RelativeSource={RelativeSource TemplatedParent}}"/>
-                  <np:DockContentPresenter
-                       Grid.Row="1"
-                       Grid.Column="1"
-                       Name="PART_SelectedContentHost"
-                       Margin="{TemplateBinding Padding}"
-					   OwningDockItem="{Binding Path=SelectedItem, RelativeSource={RelativeSource TemplatedParent}}"
-                       DockDataContext="{Binding Path=SelectedItem.DockDataContext, RelativeSource={RelativeSource TemplatedParent}}"
-                       Content="{Binding Path=OwningDockItem.Content, RelativeSource={RelativeSource Self}}"
-                       ContentTemplate="{Binding Path=OwningDockItem.ContentTemplate, RelativeSource={RelativeSource Self}}"
-                       HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                       VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
-					<Grid x:Name="PART_OverlayWindowHolder" 
-						  Grid.Row="1"
-                          Grid.Column="1"
-						  np:OverlayBehavior.OverlayedControl="{Binding RelativeSource={RelativeSource Self}}"
-						  np:OverlayBehavior.IsOpen="{Binding Path=ShowCompass, RelativeSource={RelativeSource TemplatedParent}}"
-						  np:OverlayBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
+                                    <np:DockContentPresenter
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Name="PART_SelectedContentHost"
+                                        Margin="{TemplateBinding Padding}"
+                                        OwningDockItem="{Binding Path=SelectedItem, RelativeSource={RelativeSource TemplatedParent}}"
+                                        DockDataContext="{Binding Path=SelectedItem.DockDataContext, RelativeSource={RelativeSource TemplatedParent}}"
+                                        Content="{Binding Path=OwningDockItem.Content, RelativeSource={RelativeSource Self}}"
+                                        ContentTemplate="{Binding Path=OwningDockItem.ContentTemplate, RelativeSource={RelativeSource Self}}"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    <Grid x:Name="PART_OverlayWindowHolder"
+                                          Grid.Row="1"
+                                          Grid.Column="1"
+                                          np:OverlayBehavior.OverlayedControl="{Binding RelativeSource={RelativeSource Self}}"
+                                          np:OverlayBehavior.IsOpen="{Binding Path=ShowCompass, RelativeSource={RelativeSource TemplatedParent}}"
+                                          np:OverlayBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
 						                                             Converter={x:Static np:ToControlContainerConverter.Instance}}">
-					</Grid>
-                </Grid>
-              </DockPanel>
-            </Grid>
-          </Border>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
+                                    </Grid>
+                                </Grid>
+                            </DockPanel>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 
-  <Style Selector="np|TabbedDockGroup[IsActive=True]">
-    <Setter Property="TabSeparatorBackground"
-        Value="{StaticResource DockSelectedBrush}"/>
-    <!--<Setter Property="HeaderForeground"
+    <Style Selector="np|TabbedDockGroup[IsActive=True]">
+        <Setter Property="TabSeparatorBackground"
+                Value="{StaticResource DockSelectedBrush}"/>
+        <!--<Setter Property="HeaderForeground"
             Value="White"/>-->
-  </Style>
+    </Style>
 
-  <Style Selector="np|TabbedDockGroup[IsFullyActive=True]">
-    <Setter Property="TabSeparatorBackground"
-        Value="#F5CC84"/>
-    <!--<Setter Property="HeaderForeground"
-            Value="White"/>-->
-  </Style>
+    <Style Selector="np|TabbedDockGroup[IsFullyActive=True]">
+        <!--<Setter Property="TabSeparatorBackground"
+                Value="#F5CC84"/>-->
+        <Setter Property="HeaderForeground"
+                Value="White"/>
+    </Style>
 
 
-  <Style Selector="local|TabbedDockGroup[TabStripPlacement=Top] /template/ ItemsPresenter#PART_ItemsPresenter">
-    <Setter Property="DockPanel.Dock" Value="Top"/>
-  </Style>
-  <Style Selector="local|TabbedDockGroup[TabStripPlacement=Top] /template/ Grid#PART_TabSeparator">
-    <Setter Property="Height"
-        Value="2"/>
-    <Setter Property="Grid.Column"
-            Value="1"/>
-  </Style>
-  <Style Selector="local|TabbedDockGroup[TabStripPlacement=Bottom] /template/ ItemsPresenter#PART_ItemsPresenter">
-    <Setter Property="DockPanel.Dock" Value="Bottom"/>
-  </Style>
-  <Style Selector="local|TabbedDockGroup[TabStripPlacement=Bottom] /template/ Grid#PART_TabSeparator">
-    <Setter Property="Grid.Column"
-            Value="1"/>
-    <Setter Property="Grid.Row" Value="2"/>
-    <Setter Property="Height"
-        Value="2"/>
-  </Style>
-  <Style Selector="local|TabbedDockGroup[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter">
-    <Setter Property="DockPanel.Dock" Value="Left"/>
-  </Style>
-  <Style Selector="local|TabbedDockGroup[TabStripPlacement=Left] /template/ Grid#PART_TabSeparator">
-    <Setter Property="Grid.Row" Value="1"/>
-    <Setter Property="Grid.Column" Value="0"/>
-    <Setter Property="Height" Value="NaN"/>
-    <Setter Property="Width" Value="2"/>
-  </Style>
-  <Style Selector="local|TabbedDockGroup[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter">
-    <Setter Property="DockPanel.Dock" Value="Right"/>
-  </Style>
-  <Style Selector="local|TabbedDockGroup[TabStripPlacement=Right] /template/ Grid#PART_TabSeparator">
-    <Setter Property="Grid.Row" Value="1"/>
-    <Setter Property="Grid.Column" Value="2"/>
-    <Setter Property="Height" Value="NaN"/>
-    <Setter Property="Width" Value="2"/>
-  </Style>
+    <Style Selector="local|TabbedDockGroup[TabStripPlacement=Top] /template/ ItemsPresenter#PART_ItemsPresenter">
+        <Setter Property="DockPanel.Dock"
+                Value="Top"/>
+    </Style>
+    <Style Selector="local|TabbedDockGroup[TabStripPlacement=Top] /template/ Grid#PART_TabSeparator">
+        <Setter Property="Height"
+                Value="2"/>
+        <Setter Property="Grid.Column"
+                Value="1"/>
+    </Style>
+    <Style Selector="local|TabbedDockGroup[TabStripPlacement=Bottom] /template/ ItemsPresenter#PART_ItemsPresenter">
+        <Setter Property="DockPanel.Dock"
+                Value="Bottom"/>
+    </Style>
+    <Style Selector="local|TabbedDockGroup[TabStripPlacement=Bottom] /template/ Grid#PART_TabSeparator">
+        <Setter Property="Grid.Column"
+                Value="1"/>
+        <Setter Property="Grid.Row"
+                Value="2"/>
+        <Setter Property="Height"
+                Value="2"/>
+    </Style>
+    <Style Selector="local|TabbedDockGroup[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter">
+        <Setter Property="DockPanel.Dock"
+                Value="Left"/>
+    </Style>
+    <Style Selector="local|TabbedDockGroup[TabStripPlacement=Left] /template/ Grid#PART_TabSeparator">
+        <Setter Property="Grid.Row"
+                Value="1"/>
+        <Setter Property="Grid.Column"
+                Value="0"/>
+        <Setter Property="Height"
+                Value="NaN"/>
+        <Setter Property="Width"
+                Value="2"/>
+    </Style>
+    <Style Selector="local|TabbedDockGroup[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter">
+        <Setter Property="DockPanel.Dock"
+                Value="Right"/>
+    </Style>
+    <Style Selector="local|TabbedDockGroup[TabStripPlacement=Right] /template/ Grid#PART_TabSeparator">
+        <Setter Property="Grid.Row"
+                Value="1"/>
+        <Setter Property="Grid.Column"
+                Value="2"/>
+        <Setter Property="Height"
+                Value="NaN"/>
+        <Setter Property="Width"
+                Value="2"/>
+    </Style>
 
-  <Style Selector="np|DockItemPresenter">
-    <Setter Property="Padding"
-            Value="5"/>
-	<Setter Property="Background"
-			Value="White"/>
-    <Setter Property="DataContext"
-            Value="{Binding Path=DockContext, RelativeSource={RelativeSource Mode=Self}}"/>
-	<Setter Property="np:ClassesBehavior.TheClasses"
-			Value="{Binding Path=ItemPresenterClasses}"/>
-    <Setter Property="HeaderBackground"
-            Value="{StaticResource DockHeaderBrush}"/>
-    <Setter Property="HeaderForeground"
-            Value="Black"/>
-    <Setter Property="IsActive"
-            Value="{Binding Path=IsActive}"/>
-    <Setter Property="IsVisible"
-            Value="{Binding Path=DockContext.(np:DockAttachedProperties.IsDockVisible),
+    <Style Selector="np|DockItemPresenter">
+        <Setter Property="Padding"
+                Value="5"/>
+        <Setter Property="Background"
+                Value="White"/>
+        <Setter Property="DataContext"
+                Value="{Binding Path=DockContext, RelativeSource={RelativeSource Mode=Self}}"/>
+        <Setter Property="np:ClassesBehavior.TheClasses"
+                Value="{Binding Path=ItemPresenterClasses}"/>
+        <Setter Property="HeaderBackground"
+                Value="{StaticResource DockHeaderBrush}"/>
+        <Setter Property="HeaderForeground"
+                Value="Black"/>
+        <Setter Property="IsActive"
+                Value="{Binding Path=IsActive}"/>
+        <Setter Property="IsVisible"
+                Value="{Binding Path=DockContext.(np:DockAttachedProperties.IsDockVisible),
                             RelativeSource={RelativeSource Self}}" />
-    <Setter Property="IsFullyActive">
-      <Setter.Value>
-        <MultiBinding Converter="{x:Static BoolConverters.And}">
-          <Binding Path="IsActive"/>
-          <Binding Path="IsActive"
-                   RelativeSource="{RelativeSource AncestorType=Window}"/>
-        </MultiBinding>
-      </Setter.Value>
-    </Setter>
-    <Setter Property="ShowHeader"
-            Value="{Binding Path=(np:DockAttachedProperties.IsUnderLockedGroup), 
+        <Setter Property="IsFullyActive">
+            <Setter.Value>
+                <MultiBinding Converter="{x:Static BoolConverters.And}">
+                    <Binding Path="IsActive"/>
+                    <Binding Path="IsActive"
+                             RelativeSource="{RelativeSource AncestorType=Window}"/>
+                </MultiBinding>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ShowHeader"
+                Value="{Binding Path=(np:DockAttachedProperties.IsUnderLockedGroup), 
                             Converter={x:Static np:BoolConverters.Not}, 
                             RelativeSource={RelativeSource Self}}"/>
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="np:DockItemPresenter">
-          <Grid RowDefinitions="Auto, *"
-                Background="{TemplateBinding Background}">
-            <Grid RowDefinitions="Auto, Auto"
-                  IsVisible="{Binding Path=ShowHeader, RelativeSource={RelativeSource TemplatedParent}}">
-              <np:DockItemHeaderControl x:Name="Header"
-                                        Background="{Binding Path=HeaderBackground, RelativeSource={RelativeSource TemplatedParent}}"
-                                        Foreground="{Binding Path=HeaderForeground, RelativeSource={RelativeSource TemplatedParent}}"
-                                        np:DragHeaderBehavior.IsSet="True"
-                                        Content="{Binding Path=Header}"
-                                        ContentTemplate="{Binding Path=HeaderTemplate}"
-                                        Height="22"/>
-              <Rectangle HorizontalAlignment="Stretch"
-                         Height="0"
-                         Grid.Row="1"
-                         Fill="Black"/>
-            </Grid>
-              <Grid x:Name="PART_OverlayWindowHolder"
-                    Grid.Row="1"
-                    np:OverlayBehavior.OverlayedControl="{Binding RelativeSource={RelativeSource Self}}"
-                    np:OverlayBehavior.Content="{Binding Path=DataContext, 
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="np:DockItemPresenter">
+                    <Grid RowDefinitions="Auto, *"
+                          Background="{TemplateBinding Background}">
+                        <Grid RowDefinitions="Auto, Auto"
+                              IsVisible="{Binding Path=ShowHeader, RelativeSource={RelativeSource TemplatedParent}}">
+                            <np:DockItemHeaderControl x:Name="Header"
+                                                      Background="{Binding Path=HeaderBackground, RelativeSource={RelativeSource TemplatedParent}}"
+                                                      Foreground="{Binding Path=HeaderForeground, RelativeSource={RelativeSource TemplatedParent}}"
+                                                      np:DragHeaderBehavior.IsSet="True"
+                                                      Content="{Binding Path=Header}"
+                                                      ContentTemplate="{Binding Path=HeaderTemplate}"
+                                                      Height="22"/>
+                            <Rectangle HorizontalAlignment="Stretch"
+                                       Height="0"
+                                       Grid.Row="1"
+                                       Fill="Black"/>
+                        </Grid>
+                        <Grid x:Name="PART_OverlayWindowHolder"
+                              Grid.Row="1"
+                              np:OverlayBehavior.OverlayedControl="{Binding RelativeSource={RelativeSource Self}}"
+                              np:OverlayBehavior.Content="{Binding Path=DataContext, 
 				                                        RelativeSource={RelativeSource TemplatedParent},
                                                         Converter={x:Static np:ToControlContainerConverter.Instance}}">
-                  <!--<np:OverlayBehavior.ContentTemplate>
+                            <!--<np:OverlayBehavior.ContentTemplate>
 					<DataTemplate>
 						<local:DropPanelWithCompass x:Name="PART_DropPanelWithCompass"
 													AllowCenterDocking="{Binding Path=Control.AllowCenterDocking}"/>
 					</DataTemplate>
 				</np:OverlayBehavior.ContentTemplate>-->
-                  <np:DockContentPresenter x:Name="Body"
-                                           OwningDockItem="{Binding Path=DockContext, RelativeSource={RelativeSource TemplatedParent}}"
-                                           DockDataContext="{Binding Path=DockContext.DockDataContext, RelativeSource={RelativeSource TemplatedParent}}"
-                                           Content="{Binding Path=DockContext.Content, RelativeSource={RelativeSource TemplatedParent}}"
-                                           ContentTemplate="{Binding Path=DockContext.ContentTemplate, RelativeSource={RelativeSource TemplatedParent}}"
-                                           HorizontalAlignment="Stretch"
-                                           VerticalContentAlignment="Stretch"
-                                           Margin="{Binding Path=DataContext.Padding, RelativeSource={RelativeSource TemplatedParent}}"/>
-              </Grid>
-          </Grid>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
+                            <np:DockContentPresenter x:Name="Body"
+                                                     OwningDockItem="{Binding Path=DockContext, RelativeSource={RelativeSource TemplatedParent}}"
+                                                     DockDataContext="{Binding Path=DockContext.DockDataContext, RelativeSource={RelativeSource TemplatedParent}}"
+                                                     Content="{Binding Path=DockContext.Content, RelativeSource={RelativeSource TemplatedParent}}"
+                                                     ContentTemplate="{Binding Path=DockContext.ContentTemplate, RelativeSource={RelativeSource TemplatedParent}}"
+                                                     HorizontalAlignment="Stretch"
+                                                     VerticalContentAlignment="Stretch"
+                                                     Margin="{Binding Path=DataContext.Padding, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
-  <Style Selector="np|DockItemPresenter[IsActive=True]">
-    <Setter Property="HeaderBackground"
-        Value="{StaticResource DockSelectedBrush}"/>
-    <!--<Setter Property="HeaderForeground"
+    <Style Selector="np|DockItemPresenter[IsActive=True]">
+        <Setter Property="HeaderBackground"
+                Value="{StaticResource DockSelectedBrush}"/>
+        <!--<Setter Property="HeaderForeground"
             Value="White"/>-->
-  </Style>
+    </Style>
 
-  <Style Selector="np|DockItemPresenter[IsFullyActive=True]">
-    <Setter Property="HeaderBackground"
-        Value="#F5CC84"/>
-    <!--<Setter Property="HeaderForeground"
+    <Style Selector="np|DockItemPresenter[IsFullyActive=True]">
+        <Setter Property="HeaderBackground"
+                Value="#F5CC84"/>
+        <!--<Setter Property="HeaderForeground"
             Value="White"/>-->
-  </Style>
+    </Style>
 
-  <Style Selector=":is(np|CustomWindow).PlainFloatingWindow">
-    <Setter Property="HeaderBackground"
-            Value="{StaticResource DockHeaderBrush}"/>
-    <Setter Property="HeaderHeight"
-            Value="30"/>
-    <Setter Property="HeaderSeparatorHeight"
-            Value="2"/>
-    <!--<Setter Property="ResizeMargin"
+    <Style Selector=":is(np|CustomWindow).PlainFloatingWindow">
+        <Setter Property="HeaderBackground"
+                Value="{StaticResource DockHeaderBrush}"/>
+        <Setter Property="HeaderHeight"
+                Value="30"/>
+        <Setter Property="HeaderSeparatorHeight"
+                Value="2"/>
+        <!--<Setter Property="ResizeMargin"
             Value="10"/>-->
-    <Setter Property="CustomHeaderIcon"
-            Value="avares://NP.Ava.Visuals/Assets/avalonia-32.png"/>
-    <Setter Property="HeaderSeparatorBrush"
-            Value="{StaticResource DockSeparatorBrush}"/>
-    <Setter Property="CustomHeaderIconMargin"
-            Value="5,5,0,5"/>
-    <Setter Property="TitleMargin"
-            Value="5"/>
-    <Setter Property="Title"
-            Value="{Binding Path=TheDockGroup.ActiveDockItem.Header, 
+        <Setter Property="CustomHeaderIcon"
+                Value="avares://NP.Ava.Visuals/Assets/avalonia-32.png"/>
+        <Setter Property="HeaderSeparatorBrush"
+                Value="{StaticResource DockSeparatorBrush}"/>
+        <Setter Property="CustomHeaderIconMargin"
+                Value="5,5,0,5"/>
+        <Setter Property="TitleMargin"
+                Value="5"/>
+        <Setter Property="Title"
+                Value="{Binding Path=TheDockGroup.ActiveDockItem.Header, 
                             StringFormat='Floating Window - {0}'
                             RelativeSource={RelativeSource Self}}"/>
-    <Setter Property="ButtonsAreaTemplate"
-            Value="{StaticResource FloatingWindowButtonsTemplate}"/>
-    <Setter Property="HeaderContentTemplate">
-      <Setter.Value>
-        <DataTemplate>
-          <Grid Background="Transparent"
-                DataContext="{Binding RelativeSource={RelativeSource AncestorType=np:FloatingWindow}}">
-            <Grid.ContextMenu>
-              <ContextMenu Classes="LogicalChildrenVisibility">
-                <MenuItem Classes="RestoreDefaultLocation"/>
-              </ContextMenu>
-            </Grid.ContextMenu>
-          </Grid>
-        </DataTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
+        <Setter Property="ButtonsAreaTemplate"
+                Value="{StaticResource FloatingWindowButtonsTemplate}"/>
+        <Setter Property="HeaderContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Grid Background="Transparent"
+                          DataContext="{Binding RelativeSource={RelativeSource AncestorType=np:FloatingWindow}}">
+                        <Grid.ContextMenu>
+                            <ContextMenu Classes="LogicalChildrenVisibility">
+                                <MenuItem Classes="RestoreDefaultLocation"/>
+                            </ContextMenu>
+                        </Grid.ContextMenu>
+                    </Grid>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
-  <Style Selector="Path.DockIndicatorIcon">
-    <Setter Property="Fill"
-            Value="Black"/>
-    <Setter Property="Stretch"
-            Value="Uniform"/>
-    <Setter Property="Width"
-            Value="12"/>
-    <Setter Property="Height"
-            Value="12"/>
-    <Setter Property="Opacity"
-            Value="0.5"/>
-    <Setter Property="Margin"
-            Value="6.5, 1.5"/>
-  </Style>
+    <Style Selector="Path.DockIndicatorIcon">
+        <Setter Property="Fill"
+                Value="Black"/>
+        <Setter Property="Stretch"
+                Value="Uniform"/>
+        <Setter Property="Width"
+                Value="12"/>
+        <Setter Property="Height"
+                Value="12"/>
+        <Setter Property="Opacity"
+                Value="0.5"/>
+        <Setter Property="Margin"
+                Value="6.5, 1.5"/>
+    </Style>
 
-	<Style Selector="np|StackDockGroup">
-		<Setter Property="np:DockAttachedProperties.IsInDockEditableState"
-				Value="{Binding Path=(np:DockAttachedProperties.IsInDockEditableState),
+    <Style Selector="np|StackDockGroup">
+        <Setter Property="np:DockAttachedProperties.IsInDockEditableState"
+                Value="{Binding Path=(np:DockAttachedProperties.IsInDockEditableState),
                             RelativeSource={RelativeSource AncestorType=Window}}"/>
-		<Setter Property="ShowHeader">
-			<Setter.Value>
-				<MultiBinding Converter="{x:Static np:BoolConverters.Or}">
-					<Binding Path="IsGroupLocked"
-							 RelativeSource="{RelativeSource Self}"/>
-					<MultiBinding Converter="{x:Static np:BoolConverters.And}">
-						<Binding Path="(np:DockAttachedProperties.IsInDockEditableState)"
-								 RelativeSource="{RelativeSource Self}"/>
-						<Binding Path="(np:DockAttachedProperties.IsUnderLockedGroup)"
-								 Converter="{x:Static np:BoolConverters.Not}"
-								 RelativeSource="{RelativeSource Self}"/>
-					</MultiBinding>
-				</MultiBinding>
-			</Setter.Value>
-		</Setter>
-		<Setter Property="np:TriggerBehavior.SourceProperty"
-				Value="{x:Static np:StackDockGroup.IsGroupLockedProperty}"/>
-		<Setter Property="np:TriggerBehavior.TargetProperty"
-				Value="{x:Static np:DockAttachedProperties.IsUnderLockedGroupProperty}"/>
-		<Setter Property="np:TriggerBehavior.SourceTriggerValue">
-			<Setter.Value>
-				<x:Boolean>True</x:Boolean>
-			</Setter.Value>
-		</Setter>
-		<Setter Property="np:TriggerBehavior.TargetValue">
-			<Setter.Value>
-				<x:Boolean>True</x:Boolean>
-			</Setter.Value>
-		</Setter>
-		<Setter Property="HeaderBackground"
-				Value="{StaticResource DockHeaderBrush}"/>
-		<Setter Property="HeaderForeground"
-				Value="Black"/>
-		<Setter Property="Background"
-				Value="Transparent"/>
-		<Setter Property="np:DockAttachedProperties.IsPointerOverHeader"
-				Value="{Binding Path=(np:FindPartBehavior.VisualPart).IsPointerOver, RelativeSource={RelativeSource Self}}"/>
-		<Setter Property="np:DockAttachedProperties.ShowGroupBoundaries">
-			<Setter.Value>
-				<MultiBinding Converter="{x:Static np:BoolConverters.And}">
-					<Binding Path="(np:DockAttachedProperties.IsInDockEditableState)"
-							 RelativeSource="{RelativeSource Self}"/>
-					<Binding Path="(np:DockAttachedProperties.IsPointerOverHeader)"
-							 RelativeSource="{RelativeSource Self}"/>
-				</MultiBinding>
-			</Setter.Value>
-		</Setter>
-		<Setter Property="HeaderControlTemplate">
-			<ControlTemplate>
-				<Grid RowDefinitions="Auto, Auto"
-					  IsVisible="{Binding Path=ShowHeader, RelativeSource={RelativeSource AncestorType=np:StackDockGroup}}">
-					<np:DockItemHeaderControl x:Name="PART_Header"
-											  DataContext="{Binding RelativeSource={RelativeSource AncestorType=np:StackDockGroup}}"
-											  Background="{Binding Path=HeaderBackground, RelativeSource={RelativeSource AncestorType=np:StackDockGroup}}"
-											  Foreground="{Binding Path=HeaderForeground, RelativeSource={RelativeSource AncestorType=np:StackDockGroup}}"
-											  np:DragHeaderBehavior.IsSet="True"
-											  np:FindPartBehavior.AncestorObject="{Binding RelativeSource={RelativeSource AncestorType=np:StackDockGroup}}"
-											  Height="22">
-						<np:DockItemHeaderControl.ButtonsTemplate>
-							<ControlTemplate>
-								<StackPanel Orientation="Horizontal"
-											np:HandleEventBehavior.TheEvent="{x:Static InputElement.PointerPressedEvent}">
-									<TextBlock Text="{Binding Path=$parent[local:IDockGroup].DockId, StringFormat='DockId:\{0\}'}"
-											   IsVisible="{Binding Path=$parent[local:IDockGroup].(local:DockAttachedProperties.IsInDockEditableState)}"
-											   Margin="5,0"/>
-									<ToggleButton Classes="HeaderIconButton IconButton IconToggleButton AlternateIconToggleButton"
-												  np:AttachedProperties.PrimaryIconData="{StaticResource LockOpen}"
-												  np:AttachedProperties.AlternateIconData="{StaticResource LockClosed}"
-												  ToolTip.Tip="Lock/Unlock"
-												  IsVisible="{Binding $parent[np:StackDockGroup].(np:DockAttachedProperties.IsInDockEditableState)}"
-												  np:AttachedProperties.IconMargin="1.5"
-												  Margin="5,0"
-												  IsChecked="{Binding $parent[np:StackDockGroup].IsGroupLocked, Mode=TwoWay}"/>
+        <Setter Property="ShowHeader">
+            <Setter.Value>
+                <MultiBinding Converter="{x:Static np:BoolConverters.Or}">
+                    <Binding Path="IsGroupLocked"
+                             RelativeSource="{RelativeSource Self}"/>
+                    <MultiBinding Converter="{x:Static np:BoolConverters.And}">
+                        <Binding Path="(np:DockAttachedProperties.IsInDockEditableState)"
+                                 RelativeSource="{RelativeSource Self}"/>
+                        <Binding Path="(np:DockAttachedProperties.IsUnderLockedGroup)"
+                                 Converter="{x:Static np:BoolConverters.Not}"
+                                 RelativeSource="{RelativeSource Self}"/>
+                    </MultiBinding>
+                </MultiBinding>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="np:TriggerBehavior.SourceProperty"
+                Value="{x:Static np:StackDockGroup.IsGroupLockedProperty}"/>
+        <Setter Property="np:TriggerBehavior.TargetProperty"
+                Value="{x:Static np:DockAttachedProperties.IsUnderLockedGroupProperty}"/>
+        <Setter Property="np:TriggerBehavior.SourceTriggerValue">
+            <Setter.Value>
+                <x:Boolean>True</x:Boolean>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="np:TriggerBehavior.TargetValue">
+            <Setter.Value>
+                <x:Boolean>True</x:Boolean>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="HeaderBackground"
+                Value="{StaticResource DockHeaderBrush}"/>
+        <Setter Property="HeaderForeground"
+                Value="Black"/>
+        <Setter Property="Background"
+                Value="Transparent"/>
+        <Setter Property="np:DockAttachedProperties.IsPointerOverHeader"
+                Value="{Binding Path=(np:FindPartBehavior.VisualPart).IsPointerOver, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="np:DockAttachedProperties.ShowGroupBoundaries">
+            <Setter.Value>
+                <MultiBinding Converter="{x:Static np:BoolConverters.And}">
+                    <Binding Path="(np:DockAttachedProperties.IsInDockEditableState)"
+                             RelativeSource="{RelativeSource Self}"/>
+                    <Binding Path="(np:DockAttachedProperties.IsPointerOverHeader)"
+                             RelativeSource="{RelativeSource Self}"/>
+                </MultiBinding>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="HeaderControlTemplate">
+            <ControlTemplate>
+                <Grid RowDefinitions="Auto, Auto"
+                      IsVisible="{Binding Path=ShowHeader, RelativeSource={RelativeSource AncestorType=np:StackDockGroup}}">
+                    <np:DockItemHeaderControl x:Name="PART_Header"
+                                              DataContext="{Binding RelativeSource={RelativeSource AncestorType=np:StackDockGroup}}"
+                                              Background="{Binding Path=HeaderBackground, RelativeSource={RelativeSource AncestorType=np:StackDockGroup}}"
+                                              Foreground="{Binding Path=HeaderForeground, RelativeSource={RelativeSource AncestorType=np:StackDockGroup}}"
+                                              np:DragHeaderBehavior.IsSet="True"
+                                              np:FindPartBehavior.AncestorObject="{Binding RelativeSource={RelativeSource AncestorType=np:StackDockGroup}}"
+                                              Height="22">
+                        <np:DockItemHeaderControl.ButtonsTemplate>
+                            <ControlTemplate>
+                                <StackPanel Orientation="Horizontal"
+                                            np:HandleEventBehavior.TheEvent="{x:Static InputElement.PointerPressedEvent}">
+                                    <TextBlock Text="{Binding Path=$parent[local:IDockGroup].DockId, StringFormat='DockId:\{0\}'}"
+                                               IsVisible="{Binding Path=$parent[local:IDockGroup].(local:DockAttachedProperties.IsInDockEditableState)}"
+                                               Margin="5,0"/>
+                                    <ToggleButton Classes="HeaderIconButton IconButton IconToggleButton AlternateIconToggleButton"
+                                                  np:AttachedProperties.PrimaryIconData="{StaticResource LockOpen}"
+                                                  np:AttachedProperties.AlternateIconData="{StaticResource LockClosed}"
+                                                  ToolTip.Tip="Lock/Unlock"
+                                                  IsVisible="{Binding $parent[np:StackDockGroup].(np:DockAttachedProperties.IsInDockEditableState)}"
+                                                  np:AttachedProperties.IconMargin="1.5"
+                                                  Margin="5,0"
+                                                  IsChecked="{Binding $parent[np:StackDockGroup].IsGroupLocked, Mode=TwoWay}"/>
 
-									<TemplatedControl Template="{StaticResource AncorIconTemplate}"/>
+                                    <TemplatedControl Template="{StaticResource AncorIconTemplate}"/>
 
-									<Grid Background="Transparent"
-										  ToolTip.Tip="Locked">
-										<Path Data="{StaticResource LockClosed}"
-											  Classes="DockIndicatorIcon">
-											<Path.IsVisible>
-												<MultiBinding Converter="{x:Static np:BoolConverters.And}">
-													<Binding Path="$parent[np:StackDockGroup].IsGroupLocked"/>
-													<Binding Path="$parent[np:StackDockGroup].(np:DockAttachedProperties.IsInDockEditableState)"
-															 Converter="{x:Static np:BoolConverters.Not}"/>
-												</MultiBinding>
-											</Path.IsVisible>
-										</Path>
-									</Grid>
+                                    <Grid Background="Transparent"
+                                          ToolTip.Tip="Locked">
+                                        <Path Data="{StaticResource LockClosed}"
+                                              Classes="DockIndicatorIcon">
+                                            <Path.IsVisible>
+                                                <MultiBinding Converter="{x:Static np:BoolConverters.And}">
+                                                    <Binding Path="$parent[np:StackDockGroup].IsGroupLocked"/>
+                                                    <Binding Path="$parent[np:StackDockGroup].(np:DockAttachedProperties.IsInDockEditableState)"
+                                                             Converter="{x:Static np:BoolConverters.Not}"/>
+                                                </MultiBinding>
+                                            </Path.IsVisible>
+                                        </Path>
+                                    </Grid>
 
-									<Button x:Name="CloseButton"
-											Classes="CloseButton"/>
-								</StackPanel>
-							</ControlTemplate>
-						</np:DockItemHeaderControl.ButtonsTemplate>
-					</np:DockItemHeaderControl>
-					<Grid x:Name="Separator"
-						  Grid.Row="1"
-						  Height="2"/>
-				</Grid>
-			</ControlTemplate>
-		</Setter>
-		<Setter Property="Template">
-			<Setter.Value>
-				<ControlTemplate>
-					<Grid x:Name="PART_RootPanel"
-						  RowDefinitions="Auto, *"
-						  Background="Transparent">
-						<TemplatedControl x:Name="HeaderControl"
-										  Template="{TemplateBinding HeaderControlTemplate}"/>
-						<Grid x:Name="PART_OverlayWindowHolder"
-							  Grid.Row="1"
-						      np:OverlayBehavior.OverlayedControl="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-							  np:OverlayBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
-						                                                 Converter={x:Static np:ToControlContainerConverter.Instance}}">
-						</Grid>
-					</Grid>
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
-	</Style>
-
-  <Style Selector="np|RootDockGroup">
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate>
-            <Grid x:Name="PART_RootPanel"
-                  Background="{TemplateBinding Background}"
-                  np:OverlayBehavior.OverlayContainingPanel="{Binding #OverlayPanel}"
-                  np:OverlayBehavior.CurrentSide="{Binding Path=TheDockManager.CurrentSide, RelativeSource={RelativeSource TemplatedParent}}"
-                  np:OverlayBehavior.OverlayedControl="{Binding Path=TheDockManager.CurrentLeafObjToInsertWithRespectTo.TheControl, RelativeSource={RelativeSource TemplatedParent}}"
-                  np:OverlayBehavior.IsOpen="{Binding $self.(np:OverlayBehavior.OverlayedControl), Converter={x:Static ObjectConverters.IsNotNull}}"
-                  np:OverlayBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
-                                                       Converter={x:Static np:ToControlContainerConverter.Instance}}">
-                <np:OverlayBehavior.ContentTemplate>
-                    <DataTemplate>
-                        <Border HorizontalAlignment="Stretch"
-                                VerticalAlignment="Stretch"
-                                BorderThickness="4"
-                                BorderBrush="Violet"
-                                CornerRadius="5"/>
-                    </DataTemplate>
-                </np:OverlayBehavior.ContentTemplate>
-
-                <Grid x:Name="OverlayPanel"/>
-                <Grid x:Name="HeadingPanel"
-                      DataContext="{Binding Path=TheDockManager, RelativeSource={RelativeSource TemplatedParent}}">
-                    <ContentControl x:Name="DragHeadingControl"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Top"
-                                    Margin="{Binding Path=PositionWithinCurrentRootDockGroup, Converter={x:Static np:ShiftFromTopLeftMarginConverter.TheInstance}}"
-                                    IsVisible="{Binding Path=#PART_RootPanel.(np:OverlayBehavior.IsOpen)}"
-                                    Content="{Binding}">
-                        <ContentControl.ContentTemplate>
-                            <DataTemplate DataType="np:DockManager">
-                                <Border Background="Blue"
-                                        Padding="10,5"
-                                        CornerRadius="3">
-                                    <TextBlock Text="{Binding Path=DragHeading}"
-                                               Foreground="White"/>
-                                </Border>
-                            </DataTemplate>
-                        </ContentControl.ContentTemplate>
-                    </ContentControl>
+                                    <Button x:Name="CloseButton"
+                                            Classes="CloseButton"/>
+                                </StackPanel>
+                            </ControlTemplate>
+                        </np:DockItemHeaderControl.ButtonsTemplate>
+                    </np:DockItemHeaderControl>
+                    <Grid x:Name="Separator"
+                          Grid.Row="1"
+                          Height="2"/>
                 </Grid>
-            </Grid>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
+            </ControlTemplate>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid x:Name="PART_RootPanel"
+                          RowDefinitions="Auto, *"
+                          Background="Transparent">
+                        <TemplatedControl x:Name="HeaderControl"
+                                          Template="{TemplateBinding HeaderControlTemplate}"/>
+                        <Grid x:Name="PART_OverlayWindowHolder"
+                              Grid.Row="1"
+                              np:OverlayBehavior.OverlayedControl="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                              np:OverlayBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
+						                                                 Converter={x:Static np:ToControlContainerConverter.Instance}}">
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style Selector="np|RootDockGroup">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid x:Name="PART_RootPanel"
+                          Background="{TemplateBinding Background}"
+                          np:OverlayBehavior.OverlayContainingPanel="{Binding #OverlayPanel}"
+                          np:OverlayBehavior.CurrentSide="{Binding Path=TheDockManager.CurrentSide, RelativeSource={RelativeSource TemplatedParent}}"
+                          np:OverlayBehavior.OverlayedControl="{Binding Path=TheDockManager.CurrentLeafObjToInsertWithRespectTo.TheControl, RelativeSource={RelativeSource TemplatedParent}}"
+                          np:OverlayBehavior.IsOpen="{Binding $self.(np:OverlayBehavior.OverlayedControl), Converter={x:Static ObjectConverters.IsNotNull}}"
+                          np:OverlayBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
+                                                       Converter={x:Static np:ToControlContainerConverter.Instance}}">
+                        <np:OverlayBehavior.ContentTemplate>
+                            <DataTemplate>
+                                <Border HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        BorderThickness="4"
+                                        BorderBrush="Violet"
+                                        CornerRadius="5"/>
+                            </DataTemplate>
+                        </np:OverlayBehavior.ContentTemplate>
+
+                        <Grid x:Name="OverlayPanel"/>
+                        <Grid x:Name="HeadingPanel"
+                              DataContext="{Binding Path=TheDockManager, RelativeSource={RelativeSource TemplatedParent}}">
+                            <ContentControl x:Name="DragHeadingControl"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Top"
+                                            Margin="{Binding Path=PositionWithinCurrentRootDockGroup, Converter={x:Static np:ShiftFromTopLeftMarginConverter.TheInstance}}"
+                                            IsVisible="{Binding Path=#PART_RootPanel.(np:OverlayBehavior.IsOpen)}"
+                                            Content="{Binding}">
+                                <ContentControl.ContentTemplate>
+                                    <DataTemplate DataType="np:DockManager">
+                                        <Border Background="Blue"
+                                                Padding="10,5"
+                                                CornerRadius="3">
+                                            <TextBlock Text="{Binding Path=DragHeading}"
+                                                       Foreground="White"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </ContentControl.ContentTemplate>
+                            </ContentControl>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </Styles>

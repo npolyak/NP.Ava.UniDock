@@ -599,8 +599,15 @@ namespace NP.Ava.UniDock
                 parentGroup.SetSizeCoeff(childIdx, newChildSizeCoeff);
                 int insertIdx = childIdx.ToInsertIdx(dock);
 
+                var tabbedGroupToInsertItemsInto = TabbedGroupFactory.Create();
+
+                parentDockStackGroup.DockChildren?.Insert(insertIdx, tabbedGroupToInsertItemsInto);
+
                 // insert the new child
-                parentDockStackGroup.DockChildren.Insert(insertIdx, draggedGroup);
+                tabbedGroupToInsertItemsInto.DockChildren.Insert(0, draggedGroup);
+
+
+               // parentDockStackGroup.DockChildren.Insert(insertIdx, draggedGroup);
             }
             else // create an extra DockStackGroup insert the dragged object and the 
                  // the object it is dropped on (drop object) into that group and insert

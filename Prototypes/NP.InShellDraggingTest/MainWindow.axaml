@@ -24,7 +24,8 @@
   <Window.Styles>
     <StyleInclude Source="avares://NP.Ava.UniDock/Themes/DockStyles.axaml"/>
   </Window.Styles>
-	<Grid RowDefinitions="*, Auto">
+	<Grid Margin="10"
+           Background="White">
 		<np:RootDockGroup np:DockAttachedProperties.TheDockManager="{StaticResource TheDockManager}">
 			<np:StackDockGroup TheOrientation="Horizontal">
                 <np:TabbedDockGroup>
