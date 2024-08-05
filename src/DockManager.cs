@@ -485,6 +485,13 @@ namespace NP.Ava.UniDock
 
             CurrentLeafObjToInsertWithRespectTo = pointerAboveGroups.FirstOrDefault();
 
+
+            if (CurrentLeafObjToInsertWithRespectTo is DockItem)
+            {
+
+            }
+
+
             if (CurrentLeafObjToInsertWithRespectTo == null)
             {
                 CurrentSide = Side2D.Center;
@@ -787,6 +794,9 @@ namespace NP.Ava.UniDock
         {
             IDockGroup? currentDockGroupToInsertWithRespectTo = CurrentLeafObjToInsertWithRespectTo;
 
+            if (currentDockGroupToInsertWithRespectTo == null)
+                return;
+
             Side2D? currentDock = CurrentSide;
             if (draggedGroup == null)
             {
@@ -810,7 +820,7 @@ namespace NP.Ava.UniDock
                         else
                         {
                             var leafItems =
-                                DraggedWindow?.GetLeafGroupsIncludingGroupsWithLock()
+                                draggedGroup?.GetLeafGroupsIncludingGroupsWithLock()
                                               .Where(group => !group.IsGroupLocked)
                                               .SelectMany(g => g.LeafItems).ToList();
 
@@ -905,6 +915,9 @@ namespace NP.Ava.UniDock
                     _pointerMovedSubscription = null;
 
                     IDockGroup? currentDockGroupToInsertWithRespectTo = CurrentLeafObjToInsertWithRespectTo;
+
+                    if (currentDockGroupToInsertWithRespectTo == null)
+                        return;
 
                     Side2D? currentDock = CurrentSide;
 

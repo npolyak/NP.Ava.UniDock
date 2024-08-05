@@ -254,7 +254,7 @@ namespace NP.Ava.UniDock
                 return;
             }
 
-            if (group.GetNumberChildren() == 1)
+            if (group.GetNumberChildren() == 1 && group is not TabbedDockGroup)
             {
                 FloatingWindow? window = group.GetGroupWindow();
                 try

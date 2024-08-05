@@ -708,8 +708,9 @@
 									</local:DropPanelWithCompass.AllowCenterDocking>
 								</local:DropPanelWithCompass>
 							</DataTemplate>
-						</np:OverlayBehavior.ContentTemplate>-->
+						</np:OverlayBehavior.ContentTemplate>
                         <Grid x:Name="OverlayPanel"/>
+                        -->
 					</Grid>
                 </Grid>
               </DockPanel>
@@ -1065,12 +1066,12 @@
 								</DataTemplate>
 							</np:OverlayBehavior.ContentTemplate>-->
 
-							<Grid x:Name="SelectGroup"
+							<!--<Grid x:Name="SelectGroup"
 	                              Background="Cyan"
 	                              Opacity="0.1"
 	                              IsVisible="{Binding Path=(np:DockAttachedProperties.ShowGroupBoundaries),
-                                                                  RelativeSource={RelativeSource TemplatedParent}}"/>
-                            <Grid x:Name="OverlayPanel"/>
+                                                                  RelativeSource={RelativeSource TemplatedParent}}"/>-->
+                            <!--<Grid x:Name="OverlayPanel"/>-->
 						</Grid>
 					</Grid>
 				</ControlTemplate>
