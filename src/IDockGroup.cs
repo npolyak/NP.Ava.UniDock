@@ -141,7 +141,7 @@ namespace NP.Ava.UniDock
 
         Control GetVisual() => (Control) this;
 
-        Side2D? CurrentGroupDock { get; }
+        Side2D? CurrentGroupDock => (this as Control)?.GetCurrentGroupDock();
 
         IEnumerable<DockItem> LeafItems
         {

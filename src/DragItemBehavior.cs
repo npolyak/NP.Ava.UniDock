@@ -175,6 +175,7 @@ namespace NP.Ava.UniDock
             if (dockManager.DragDropWithinSingleWindow)
             {
                 dockManager.DraggedDockGroup = _draggedDockGroup;
+
                 return;
             }
 
