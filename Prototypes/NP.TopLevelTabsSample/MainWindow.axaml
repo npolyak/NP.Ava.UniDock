@@ -42,6 +42,9 @@
                                DefaultDockOrderInGroup="2">
                       <TextBlock Text="Hi World 3!"/>
                   </np:DockItem>
+                  <np:DockItem Header="Tab4">
+                      <TextBlock Text="Hi World 4!"/>
+                  </np:DockItem>
               </np:TabbedDockGroup>
           </np:StackDockGroup>
       </np:RootDockGroup>

@@ -864,12 +864,12 @@
 				  np:OverlayBehavior.Content="{Binding Path=DataContext, 
 				                                        RelativeSource={RelativeSource TemplatedParent},
 														Converter={x:Static np:ToControlContainerConverter.Instance}}">
-				<!--<np:OverlayBehavior.ContentTemplate>
+				<np:OverlayBehavior.ContentTemplate>
 					<DataTemplate>
 						<local:DropPanelWithCompass x:Name="PART_DropPanelWithCompass"
 													AllowCenterDocking="{Binding Path=Control.AllowCenterDocking}"/>
 					</DataTemplate>
-				</np:OverlayBehavior.ContentTemplate>-->
+				</np:OverlayBehavior.ContentTemplate>
               <np:DockContentPresenter x:Name="Body"
 									   OwningDockItem="{Binding Path=DockContext, RelativeSource={RelativeSource TemplatedParent}}"
                                        DockDataContext="{Binding Path=DockContext.DockDataContext, RelativeSource={RelativeSource TemplatedParent}}"
