@@ -291,8 +291,12 @@ namespace NP.Ava.UniDock
                 {
                     BeginDragAction();
                 }
+
+                OnPropertyChanged(nameof(IsWindowDragged));
             }
         }
+
+        public bool IsWindowDragged => DraggedWindow != null;
 
         private IList<(IDockGroup Group, Rect2D Rect)>? _currentDockGroups;
         private IList<(RootDockGroup Group, Rect2D Rect)>? _rootGroups;
@@ -402,15 +406,29 @@ namespace NP.Ava.UniDock
                 return;
             }
 
-            var pointerAboveGroups =
-                _currentDockGroups
+            if (TabDockingOnly)
+            {
+                var pointerAboveGroups =
+                    _currentDockGroups
                     .Where(gr => (gr.Group as Control).IsVisible && gr.Rect.ContainsPoint(pointerScreenLocation))
-                    .Select(gr => gr.Group);
+                    .Select(gr => gr.Group).OfType<TabbedDockGroup>().Where(g => g.IsPointerAboveTabStrip(pointerScreenLocation));
 
-            CurrentLeafObjToInsertWithRespectTo = pointerAboveGroups.FirstOrDefault();
 
-            var rootDockGroup = CurrentLeafObjToInsertWithRespectTo?.GetDockGroupRoot() as RootDockGroup; 
-            if (UseRootGroup && 
+                CurrentLeafObjToInsertWithRespectTo = pointerAboveGroups.FirstOrDefault();
+            }
+            else
+            {
+                var pointerAboveGroups =
+                    _currentDockGroups
+                        .Where(gr => (gr.Group as Control).IsVisible && gr.Rect.ContainsPoint(pointerScreenLocation))
+                        .Select(gr => gr.Group);
+
+                CurrentLeafObjToInsertWithRespectTo = pointerAboveGroups.FirstOrDefault();
+            }
+
+
+            var rootDockGroup = CurrentLeafObjToInsertWithRespectTo?.GetDockGroupRoot() as RootDockGroup;
+            if (UseRootGroup &&
                 (CurrentLeafObjToInsertWithRespectTo != null) &&
                 (CurrentLeafObjToInsertWithRespectTo is not RootDockGroup) &&
                 rootDockGroup?.GroupOnlyById == DraggedWindow?.GroupOnlyById)

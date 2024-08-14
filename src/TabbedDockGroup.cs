@@ -20,6 +20,7 @@ using Avalonia.Media;
 using Avalonia.Metadata;
 using Avalonia.VisualTree;
 using NP.Ava.UniDockService;
+using NP.Ava.Visuals;
 using NP.Ava.Visuals.Behaviors;
 using NP.Concepts.Behaviors;
 using NP.Utilities;
@@ -255,6 +256,11 @@ namespace NP.Ava.UniDock
 
             _overlayWindowHolder =
                 this.GetVisualDescendants().OfType<Panel>().FirstOrDefault(c => c.Name == "PART_OverlayWindowHolder");
+        }
+
+        public bool IsPointerAboveTabStrip(Point2D pointerScreenLocation)
+        {
+            return _tabsPresenter.GetScreenBounds().ContainsPoint(pointerScreenLocation);
         }
 
         private void OnTabbedDockGroupPressed(object? sender, PointerPressedEventArgs e)
