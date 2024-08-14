@@ -244,6 +244,19 @@ namespace NP.Ava.UniDock
             this.AddHandler(InputElement.PointerPressedEvent, OnTabbedDockGroupPressed, RoutingStrategies.Bubble, true);
         }
 
+        private DockTabsPresenter? _tabsPresenter;
+        private Panel? _overlayWindowHolder;
+
+        protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
+        {
+            base.OnApplyTemplate(e);
+
+            _tabsPresenter = this.GetVisualDescendants().OfType<DockTabsPresenter>().FirstOrDefault(c => c.Name == "PART_DockTabsPresenter");
+
+            _overlayWindowHolder =
+                this.GetVisualDescendants().OfType<Panel>().FirstOrDefault(c => c.Name == "PART_OverlayWindowHolder");
+        }
+
         private void OnTabbedDockGroupPressed(object? sender, PointerPressedEventArgs e)
         {
             if (SelectedItem is IActiveItem<DockItem> dockItem)

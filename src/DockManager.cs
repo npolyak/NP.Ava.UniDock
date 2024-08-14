@@ -75,6 +75,8 @@ namespace NP.Ava.UniDock
         internal IDockSeparatorFactory? TheDockSeparatorFactory { get; set; } =
             new DockSeparatorFactory();
 
+        public bool UseRootGroup { get; set; } = true;
+
 
         #region IsInEditableState Property
         private bool _isInEditableState = false;
@@ -404,7 +406,8 @@ namespace NP.Ava.UniDock
             CurrentLeafObjToInsertWithRespectTo = pointerAboveGroups.FirstOrDefault();
 
             var rootDockGroup = CurrentLeafObjToInsertWithRespectTo?.GetDockGroupRoot() as RootDockGroup; 
-            if ((CurrentLeafObjToInsertWithRespectTo != null) &&
+            if (UseRootGroup && 
+                (CurrentLeafObjToInsertWithRespectTo != null) &&
                 (CurrentLeafObjToInsertWithRespectTo is not RootDockGroup) &&
                 rootDockGroup?.GroupOnlyById == DraggedWindow?.GroupOnlyById)
             {
