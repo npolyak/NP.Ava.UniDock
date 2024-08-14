@@ -47,7 +47,7 @@
         <ToggleButton Classes="WindowIconButton IconButton IconToggleButton"
               np:AttachedProperties.IconData="{StaticResource Pencil}"
               ToolTip.Tip="Edit"
-              IsVisible="{Binding $parent[Window].(np:DockAttachedProperties.TheDockManager).IsInEditableState}"
+              IsVisible="{Binding $parent[Window].TheDockManager.IsInEditableState}"
               IsChecked="{Binding $parent[Window].(np:DockAttachedProperties.IsInDockEditableState), Mode=TwoWay}"/>
       </ControlTemplate>
 
@@ -307,6 +307,7 @@
 											   local:DockAttachedProperties.DockSide="{TemplateBinding DockSide}"/>
 					<local:DockCompass Grid.RowSpan="2"
 									   Grid.ColumnSpan="2"
+                                       IsVisible="{TemplateBinding IsCompassVisible}"
 									   HorizontalAlignment="{TemplateBinding CompassHorizontalAlignment}"
 									   VerticalAlignment="{TemplateBinding CompassVerticalAlignment}"
 									   ShowHull="{TemplateBinding ShowHull}"
@@ -645,7 +646,7 @@
               <DockPanel Grid.Row="1">
                 <local:DockTabsPresenter x:Name="PART_DockTabsPresenter"
                                          local:DragTabBehavior.IsSet="{TemplateBinding AllowTabDocking}"
-                                         local:DockAttachedProperties.TheDockManager="{Binding Path=(local:DockAttachedProperties.TheDockManager),
+                                         local:DockAttachedProperties.TheDockManager="{Binding Path=TheDockManager,
                                                                                                RelativeSource={RelativeSource TemplatedParent}}"
                                          DockPanel.Dock="{TemplateBinding TabStripPlacement}"
                                          VerticalAlignment="Top"
@@ -700,7 +701,8 @@
 						<np:OverlayBehavior.ContentTemplate>
 							<DataTemplate>
 								<local:DropPanelWithCompass
-	                                      AllowCenterDocking="{Binding Path=Control.AllowCenterDocking}">
+                                    IsCompassVisible="{Binding Control.TheDockManager.IsCompassVisible}"
+                                    AllowCenterDocking="{Binding Path=Control.AllowCenterDocking}">
 									<local:DropPanelWithCompass.AllowCenterDocking>
 										<MultiBinding Converter="{x:Static np:BoolConverters.And}">
 											<Binding Path="Control.AllowCenterDocking"/>
@@ -1048,7 +1050,7 @@
 											 Converter="{x:Static ObjectConverters.IsNotNull}"/>
 								</MultiBinding>
 							</np:OverlayBehavior.IsOpen>
-							<!--<np:OverlayBehavior.ContentTemplate>
+							<np:OverlayBehavior.ContentTemplate>
 								<DataTemplate>
 									<Grid>
 										<local:DropPanelWithCompass
@@ -1064,7 +1066,7 @@
 												AllowCenterDocking="{Binding Control.IsGroupLocked, Converter={x:Static np:BoolConverters.Not}}"/>
 									</Grid>
 								</DataTemplate>
-							</np:OverlayBehavior.ContentTemplate>-->
+							</np:OverlayBehavior.ContentTemplate>
 
 							<Grid x:Name="SelectGroup"
 	                              Background="Cyan"
@@ -1087,7 +1089,7 @@
 				np:OverlayBehavior.IsOpen="{Binding Path=ShowCompass, RelativeSource={RelativeSource TemplatedParent}}"
 				np:OverlayBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
 						                                    Converter={x:Static np:ToControlContainerConverter.Instance}}">
-			  <!--<np:OverlayBehavior.ContentTemplate>
+			  <np:OverlayBehavior.ContentTemplate>
 				  <DataTemplate>
 					  <local:DropPanelWithCompass
 							ShowHull="False"
@@ -1099,7 +1101,7 @@
 							AllowVerticalDocking="{Binding Path=Control.ShowCompassCenter, 
                                                            Converter={x:Static BoolConverters.Not}}"/>					  
 				  </DataTemplate>
-			  </np:OverlayBehavior.ContentTemplate>-->
+			  </np:OverlayBehavior.ContentTemplate>
           </Grid>
         </ControlTemplate>
       </Setter.Value>

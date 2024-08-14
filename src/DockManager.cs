@@ -77,6 +77,10 @@ namespace NP.Ava.UniDock
 
         public bool UseRootGroup { get; set; } = true;
 
+        public bool TabDockingOnly { get; set; } = false;
+
+        public bool IsCompassVisible => !TabDockingOnly;
+
 
         #region IsInEditableState Property
         private bool _isInEditableState = false;

@@ -71,6 +71,22 @@ namespace NP.Ava.UniDock
                 .FirstOrDefault();
 
 
+        #region IsCompassVisible Styled Avalonia Property
+        public bool IsCompassVisible
+        {
+            get { return GetValue(IsCompassVisibleProperty); }
+            set { SetValue(IsCompassVisibleProperty, value); }
+        }
+
+        public static readonly StyledProperty<bool> IsCompassVisibleProperty =
+            AvaloniaProperty.Register<DropPanelWithCompass, bool>
+            (
+                nameof(IsCompassVisible), 
+                true
+            );
+        #endregion IsCompassVisible Styled Avalonia Property
+
+
         public void FinishPointerDetection()
         {
             TheCompass?.FinishPointerDetection();

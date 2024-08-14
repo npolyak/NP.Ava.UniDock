@@ -23,18 +23,18 @@ namespace NP.Ava.UniDock
     public static class DockAttachedProperties
     {
         #region TheDockManager Attached Avalonia Property
-        public static DockManager GetTheDockManager(AvaloniaObject obj)
+        public static DockManager GetTheDockManager(Control obj)
         {
             return obj.GetValue(TheDockManagerProperty);
         }
 
-        public static void SetTheDockManager(AvaloniaObject obj, DockManager? value)
+        public static void SetTheDockManager(Control obj, DockManager? value)
         {
             obj.SetValue(TheDockManagerProperty!, value);
         }
 
         public static readonly AttachedProperty<DockManager> TheDockManagerProperty =
-            AvaloniaProperty.RegisterAttached<object, Control, DockManager>
+            AvaloniaProperty.RegisterAttached<Control, Control, DockManager>
             (
                 "TheDockManager"
             );
