@@ -356,7 +356,7 @@
                 Value="{Binding Path=$self.IsVisible, Converter={StaticResource VisibilityToDockSideConverter}}"/>
         <Setter Property="Template">
             <ControlTemplate TargetType="local:DropPanelWithCompass">
-                <Grid >
+                <Grid>
                     <local:DropDockSideControl SelectDockSide="Center"
                                                local:DockAttachedProperties.DockSide="Center"/>
                 </Grid>
@@ -726,18 +726,17 @@
                           Grid.Column="1"
 						  np:OverlayBehavior.OverlayedControl="{Binding RelativeSource={RelativeSource Self}}"
 						  np:OverlayBehavior.IsOpen="{Binding Path=ShowCompass, RelativeSource={RelativeSource TemplatedParent}}"
-						  np:OverlayBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent},
-						                                             Converter={x:Static np:ToControlContainerConverter.Instance}}">
+						  np:OverlayBehavior.Content="{Binding RelativeSource={RelativeSource TemplatedParent}}">
 						<np:OverlayBehavior.ContentTemplate>
 							<DataTemplate>
 								<local:DropPanelWithCompass
-                                    np:ClassesBehavior.TheClasses="{Binding Control.TheDockManager.TabDockingOnly, Converter={StaticResource TabDockingToClassesConverter}}"
-                                    IsCompassVisible="{Binding Control.TheDockManager.IsCompassVisible}"
-                                    AllowCenterDocking="{Binding Path=Control.AllowCenterDocking}">
+                                    np:ClassesBehavior.TheClasses="{Binding TheDockManager.TabDockingOnly, Converter={StaticResource TabDockingToClassesConverter}}"
+                                    IsCompassVisible="{Binding TheDockManager.IsCompassVisible}"
+                                    AllowCenterDocking="{Binding Path=AllowCenterDocking}">
 									<local:DropPanelWithCompass.AllowCenterDocking>
 										<MultiBinding Converter="{x:Static np:BoolConverters.And}">
-											<Binding Path="Control.AllowCenterDocking"/>
-											<Binding Path="Control.AllowTabDocking"/>
+											<Binding Path="AllowCenterDocking"/>
+											<Binding Path="AllowTabDocking"/>
 										</MultiBinding>
 									</local:DropPanelWithCompass.AllowCenterDocking>
 								</local:DropPanelWithCompass>

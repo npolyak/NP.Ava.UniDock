@@ -176,6 +176,8 @@ namespace NP.Ava.UniDock
             get => DockAttachedProperties.GetTheDockManager(this);
             set => DockAttachedProperties.SetTheDockManager(this, value);
         }
+        public static readonly AttachedProperty<DockManager> TheDockManagerProperty =
+                DockAttachedProperties.TheDockManagerProperty.AddOwner<TabbedDockGroup>();
 
         IDisposable? _setItemsBehavior;
 
@@ -253,7 +255,7 @@ namespace NP.Ava.UniDock
             base.OnApplyTemplate(e);
 
             _tabsPresenter = this.GetVisualDescendants().OfType<DockTabsPresenter>().FirstOrDefault(c => c.Name == "PART_DockTabsPresenter");
-
+            
             _overlayWindowHolder =
                 this.GetVisualDescendants().OfType<Panel>().FirstOrDefault(c => c.Name == "PART_OverlayWindowHolder");
         }

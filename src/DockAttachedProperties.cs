@@ -13,10 +13,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
 using NP.Ava.Visuals.Behaviors;
-using NP.Utilities.BasicInterfaces;
 using System;
-using System.Runtime.CompilerServices;
-using System.Security.Authentication;
 
 namespace NP.Ava.UniDock
 {
