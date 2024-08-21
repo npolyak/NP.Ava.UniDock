@@ -9,7 +9,13 @@
     <PackageReference Include="Avalonia.Themes.Simple" Version="$(AvaloniaVersion)" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\NP.Ava.UniDock.csproj" />
     <ProjectReference Include="..\..\SubModules\NP.IoCy\src\NP.IoCy.csproj" />
   </ItemGroup>
+    <ItemGroup Condition="'$(Configuration)'=='Debug'">
+        <ProjectReference Include="..\..\src\NP.Ava.UniDock.csproj" />
+    </ItemGroup>
+    <ItemGroup Condition="'$(Configuration)'=='Release'">
+        <PackageReference Include="NP.Ava.UniDock"
+                          Version="1.0.16" />
+    </ItemGroup>
 </Project>
