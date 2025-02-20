@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
 		<OutputType>Library</OutputType>
 		<PackageId>NP.Ava.UniDock</PackageId>
 		<PackageVersion>1.0.16</PackageVersion>
