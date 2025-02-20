@@ -1,15 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Avalonia.Desktop" Version="11.1.3" />
-    <PackageReference Include="Avalonia.Themes.Simple" Version="11.1.3" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\NP.Ava.UniDock.csproj" />
-    <ProjectReference Include="..\..\SubModules\NP.IoCy\src\NP.IoCy.csproj" />
-  </ItemGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Avalonia.Desktop"
+						  Version="11.1.3" />
+		<PackageReference Include="Avalonia.Themes.Simple"
+						  Version="11.1.3" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(Configuration)'=='Debug'">
+		<ProjectReference Include="..\..\src\NP.Ava.UniDock.csproj" />
+		<ProjectReference Include="..\..\SubModules\NP.IoCy\src\NP.IoCy.csproj" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(Configuration)'=='Release'">
+		<PackageReference Include="NP.Ava.UniDock"
+						  Version="1.0.17" />
+		<PackageReference Include="NP.IoCy"
+						  Version="1.0.34" />
+	</ItemGroup>
 </Project>
