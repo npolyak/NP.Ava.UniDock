@@ -1,0 +1,52 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:np="https://np.com/visuals"
+        xmlns:local="clr-namespace:NP.TablessSample"
+        Width="700"
+        Height="700"
+        np:DockAttachedProperties.DockChildWindowOwner="{Binding RelativeSource={RelativeSource Self}}"
+        x:Class="NP.TablessSample.MainWindow"
+        Title="NP.TablessSample"
+        BorderBrush="Gray">
+  <Window.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://NP.Ava.Visuals/Themes/Geometries.axaml"/>
+      </ResourceDictionary.MergedDictionaries>
+		<np:DockManager x:Key="TheDockManager"
+						AllowTabDocking="False"/>
+    </ResourceDictionary>
+  </Window.Resources>
+  <Window.Styles>
+    <StyleInclude Source="avares://NP.Ava.UniDock/Themes/DockStyles.axaml"/>
+  </Window.Styles>
+  <Grid RowDefinitions="*, Auto">
+    <np:RootDockGroup np:DockAttachedProperties.TheDockManager="{StaticResource TheDockManager}">
+		<np:StackDockGroup TheOrientation="Vertical">
+			<np:StackDockGroup>
+				<np:DockItem Header="Item1"
+							 AllowTabDocking="False">
+					<TextBlock Text="Hello World!"
+							   Foreground="Red"/>
+				</np:DockItem>
+				<np:DockItem Header="Item2"
+							 AllowTabDocking="False">
+					<TextBlock Text="Hi World!"/>
+				</np:DockItem>
+			</np:StackDockGroup>
+			<np:StackDockGroup>
+				<np:DockItem Header="Item3"
+							 AllowTabDocking="False">
+					<TextBlock Text="Privet World!"
+							   Foreground="Green"/>
+				</np:DockItem>
+				<np:DockItem Header="Item4"
+							 AllowTabDocking="False">
+					<TextBlock Text="Bonjour World!"/>
+				</np:DockItem>
+			</np:StackDockGroup>
+		</np:StackDockGroup>
+    </np:RootDockGroup>
+  </Grid>
+</Window>
