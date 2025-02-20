@@ -570,6 +570,24 @@ namespace NP.Ava.UniDock
         #endregion AllowCenterDocking Styled Avalonia Property
 
 
+        // since AllowCenterDocking is calculated during the drag/drop,
+        // we need another property to ban tab docking for sure, if needed. 
+        #region AllowTabDocking Styled Avalonia Property
+        public bool AllowTabDocking
+        {
+            get { return GetValue(AllowTabDockingProperty); }
+            set { SetValue(AllowTabDockingProperty, value); }
+        }
+
+        public static readonly StyledProperty<bool> AllowTabDockingProperty =
+            AvaloniaProperty.Register<DockItem, bool>
+            (
+                nameof(AllowTabDocking),
+                defaultValue:true
+            );
+        #endregion AllowTabDocking Styled Avalonia Property
+
+
         #region ItemPresenterClasses Styled Avalonia Property
         public string ItemPresenterClasses
         {

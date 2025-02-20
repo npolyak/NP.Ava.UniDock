@@ -40,6 +40,8 @@ namespace NP.Ava.UniDock
 
         public event Action<DockItemViewModelBase> DockItemSelectionChangedEvent;
 
+        public bool AllowTabDocking { get; set; } = true;
+
         // To be used in the future when multiple DockManagers become available
         public string? Id { get; set; }
 

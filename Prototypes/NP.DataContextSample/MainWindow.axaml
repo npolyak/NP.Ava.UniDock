@@ -73,6 +73,7 @@
                            GroupOnlyById="Documents">
           <np:DockItem Header="Tab1"
                        DockId="Tab1"
+					   AllowTabDocking="False"
                        DefaultDockGroupId="Group1"
                        DefaultDockOrderInGroup="1"
                        GroupOnlyById="Documents">
@@ -80,6 +81,7 @@
                          Foreground="{DynamicResource MyForeground}"/>
           </np:DockItem>
           <np:DockItem Header="Tab2"
+					   AllowTabDocking="False"
                        DefaultDockGroupId="Group1"
                        DefaultDockOrderInGroup="2"
                        GroupOnlyById="Documents">

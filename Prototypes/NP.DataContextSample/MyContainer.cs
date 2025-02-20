@@ -10,7 +10,10 @@ namespace NP.DataContextSample
     {
         public static IDependencyInjectionContainer<object> TheContainer { get; }
 
-        public static DockManager TheDockManager { get; } = new DockManager();
+        public static DockManager TheDockManager { get; } = new DockManager()
+        {
+            AllowTabDocking = false, // testing
+        };
 
         static MyContainer()
         {
