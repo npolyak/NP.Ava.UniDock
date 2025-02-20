@@ -28,7 +28,7 @@
 		<ProjectReference Include="$(SolutionDir)..\..\SubModules\NP.DependencyInjection\src\NP.DependencyInjection.csproj" />
 	</ItemGroup>
 	<ItemGroup Condition="'$(Configuration)'=='Release'">
-		<PackageReference Include="NP.Ava.Visuals" Version="1.0.38" />
+		<PackageReference Include="NP.Ava.Visuals" Version="1.0.40" />
 		<PackageReference Include="NP.Ava.UniDockService" Version="1.0.5" />
 		<PackageReference Include="NP.DependencyInjection" Version="1.0.10" />
 	</ItemGroup>

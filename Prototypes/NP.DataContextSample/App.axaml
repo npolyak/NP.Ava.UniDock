@@ -7,7 +7,7 @@
                        Color="Red"/>
   </Application.Resources>
     <Application.Styles>
-      <SimpleTheme/>
+		<SimpleTheme/>
       <StyleInclude Source="avares://NP.Ava.Visuals/Themes/CustomWindowStyles.axaml"/>
       <StyleInclude Source="avares://NP.Ava.UniDock/Themes/DockStyles.axaml"/>
 
