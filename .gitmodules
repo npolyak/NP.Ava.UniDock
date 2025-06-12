@@ -1,6 +1,3 @@
-[submodule "SubModules/NP.Avalonia.UniDockService"]
-	path = SubModules/NP.Avalonia.UniDockService
-	url = https://github.com/npolyak/NP.Avalonia.UniDockService.git
 [submodule "SubModules/NP.Ava.Visuals"]
 	path = SubModules/NP.Ava.Visuals
 	url = https://github.com/npolyak/NP.Ava.Visuals.git
