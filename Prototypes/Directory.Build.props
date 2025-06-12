@@ -1,0 +1,24 @@
+<Project>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net9.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<AvaloniaVersion>11.3.0</AvaloniaVersion>
+	</PropertyGroup>
+	<ItemGroup Condition="'$(Configuration)'=='Debug'">
+		<ProjectReference Include="..\..\src\NP.Ava.UniDock.csproj" />
+		<ProjectReference Include="..\..\SubModules\NP.IoCy\src\NP.IoCy.csproj" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(Configuration)'=='Release'">
+		<PackageReference Include="NP.Ava.UniDock"
+						  Version="1.0.18" />
+		<PackageReference Include="NP.IoCy"
+						  Version="1.0.34" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Avalonia.Desktop"
+						  Version="11.3.0" />
+		<PackageReference Include="Avalonia.Themes.Simple"
+						  Version="11.3.0" />
+	</ItemGroup>
+</Project>

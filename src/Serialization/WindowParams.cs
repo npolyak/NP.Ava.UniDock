@@ -12,20 +12,23 @@
 using Avalonia.Controls;
 using NP.Ava.Visuals;
 using NP.Utilities;
-using System;
 using System.Xml.Serialization;
 
 namespace NP.Ava.UniDock.Serialization
 {
     public class WindowParams
     {
-        public Point2D? TopLeft { get; set; }
+        [XmlAttribute]
+        public string? TopLeft { get; set; }
 
-        public Point2D? Size { get; set; }
+        [XmlAttribute]
+        public string? Size { get; set; }
 
-        public Point2D? SaveTopLeft { get; set; }
+        [XmlAttribute]
+        public string? SaveTopLeft { get; set; }
 
-        public Point2D? SavedSize { get; set; }
+        [XmlAttribute]
+        public string? SavedSize { get; set; }
 
         [XmlAttribute]
         public bool IsDockWindow { get; set; } = false;
@@ -55,9 +58,9 @@ namespace NP.Ava.UniDock.Serialization
         {
             WindowParams wp = new WindowParams();
 
-            wp.TopLeft = w.Position.ToPoint2D();
+            wp.TopLeft = w.Position.ToPoint2D().ToString();
 
-            wp.Size = w.Bounds.Size.ToPoint2D();
+            wp.Size = w.Bounds.Size.ToPoint2D().ToString();
 
             wp.Title = w.Title;
 
@@ -81,8 +84,8 @@ namespace NP.Ava.UniDock.Serialization
 
             if (w is FloatingWindow dockWindow)
             {
-                wp.SaveTopLeft = dockWindow.SavedPosition;
-                wp.SavedSize = dockWindow.SavedSize;
+                wp.SaveTopLeft = dockWindow.SavedPosition?.ToString();
+                wp.SavedSize = dockWindow.SavedSize?.ToString();
 
                 wp.IsDockWindow = dockWindow.IsDockWindow;
 
@@ -96,9 +99,11 @@ namespace NP.Ava.UniDock.Serialization
         {
             if (setWindowPositionParams)
             {
-                w.Position = wp.TopLeft.ToPixelPoint();
-                w.Width = wp.Size!.X;
-                w.Height = wp.Size.Y;
+                w.Position = wp.TopLeft?.ParseToPoint2D()?.ToPixelPoint() ?? new Avalonia.PixelPoint();
+                Point2D restoredSize = wp.Size?.ParseToPoint2D() ?? new Point2D<double>();
+
+                w.Width = restoredSize.X;
+                w.Height = restoredSize.Y;
 
                 w.Title = wp.Title;
                 w.WindowState = wp.TheWindowState;
@@ -106,8 +111,8 @@ namespace NP.Ava.UniDock.Serialization
 
             if (w is FloatingWindow dockWindow)
             {
-                dockWindow.SavedPosition = wp.SaveTopLeft;
-                dockWindow.SavedSize = wp.SavedSize;
+                dockWindow.SavedPosition = wp.SaveTopLeft?.ParseToPoint2D();
+                dockWindow.SavedSize = wp.SavedSize?.ParseToPoint2D();
                 dockWindow.IsDockWindow = wp.IsDockWindow;
             }
 
