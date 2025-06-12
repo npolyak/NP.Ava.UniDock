@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
 		<OutputType>Library</OutputType>
 		<PackageId>NP.Ava.UniDock</PackageId>
-		<PackageVersion>1.0.17</PackageVersion>
+		<PackageVersion>1.0.18</PackageVersion>
 		<Authors>Nick Polyak, Ph. D.</Authors>
 		<Company>AWebPros</Company>
 		<Description>UniDock powerful multiplatform docking framework</Description>
@@ -27,7 +28,6 @@
 		<ProjectReference Include="$(SolutionDir)..\..\SubModules\NP.DependencyInjection\src\NP.DependencyInjection.csproj" />
 	</ItemGroup>
 	<ItemGroup Condition="'$(Configuration)'=='Release'">
-		<PackageReference Include="NP.Ava.Visuals" Version="1.0.40" />
 		<PackageReference Include="NP.UniDockService" Version="1.0.0" />
 		<PackageReference Include="NP.DependencyInjection" Version="1.0.10" />
 	</ItemGroup>
@@ -37,6 +37,7 @@
 		<InternalsAssemblyName Include="Avalonia.Controls" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="IgnoresAccessChecksToGenerator" Version="0.7.0" PrivateAssets="All" />
+		<PackageReference Include="IgnoresAccessChecksToGenerator" Version="0.8.0" PrivateAssets="All" />
+		<PackageReference Include="NP.Ava.Visuals" Version="1.0.47" />
 	</ItemGroup>
 </Project>
