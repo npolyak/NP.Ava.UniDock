@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Data;
 using Avalonia.Markup.Xaml.Templates;
-using NP.Ava.UniDockService;
+using NP.UniDockService;
 using NP.Concepts.Behaviors;
 using NP.Utilities;
 using System;

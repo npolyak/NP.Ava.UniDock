@@ -15,7 +15,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Metadata;
 using Avalonia.Styling;
 using Avalonia.VisualTree;
-using NP.Ava.UniDockService;
+using NP.UniDockService;
 using NP.Ava.Visuals.Behaviors;
 using NP.Concepts.Behaviors;
 using NP.Utilities;

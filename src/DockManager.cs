@@ -26,7 +26,7 @@ using System.ComponentModel;
 using System.IO;
 using NP.Ava.UniDock.Serialization;
 using NP.Ava.UniDock.Factories;
-using NP.Ava.UniDockService;
+using NP.UniDockService;
 using NP.DependencyInjection.Attributes;
 using Avalonia.LogicalTree;
 

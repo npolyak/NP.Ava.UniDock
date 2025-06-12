@@ -17,7 +17,7 @@ using Avalonia.LogicalTree;
 using Avalonia.Markup.Xaml.Templates;
 using Avalonia.Metadata;
 using Avalonia.VisualTree;
-using NP.Ava.UniDockService;
+using NP.UniDockService;
 using NP.Ava.Visuals.Behaviors;
 using NP.Concepts.Behaviors;
 using System;

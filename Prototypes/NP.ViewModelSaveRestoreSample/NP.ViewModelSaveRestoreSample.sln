@@ -17,11 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Ava.UniDock", "..\..\src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.IoCy", "..\..\SubModules\NP.IoCy\src\NP.IoCy.csproj", "{4DEC59D3-F308-4C96-8DC9-B475753B56A9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Ava.UniDockService", "..\..\SubModules\NP.Avalonia.UniDockService\src\NP.Ava.UniDockService.csproj", "{E742D976-494F-448C-B54A-4438EC0D4C87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.UniDockService", "..\..\SubModules\NP.UniDockService\src\NP.UniDockService.csproj", "{E742D976-494F-448C-B54A-4438EC0D4C87}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.DependencyInjection", "..\..\SubModules\NP.DependencyInjection\src\NP.DependencyInjection.csproj", "{0F76D807-A957-4035-8784-FFD1B97BDD39}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.IoC.CommonImplementations", "..\..\SubModules\NP.IoC.CommonImplementations\src\NP.IoC.CommonImplementations.csproj", "{8300B80C-6124-4D89-97A8-935ABD2EEC07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NP.ViewModelInterfaces", "..\..\SubModules\NP.ViewModelInterfaces\src\NP.ViewModelInterfaces.csproj", "{16A8CD92-0426-4ADF-B59B-C05D7260784F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +67,10 @@ Global
 		{8300B80C-6124-4D89-97A8-935ABD2EEC07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8300B80C-6124-4D89-97A8-935ABD2EEC07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8300B80C-6124-4D89-97A8-935ABD2EEC07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16A8CD92-0426-4ADF-B59B-C05D7260784F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16A8CD92-0426-4ADF-B59B-C05D7260784F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16A8CD92-0426-4ADF-B59B-C05D7260784F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16A8CD92-0426-4ADF-B59B-C05D7260784F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +83,7 @@ Global
 		{E742D976-494F-448C-B54A-4438EC0D4C87} = {D257FF52-0480-411B-8C43-90C47F876115}
 		{0F76D807-A957-4035-8784-FFD1B97BDD39} = {D257FF52-0480-411B-8C43-90C47F876115}
 		{8300B80C-6124-4D89-97A8-935ABD2EEC07} = {D257FF52-0480-411B-8C43-90C47F876115}
+		{16A8CD92-0426-4ADF-B59B-C05D7260784F} = {D257FF52-0480-411B-8C43-90C47F876115}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {98780B67-9675-4029-9930-B8EAB892EA72}

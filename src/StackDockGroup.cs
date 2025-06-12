@@ -21,7 +21,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using NP.Utilities;
 using System.Linq;
-using NP.Ava.UniDockService;
+using NP.UniDockService;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml.Templates;
 using Avalonia.Controls.Primitives;
