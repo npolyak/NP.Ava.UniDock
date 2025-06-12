@@ -25,3 +25,6 @@
 [submodule "SubModules/NP.IoC.CommonImplementations"]
 	path = SubModules/NP.IoC.CommonImplementations
 	url = https://github.com/npolyak/NP.IoC.CommonImplementations.git
+[submodule "SubModules/NP.UniDockService"]
+	path = SubModules/NP.UniDockService
+	url = https://github.com/npolyak/NP.UniDockService.git
