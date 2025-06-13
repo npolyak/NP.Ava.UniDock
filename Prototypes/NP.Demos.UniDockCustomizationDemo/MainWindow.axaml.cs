@@ -37,7 +37,7 @@ namespace NP.Demos.DockWindowsSample
 
         }
 
-        private void OnCurrentScreenPointChanged(Point2D screenPoint)
+        private void OnCurrentScreenPointChanged(Point2D<double> screenPoint)
         {
             AttachedProperties.SetCurrentScreenPoint(this, screenPoint);
         }
@@ -57,14 +57,14 @@ namespace NP.Demos.DockWindowsSample
         const string SerializationFilePath = "../../../../SerializationResult.xml";
 
         #region ButtonBounds Styled Avalonia Property
-        public Rect2D ButtonBounds
+        public Rect2D<double> ButtonBounds
         {
             get { return GetValue(ButtonBoundsProperty); }
             private set { SetValue(ButtonBoundsProperty, value); }
         }
 
-        public static readonly StyledProperty<Rect2D> ButtonBoundsProperty =
-            AvaloniaProperty.Register<MainWindow, Rect2D>
+        public static readonly StyledProperty<Rect2D<double>> ButtonBoundsProperty =
+            AvaloniaProperty.Register<MainWindow, Rect2D<double>>
             (
                 nameof(ButtonBounds)
             );

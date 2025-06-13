@@ -1,20 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<OutputType>WinExe</OutputType>
-		<TargetFramework>net6.0</TargetFramework>
-		<Nullable>enable</Nullable>
-	</PropertyGroup>
-	<ItemGroup>
-		<None Remove="nuget.config" />
-		<None Remove="SerializationResult.xml" />
-	</ItemGroup>
-	<ItemGroup Condition="'$(Configuration)'=='Debug'">
-		<ProjectReference Include="..\..\src\NP.Ava.UniDock.csproj" />
-		<ProjectReference Include="..\..\SubModules\NP.IoCy\src\NP.IoCy.csproj" />
-		<ProjectReference Include="..\..\SubModules\NP.NLogAdapter\src\NP.NLogAdapter.csproj" />
-	</ItemGroup>
-	<ItemGroup Condition="'$(Configuration)'=='Release'">
-		<PackageReference Include="NP.Ava.UniDock" Version="1.0.1" />
-		<PackageReference Include="NP.NLogAdapter" Version="1.0.9" />
-	</ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SubModules\NP.NLogAdapter\src\NP.NLogAdapter.csproj" />
+  </ItemGroup>
 </Project>

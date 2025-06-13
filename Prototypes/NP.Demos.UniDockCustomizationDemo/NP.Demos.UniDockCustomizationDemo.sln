@@ -17,9 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Ava.UniDock", "..\..\src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.DependencyInjection", "..\..\SubModules\NP.DependencyInjection\src\NP.DependencyInjection.csproj", "{4B8ADEFA-19F9-463B-A1E7-43834AE44B08}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Ava.UniDockService", "..\..\SubModules\NP.Avalonia.UniDockService\src\NP.Ava.UniDockService.csproj", "{2EB1FBE4-C699-46E8-9FF9-5A7005C2960A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.UniDockService", "..\..\SubModules\NP.UniDockService\src\NP.UniDockService.csproj", "{2EB1FBE4-C699-46E8-9FF9-5A7005C2960A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.ViewModelInterfaces", "..\..\SubModules\NP.ViewModelInterfaces\src\NP.ViewModelInterfaces.csproj", "{E4E562AD-5996-43D7-9DA9-C0FF17E69F7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NP.IoCy", "..\..\SubModules\NP.IoCy\src\NP.IoCy.csproj", "{57401A9E-9A9D-47DB-B01F-012626BD9BB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{E4E562AD-5996-43D7-9DA9-C0FF17E69F7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4E562AD-5996-43D7-9DA9-C0FF17E69F7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4E562AD-5996-43D7-9DA9-C0FF17E69F7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57401A9E-9A9D-47DB-B01F-012626BD9BB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57401A9E-9A9D-47DB-B01F-012626BD9BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57401A9E-9A9D-47DB-B01F-012626BD9BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57401A9E-9A9D-47DB-B01F-012626BD9BB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,6 +76,7 @@ Global
 		{4B8ADEFA-19F9-463B-A1E7-43834AE44B08} = {D257FF52-0480-411B-8C43-90C47F876115}
 		{2EB1FBE4-C699-46E8-9FF9-5A7005C2960A} = {D257FF52-0480-411B-8C43-90C47F876115}
 		{E4E562AD-5996-43D7-9DA9-C0FF17E69F7E} = {D257FF52-0480-411B-8C43-90C47F876115}
+		{57401A9E-9A9D-47DB-B01F-012626BD9BB9} = {D257FF52-0480-411B-8C43-90C47F876115}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {98780B67-9675-4029-9930-B8EAB892EA72}

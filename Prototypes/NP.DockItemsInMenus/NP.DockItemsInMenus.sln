@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.IoC.CommonImplementation
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.ViewModelInterfaces", "..\..\SubModules\NP.ViewModelInterfaces\src\NP.ViewModelInterfaces.csproj", "{AC229EBD-36FF-49CC-97EC-D9CB3A0ABE80}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Ava.UniDockService", "..\..\SubModules\NP.Avalonia.UniDockService\src\NP.Ava.UniDockService.csproj", "{B9684CE7-6906-4360-B40D-E2BE5C20D0F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.UniDockService", "..\..\SubModules\NP.UniDockService\src\NP.UniDockService.csproj", "{B9684CE7-6906-4360-B40D-E2BE5C20D0F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

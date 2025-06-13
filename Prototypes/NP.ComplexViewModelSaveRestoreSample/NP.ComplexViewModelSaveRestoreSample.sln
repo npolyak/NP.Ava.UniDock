@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.IoC.CommonImplementation
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Ava.UniDock", "..\..\src\NP.Ava.UniDock.csproj", "{6AD811E2-2C69-4F4C-BEDC-99772735A4E8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Ava.UniDockService", "..\..\SubModules\NP.Avalonia.UniDockService\src\NP.Ava.UniDockService.csproj", "{06263AFD-DE71-440E-A430-0388BA8DE3CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.UniDockService", "..\..\SubModules\NP.UniDockService\src\NP.UniDockService.csproj", "{06263AFD-DE71-440E-A430-0388BA8DE3CC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Ava.Visuals", "..\..\SubModules\NP.Ava.Visuals\src\NP.Ava.Visuals.csproj", "{9C8F0216-D5CA-406D-861E-A4FBE5489501}"
 EndProject

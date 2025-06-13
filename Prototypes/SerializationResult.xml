@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<DockManagerParams xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<DockManagerParams
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <WindowsSerializationParams>
         <WindowParams
+            TopLeft="(312,312)"
+            Size="(700,700)"
             IsDockWindow="false"
             Title="NP.Demos.DockWindowsSample"
             TheWindowState="Normal"
             WindowId="TheMainWindow"
-            DockChildWindowOwnerId="TheMainWindow">
-            <TopLeft
-                X="396"
-                Y="390" />
-            <Size
-                X="700"
-                Y="700" />
-        </WindowParams>
+            DockChildWindowOwnerId="TheMainWindow" />
     </WindowsSerializationParams>
     <DisconnectedDockGroupParams />
     <ConnectedDockGroupParams>
@@ -22,7 +19,7 @@
             CanClose="false"
             GroupFullTypeName="NP.Ava.UniDock.RootDockGroup"
             DockId="Group1"
-            ChildrenDockIds="StackDockGroup_11"
+            ChildrenDockIds="TabbedDockGroup_2"
             DefaultDockOrderInGroup="0"
             AutoDestroy="false"
             AutoInvisible="false"
@@ -37,7 +34,7 @@
             CanClose="true"
             GroupFullTypeName="NP.Ava.UniDock.TabbedDockGroup"
             DockId="TabbedDockGroup_2"
-            ParentDockId="StackDockGroup_11"
+            ParentDockId="Group1"
             ChildrenDockIds="DockItem1 DockItem3"
             DefaultDockOrderInGroup="0"
             AutoDestroy="false"
@@ -107,7 +104,7 @@
             CanClose="false"
             GroupFullTypeName="NP.Ava.UniDock.RootDockGroup"
             DockId="Group2"
-            ChildrenDockIds="StackDockGroup_13"
+            ChildrenDockIds="StackDockGroup_11"
             DefaultDockOrderInGroup="0"
             AutoDestroy="false"
             AutoInvisible="false"
@@ -122,8 +119,8 @@
             CanClose="true"
             GroupFullTypeName="NP.Ava.UniDock.TabbedDockGroup"
             DockId="TabbedDockGroup_7"
-            ParentDockId="StackDockGroup_13"
-            ChildrenDockIds="DockItem4"
+            ParentDockId="StackDockGroup_11"
+            ChildrenDockIds="DockItem4 DockItem5"
             DefaultDockOrderInGroup="0"
             AutoDestroy="false"
             AutoInvisible="false"
@@ -156,7 +153,7 @@
             CanClose="true"
             GroupFullTypeName="NP.Ava.UniDock.DockItem"
             DockId="DockItem5"
-            ParentDockId="StackDockGroup_13"
+            ParentDockId="TabbedDockGroup_7"
             DefaultDockOrderInGroup="0"
             AutoDestroy="false"
             AutoInvisible="false"
@@ -174,34 +171,13 @@
             CanClose="true"
             GroupFullTypeName="NP.Ava.UniDock.StackDockGroup"
             DockId="StackDockGroup_11"
-            ParentDockId="Group1"
-            ChildrenDockIds="TabbedDockGroup_2 DockItem2"
-            DefaultDockOrderInGroup="0"
-            AutoDestroy="false"
-            AutoInvisible="true"
-            ProducingUserDefinedWindowGroupId="Group1"
-            TheOrientation="Vertical"
-            IsGroupLocked="false"
-            IsPredefined="false"
-            AllowTabDocking="false"
-            IsDockVisible="false">
-            <SizeCoefficients>
-                <string>1*</string>
-                <string>1*</string>
-            </SizeCoefficients>
-        </DockGroupParams>
-        <DockGroupParams
-            CanFloat="true"
-            CanClose="true"
-            GroupFullTypeName="NP.Ava.UniDock.StackDockGroup"
-            DockId="StackDockGroup_13"
             ParentDockId="Group2"
-            ChildrenDockIds="TabbedDockGroup_7 DockItem5"
+            ChildrenDockIds="DockItem2 TabbedDockGroup_7"
             DefaultDockOrderInGroup="0"
             AutoDestroy="false"
             AutoInvisible="true"
             ProducingUserDefinedWindowGroupId="Group2"
-            TheOrientation="Horizontal"
+            TheOrientation="Vertical"
             IsGroupLocked="false"
             IsPredefined="false"
             AllowTabDocking="false"

@@ -17,9 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Ava.UniDock", "..\..\src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.DependencyInjection", "..\..\SubModules\NP.DependencyInjection\src\NP.DependencyInjection.csproj", "{1CDF2794-5372-4395-B8A7-70555CD36710}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Ava.UniDockService", "..\..\SubModules\NP.Avalonia.UniDockService\src\NP.Ava.UniDockService.csproj", "{60413C1D-1FCE-4B75-A418-D00BBA5AB018}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.UniDockService", "..\..\SubModules\NP.UniDockService\src\NP.UniDockService.csproj", "{60413C1D-1FCE-4B75-A418-D00BBA5AB018}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.ViewModelInterfaces", "..\..\SubModules\NP.ViewModelInterfaces\src\NP.ViewModelInterfaces.csproj", "{219BBFB8-45E7-4E1F-A258-C0637022286F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NP.IoCy", "..\..\SubModules\NP.IoCy\src\NP.IoCy.csproj", "{DED30E8E-5F3E-45B9-841C-8ED7976767D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{219BBFB8-45E7-4E1F-A258-C0637022286F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{219BBFB8-45E7-4E1F-A258-C0637022286F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{219BBFB8-45E7-4E1F-A258-C0637022286F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DED30E8E-5F3E-45B9-841C-8ED7976767D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DED30E8E-5F3E-45B9-841C-8ED7976767D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DED30E8E-5F3E-45B9-841C-8ED7976767D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DED30E8E-5F3E-45B9-841C-8ED7976767D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +77,7 @@ Global
 		{1CDF2794-5372-4395-B8A7-70555CD36710} = {D257FF52-0480-411B-8C43-90C47F876115}
 		{60413C1D-1FCE-4B75-A418-D00BBA5AB018} = {D257FF52-0480-411B-8C43-90C47F876115}
 		{219BBFB8-45E7-4E1F-A258-C0637022286F} = {D257FF52-0480-411B-8C43-90C47F876115}
+		{DED30E8E-5F3E-45B9-841C-8ED7976767D7} = {D257FF52-0480-411B-8C43-90C47F876115}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {98780B67-9675-4029-9930-B8EAB892EA72}

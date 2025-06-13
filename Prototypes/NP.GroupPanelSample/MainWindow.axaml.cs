@@ -26,7 +26,7 @@ namespace NP.GroupPanelSample
             //_stackGroup.Items.Insert(3, new Grid { Background = new SolidColorBrush(Colors.Purple) });
         }
 
-        private void OnCurrentScreenPointChanged(Point2D screenPoint)
+        private void OnCurrentScreenPointChanged(Point2D<double> screenPoint)
         {
             AttachedProperties.SetCurrentScreenPoint(this, screenPoint);
         }

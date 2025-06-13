@@ -1,6 +1,6 @@
 ﻿using NP.Ava.UniDock;
 using NP.Ava.UniDock.Factories;
-using NP.Ava.UniDockService;
+using NP.UniDockService;
 using NP.DependencyInjection.Interfaces;
 using NP.IoCy;
 

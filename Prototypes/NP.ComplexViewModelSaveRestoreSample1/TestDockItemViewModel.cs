@@ -1,4 +1,4 @@
-﻿using NP.Ava.UniDockService;
+﻿using NP.UniDockService;
 
 namespace NP.ComplexViewModelSaveRestoreSample
 {

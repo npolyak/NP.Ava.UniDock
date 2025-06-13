@@ -13,7 +13,7 @@ namespace NP.SimplePanelDraggingSample
 {
     public partial class MainWindow : CustomWindow
     {
-        private Point2D? _startMousePoint;
+        private Point2D<double>? _startMousePoint;
 
         private CustomWindow _customWindow;
 
@@ -50,7 +50,7 @@ namespace NP.SimplePanelDraggingSample
         
         private void OnPointerMoved(object? sender, PointerEventArgs e)
         {
-            Point2D currentMousePoint = e.GetPosition(DraggableHeader).ToPoint2D();
+            Point2D<double> currentMousePoint = e.GetPosition(DraggableHeader).ToPoint2D();
 
             if ( currentMousePoint
                     .Minus(_startMousePoint!)
