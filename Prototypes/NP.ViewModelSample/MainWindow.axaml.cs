@@ -5,7 +5,7 @@ using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.VisualTree;
 using NP.Ava.UniDock;
-using NP.Ava.UniDockService;
+using NP.UniDockService;
 using System.Collections.ObjectModel;
 using System.Linq;
 

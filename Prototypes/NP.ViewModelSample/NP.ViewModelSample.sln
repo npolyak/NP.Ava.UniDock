@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Ava.UniDock", "..\..\src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.IoCy", "..\..\SubModules\NP.IoCy\src\NP.IoCy.csproj", "{4DEC59D3-F308-4C96-8DC9-B475753B56A9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Ava.UniDockService", "..\..\SubModules\NP.Avalonia.UniDockService\src\NP.Ava.UniDockService.csproj", "{E742D976-494F-448C-B54A-4438EC0D4C87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.UniDockService", "..\..\SubModules\NP.UniDockService\src\NP.UniDockService.csproj", "{E742D976-494F-448C-B54A-4438EC0D4C87}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.ViewModelInterfaces", "..\..\SubModules\NP.ViewModelInterfaces\src\NP.ViewModelInterfaces.csproj", "{A7F9A3F9-FE1E-43A2-A28B-62F15F1CE836}"
 EndProject
