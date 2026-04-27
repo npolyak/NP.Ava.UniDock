@@ -19,7 +19,7 @@ namespace NP.TablessSample
 
             InitializeComponent();
 #if DEBUG
-            this.AttachDevTools();
+            //this.AttachDeveloperTools();
 #endif
 
         }

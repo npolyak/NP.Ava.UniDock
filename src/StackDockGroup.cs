@@ -30,9 +30,9 @@ using Avalonia.VisualTree;
 
 namespace NP.Ava.UniDock
 {
-    public class StackDockGroup : DockGroupBaseControl, IDockGroup, IDisposable, IStyleable
+    public class StackDockGroup : DockGroupBaseControl, IDockGroup, IDisposable
     {
-        Type IStyleable.StyleKey => typeof(StackDockGroup);
+        protected override Type StyleKeyOverride => typeof(StackDockGroup);
 
         public event Action<IDockGroup>? IsDockVisibleChangedEvent;
 

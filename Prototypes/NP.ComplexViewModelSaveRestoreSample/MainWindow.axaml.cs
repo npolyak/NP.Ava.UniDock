@@ -21,7 +21,7 @@ namespace NP.ComplexViewModelSaveRestoreSample
         {
             InitializeComponent();
 #if DEBUG
-            this.AttachDevTools();
+            //this.AttachDeveloperTools();
 #endif
             _dockManager = MyContainer.TheDockManager;
 

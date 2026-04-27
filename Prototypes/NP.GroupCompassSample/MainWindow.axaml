@@ -5,6 +5,7 @@
         xmlns:local="clr-namespace:NP.GroupCompassSample"
         Width="700"
         Height="700"
+        x:CompileBindings="False"
         np:DockAttachedProperties.DockChildWindowOwner="{Binding RelativeSource={RelativeSource Mode=Self}}"
         np:DockAttachedProperties.TheDockManager="{DynamicResource TheDockManager}"
         x:Class="NP.GroupCompassSample.MainWindow"

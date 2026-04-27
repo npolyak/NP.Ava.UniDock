@@ -86,7 +86,7 @@ namespace NP.Ava.UniDock
                 if (useLayoutRounding)
                 {
                     scale = LayoutHelper.GetLayoutScale(this);
-                    margin = LayoutHelper.RoundLayoutThickness(margin, scale, scale);
+                    margin = LayoutHelper.RoundLayoutThickness(margin, scale);
                 }
 
                 ApplyStyling();
@@ -126,7 +126,7 @@ namespace NP.Ava.UniDock
 
                 if (useLayoutRounding)
                 {
-                    (width, height) = LayoutHelper.RoundLayoutSizeUp(new Size(width, height), scale, scale);
+                    (width, height) = LayoutHelper.RoundLayoutSizeUp(new Size(width, height), scale);
                 }
 
                 width = Math.Min(width, availableSize.Width);

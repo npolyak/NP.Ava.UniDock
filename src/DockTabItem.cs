@@ -7,7 +7,7 @@ using System;
 
 namespace NP.Ava.UniDock
 {
-    public class DockTabItem : TabItem, IStyleable
+    public class DockTabItem : TabItem
     {
         #region IsActive Styled Avalonia Property
         public bool IsActive

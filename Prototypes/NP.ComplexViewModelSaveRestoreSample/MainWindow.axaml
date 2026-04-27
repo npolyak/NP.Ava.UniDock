@@ -5,6 +5,7 @@
         xmlns:local="clr-namespace:NP.ComplexViewModelSaveRestoreSample"
         Width="700"
         Height="800"
+        x:CompileBindings="False"
         np:DockAttachedProperties.DockChildWindowOwner="{Binding RelativeSource={RelativeSource Mode=Self}}"
         np:DockAttachedProperties.TheDockManager="{x:Static local:MyContainer.TheDockManager}"
         x:Class="NP.ComplexViewModelSaveRestoreSample.MainWindow"
@@ -39,7 +40,7 @@
                       Grid.Row="2"
                       Margin="0,5">
             <TextBlock Text="Ask: "/>
-            <TextBlock Text="{Binding Path=Ask, StringFormat='\{0:0.00\}'}"
+            <TextBlock Text="{Binding Path=Ask, StringFormat='{}{0:0.00}'}"
                        Foreground="Green"/>
           </StackPanel>
           <StackPanel Orientation="Horizontal"
@@ -47,14 +48,14 @@
                       Grid.Row="3"
                       Margin="0,5">
             <TextBlock Text="Bid: "/>
-            <TextBlock Text="{Binding Path=Bid, StringFormat='\{0:0.00\}'}"
+            <TextBlock Text="{Binding Path=Bid, StringFormat='{}{0:0.00}'}"
                        Foreground="Red"/>
           </StackPanel>
         </Grid>
       </DataTemplate>
 
       <DataTemplate x:Key="OrderHeaderDataTemplate">
-        <TextBlock Text="{Binding Path=Symbol, StringFormat='\{0\} Order'}"/>
+        <TextBlock Text="{Binding Path=Symbol, StringFormat='{}{0} Order'}"/>
       </DataTemplate>
 
       <DataTemplate x:Key="OrderDataTemplate">
@@ -80,7 +81,7 @@
                       Grid.Row="2"
                       Margin="0,5">
             <TextBlock Text="Market Price: "/>
-            <TextBlock Text="{Binding Path=MarketPrice, StringFormat='\{0:0.00\}'}"/>
+            <TextBlock Text="{Binding Path=MarketPrice, StringFormat='{}{0:0.00}'}"/>
           </StackPanel>
         </Grid>
       </DataTemplate>

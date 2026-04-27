@@ -27,16 +27,21 @@ namespace NP.Ava.UniDock
             ShowsPreview = true;
         }
 
-        protected override void OnLostFocus(RoutedEventArgs e)
+        protected override void OnLostFocus(FocusChangedEventArgs e)
         {
-            // do not cancel resize on lost focus
             //base.OnLostFocus(e);
         }
+
+        //protected override void OnLostFocus(RoutedEventArgs e)
+        //{
+        //    // do not cancel resize on lost focus
+        //    //base.OnLostFocus(e);
+        //}
 
         protected override void OnPointerCaptureLost(PointerCaptureLostEventArgs e)
         {
             base.OnPointerCaptureLost(e);
-            base.OnLostFocus(e);
+            //base.OnLostFocus(e);
         }
     }
 }

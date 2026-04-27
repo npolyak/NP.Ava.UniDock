@@ -4,6 +4,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.VisualTree;
+using Microsoft.Extensions.Logging;
 using NP.Ava.UniDock;
 using System.Linq;
 
@@ -17,7 +18,7 @@ namespace NP.GroupCompassSample
         {
             InitializeComponent();
 #if DEBUG
-            this.AttachDevTools();
+            //this.AttachDeveloperTools();
 #endif
             _dockManager = MyContainer.TheDockManager;
 
@@ -32,6 +33,7 @@ namespace NP.GroupCompassSample
         private const string SerializationFile = "Serialization.xml";
         private void SaveButton_Click(object? sender, RoutedEventArgs e)
         {
+            //("Saving layout to File");
             _dockManager.SaveToFile(SerializationFile);
         }
 
