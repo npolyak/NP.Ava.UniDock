@@ -11,7 +11,7 @@
 	</ItemGroup>
 	<ItemGroup Condition="'$(Configuration)'=='Release'">
 		<PackageReference Include="NP.Ava.UniDock"
-						  Version="1.0.19" />
+						  Version="1.0.20" />
 		<PackageReference Include="NP.IoCy"
 						  Version="1.0.34" />
 	</ItemGroup>
